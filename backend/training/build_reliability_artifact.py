@@ -10,7 +10,13 @@ import joblib
 import numpy as np
 import pandas as pd
 
-from app.ml.model_contract import FEATURE_COLUMNS, LOG_FEATURES, TARGET_COLUMNS
+from app.ml.model_contract import (
+    FEATURE_COLUMNS,
+    LOG_FEATURES,
+    MODEL_VERSION,
+    RELIABILITY_VERSION,
+    TARGET_COLUMNS,
+)
 from training.generate_training_data import generate_training_frame
 from training.ml_utils import make_hist_gradient_boosting_pipeline
 
@@ -20,7 +26,6 @@ DEFAULT_ARTIFACT = ROOT / "backend" / "models" / "reliability_ensemble.joblib"
 DEFAULT_METADATA = ROOT / "backend" / "models" / "reliability_metadata.json"
 REFERENCE_DATASET = ROOT / "data" / "training" / "light_training_data.csv"
 SEEDS = (741, 742, 743, 744, 745)
-RELIABILITY_VERSION = "1.0.0"
 
 
 def transformed_matrix(frame: pd.DataFrame) -> np.ndarray:
@@ -65,7 +70,7 @@ def main() -> None:
         "feature_columns": FEATURE_COLUMNS,
         "target_columns": TARGET_COLUMNS,
         "model_name": "hist_gradient_boosting_ensemble",
-        "model_version": "1.0.0",
+        "model_version": MODEL_VERSION,
         "reliability_version": RELIABILITY_VERSION,
         "seeds": list(SEEDS),
         "feature_mean": feature_mean,

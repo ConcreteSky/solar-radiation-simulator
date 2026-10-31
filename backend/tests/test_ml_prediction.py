@@ -189,6 +189,18 @@ class MachineLearningPredictionTests(unittest.TestCase):
                 self.assertIn(payload["method"], ("machine_learning", "deterministic_fallback"))
                 self.assertIn("baselineComparison", payload)
 
+    def test_every_selectable_moon_and_dwarf_planet_uses_reliable_ml(self) -> None:
+        destinations = [
+            body for body in load_catalog() if body.type in ("moon", "dwarf_planet")
+        ]
+        self.assertEqual(len(destinations), 24)
+        for body in destinations:
+            with self.subTest(destination=body.id):
+                result = predict_destination(body.id)
+                self.assertEqual(result.method, "machine_learning")
+                self.assertEqual(result.reliability.decision, "use_ai")
+                self.assertFalse(result.validation.fallbackUsed)
+
     def test_invalid_destination_is_a_clean_404(self) -> None:
         with self.assertRaises(HTTPException) as context:
             predict("not-a-body")

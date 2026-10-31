@@ -187,7 +187,7 @@ Catalog values are based primarily on NASA, JPL, and the ASTM E-490 reference di
 - Aggregate atmosphere coefficients omit clouds, aerosols, dust, weather, seasons, and spectral absorption lines.
 - Real-body atmospheric properties are fixed catalog values unless Scenario Mode is used.
 - Airless interaction percentages use a documented generic surface assumption, not measured body-specific albedo.
-- Several giant planets, dwarf planets, and moons lack complete pressure, density, composition, or atmosphere-state inputs and therefore use disclosed fallback.
+- Giant planets lack a defined solid surface pressure/density for this surface-light model and therefore retain the disclosed deterministic fallback. Every selectable moon and dwarf planet has a sourced measured state or published global-atmosphere upper-limit interpretation and is covered by the ML reliability path.
 - Diagram ray directions are illustrative and do not represent observer geometry.
 - The model was trained on synthetic physics labels; independent observational validation was not available for the project's energy-partition convention.
 - Ensemble spread is an empirical ranking signal, not a calibrated confidence interval; OOD distance is also a screening heuristic, not proof that a prediction is wrong.

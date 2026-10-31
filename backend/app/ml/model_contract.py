@@ -8,13 +8,13 @@ import pandas as pd
 from ..schemas.celestial_body import CelestialBody
 from ..services.solar_input_service import SolarInput
 
-MODEL_VERSION = "1.0.0"
+MODEL_VERSION = "1.1.0"
 TRAINING_SEED = 741
 MODEL_PATH = Path(__file__).resolve().parents[2] / "models" / "light_model.joblib"
 MODEL_METADATA_PATH = Path(__file__).resolve().parents[2] / "models" / "light_model_metadata.json"
 RELIABILITY_MODEL_PATH = Path(__file__).resolve().parents[2] / "models" / "reliability_ensemble.joblib"
 RELIABILITY_METADATA_PATH = Path(__file__).resolve().parents[2] / "models" / "reliability_metadata.json"
-RELIABILITY_VERSION = "1.0.0"
+RELIABILITY_VERSION = "1.1.0"
 
 FEATURE_COLUMNS = [
     "distance_from_sun_km",
@@ -23,6 +23,7 @@ FEATURE_COLUMNS = [
     "surface_pressure_pa",
     "atmospheric_density_kg_m3",
     "co2_fraction",
+    "so2_fraction",
     "n2_fraction",
     "o2_fraction",
     "ch4_fraction",
@@ -72,6 +73,7 @@ def scientific_feature_frame(
         raise MissingModelFeatureError("Atmospheric composition is unavailable.")
     gases = {
         "CO2": max(float(composition["CO2"] or 0.0), 0.0),
+        "SO2": max(float(composition.get("SO2") or 0.0), 0.0),
         "N2": max(float(composition["N2"] or 0.0), 0.0),
         "O2": max(float(composition["O2"] or 0.0), 0.0),
         "CH4": max(float(composition["CH4"] or 0.0), 0.0),
@@ -95,6 +97,7 @@ def scientific_feature_frame(
         # The deterministic model normalizes the supported gas mixture before
         # applying coefficients. Use that same scientific representation here.
         "co2_fraction": gases["CO2"],
+        "so2_fraction": gases["SO2"],
         "n2_fraction": gases["N2"],
         "o2_fraction": gases["O2"],
         "ch4_fraction": gases["CH4"],

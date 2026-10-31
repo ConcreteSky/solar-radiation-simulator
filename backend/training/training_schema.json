@@ -1,6 +1,6 @@
 {
-  "schema_version": "1.1.0",
-  "generator_version": "1.0.0",
+  "schema_version": "1.2.0",
+  "generator_version": "1.1.0",
   "purpose": "Contract for deterministic synthetic light-model samples; real catalog bodies remain separate benchmarks.",
   "default_sample_count": 10000,
   "default_random_seed": 741,
@@ -11,6 +11,7 @@
     { "name": "surface_pressure_pa", "unit": "Pa", "type": "float", "minimum": 0, "maximum": 10000000 },
     { "name": "atmospheric_density_kg_m3", "unit": "kg/m^3", "type": "float", "minimum": 0, "maximum": 100 },
     { "name": "co2_fraction", "unit": "fraction", "type": "float", "minimum": 0, "maximum": 1 },
+    { "name": "so2_fraction", "unit": "fraction", "type": "float", "minimum": 0, "maximum": 1 },
     { "name": "n2_fraction", "unit": "fraction", "type": "float", "minimum": 0, "maximum": 1 },
     { "name": "o2_fraction", "unit": "fraction", "type": "float", "minimum": 0, "maximum": 1 },
     { "name": "ch4_fraction", "unit": "fraction", "type": "float", "minimum": 0, "maximum": 1 },
@@ -47,6 +48,7 @@
     "airless samples use zero pressure, density, and gas fractions",
     "atmospheric gas fractions sum to 1 within floating-point tolerance",
     "generation is deterministic for the recorded seed and generator version",
-    "real Solar System bodies are benchmark rows, not duplicated training samples"
+    "real Solar System bodies are benchmark rows, not duplicated training samples",
+    "atmospheric samples include ultra-tenuous pressures down to 1e-9 Pa"
   ]
 }

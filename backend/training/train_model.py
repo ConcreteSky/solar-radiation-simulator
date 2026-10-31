@@ -223,7 +223,7 @@ def main() -> None:
         "random_seed": TRAINING_SEED,
         "dataset_path": str(args.dataset.relative_to(PROJECT_ROOT)),
         "dataset_audit": audit,
-        "split_policy": "Predefined deterministic 80/10/10 train/validation/test split from generator version 1.0.0; the test split was not used for model selection.",
+        "split_policy": "Predefined deterministic 80/10/10 train/validation/test split from generator version 1.1.0; the test split was not used for model selection.",
         "candidate_validation_results": candidate_results,
         "selection": {
             "selected_model": selected_name,

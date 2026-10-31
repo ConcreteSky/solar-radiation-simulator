@@ -1,11 +1,13 @@
 {
-  "schema_version": "1.0.0",
-  "access_date": "2026-09-30",
+  "schema_version": "1.1.0",
+  "access_date": "2026-10-31",
   "notes": [
     "Fractions are volume mixing ratios where published; null means not reliably quantified by the cited source.",
     "Moon orbits are parent-centered. Planet and dwarf-planet orbits are heliocentric.",
     "Moon light references use the parent planet's heliocentric mean-distance reference.",
-    "Display colors and textures are illustrative and never scientific inputs."
+    "Display colors and textures are illustrative and never scientific inputs.",
+    "Published non-detection limits for Eris, Haumea, and Makemake are represented as no global optically significant atmosphere; localized or seasonal gases below those limits remain possible.",
+    "Thin-atmosphere densities are ideal-gas reference estimates derived from cited pressure, composition, and representative temperature values."
   ],
   "bodies": [
     {
@@ -93,37 +95,37 @@
       "id": "pluto", "name": "Pluto", "type": "dwarf_planet", "parent": "sun",
       "physical": { "radius_km": 1188.3, "diameter_km": 2376.6, "mass_kg": 1.303e22, "surface_gravity_ms2": 0.62 },
       "orbit": { "reference": "sun", "semimajor_axis_km": 5906380000, "eccentricity": 0.2488, "periapsis_km": 4436820000, "apoapsis_km": 7375930000 },
-      "atmosphere": { "hasAtmosphere": true, "surface_pressure_pa": null, "density_kg_m3": null, "composition": { "CO2": null, "N2": null, "O2": null, "CH4": null, "H2": null, "He": null } },
+      "atmosphere": { "hasAtmosphere": true, "surface_pressure_pa": 1.0, "density_kg_m3": 0.000084, "composition": { "CO2": 0, "SO2": 0, "N2": 0.995, "O2": 0, "CH4": 0.005, "H2": 0, "He": 0 } },
       "light_reference": { "solar_irradiance_w_m2": 0.878, "light_travel_time_seconds": 19701.6, "distance_basis": "body_semimajor_axis" },
       "visual": { "baseColor": "#a89278", "texture": null, "material": "dwarf-muted" },
-      "source_ids": ["nasa-pluto", "nasa-planet-table", "nlr-e490"]
+      "source_ids": ["nasa-pluto", "new-horizons-pluto-atmosphere", "derived-atmospheric-density", "nasa-planet-table", "nlr-e490"]
     },
     {
       "id": "eris", "name": "Eris", "type": "dwarf_planet", "parent": "sun",
       "physical": { "radius_km": 1163.0, "diameter_km": 2326.0, "mass_kg": 1.6466e22, "surface_gravity_ms2": 0.82 },
       "orbit": { "reference": "sun", "semimajor_axis_km": 10166000000, "eccentricity": 0.4361, "periapsis_km": 5728000000, "apoapsis_km": 14604000000 },
-      "atmosphere": { "hasAtmosphere": null, "surface_pressure_pa": null, "density_kg_m3": null, "composition": { "CO2": null, "N2": null, "O2": null, "CH4": null, "H2": null, "He": null } },
+      "atmosphere": { "hasAtmosphere": false, "surface_pressure_pa": 0, "density_kg_m3": 0, "composition": { "CO2": 0, "SO2": 0, "N2": 0, "O2": 0, "CH4": 0, "H2": 0, "He": 0 } },
       "light_reference": { "solar_irradiance_w_m2": 0.296, "light_travel_time_seconds": 33910.1, "distance_basis": "body_semimajor_axis" },
       "visual": { "baseColor": "#aaa49b", "texture": null, "material": "dwarf-muted" },
-      "source_ids": ["nasa-eris", "jpl-small-bodies", "derived-light-reference"]
+      "source_ids": ["nasa-eris", "eris-occultation-atmosphere-limit", "jpl-small-bodies", "derived-light-reference"]
     },
     {
       "id": "haumea", "name": "Haumea", "type": "dwarf_planet", "parent": "sun",
       "physical": { "radius_km": null, "diameter_km": 1740.0, "mass_kg": 4.006e21, "surface_gravity_ms2": null },
       "orbit": { "reference": "sun", "semimajor_axis_km": 6452000000, "eccentricity": 0.1913, "periapsis_km": 5218000000, "apoapsis_km": 7686000000 },
-      "atmosphere": { "hasAtmosphere": null, "surface_pressure_pa": null, "density_kg_m3": null, "composition": { "CO2": null, "N2": null, "O2": null, "CH4": null, "H2": null, "He": null } },
+      "atmosphere": { "hasAtmosphere": false, "surface_pressure_pa": 0, "density_kg_m3": 0, "composition": { "CO2": 0, "SO2": 0, "N2": 0, "O2": 0, "CH4": 0, "H2": 0, "He": 0 } },
       "light_reference": { "solar_irradiance_w_m2": 0.734, "light_travel_time_seconds": 21521.6, "distance_basis": "body_semimajor_axis" },
       "visual": { "baseColor": "#a7a29a", "texture": null, "material": "dwarf-muted" },
-      "source_ids": ["nasa-haumea", "jpl-small-bodies", "derived-light-reference"]
+      "source_ids": ["nasa-haumea", "haumea-occultation-atmosphere-limit", "jpl-small-bodies", "derived-light-reference"]
     },
     {
       "id": "makemake", "name": "Makemake", "type": "dwarf_planet", "parent": "sun",
       "physical": { "radius_km": 715.0, "diameter_km": 1430.0, "mass_kg": null, "surface_gravity_ms2": null },
       "orbit": { "reference": "sun", "semimajor_axis_km": 6796000000, "eccentricity": 0.1613, "periapsis_km": 5700000000, "apoapsis_km": 7892000000 },
-      "atmosphere": { "hasAtmosphere": null, "surface_pressure_pa": null, "density_kg_m3": null, "composition": { "CO2": null, "N2": null, "O2": null, "CH4": null, "H2": null, "He": null } },
+      "atmosphere": { "hasAtmosphere": false, "surface_pressure_pa": 0, "density_kg_m3": 0, "composition": { "CO2": 0, "SO2": 0, "N2": 0, "O2": 0, "CH4": 0, "H2": 0, "He": 0 } },
       "light_reference": { "solar_irradiance_w_m2": 0.662, "light_travel_time_seconds": 22669.0, "distance_basis": "body_semimajor_axis" },
       "visual": { "baseColor": "#9d806c", "texture": null, "material": "dwarf-muted" },
-      "source_ids": ["nasa-makemake", "jpl-small-bodies", "derived-light-reference"]
+      "source_ids": ["nasa-makemake", "makemake-occultation-atmosphere-limit", "jpl-small-bodies", "derived-light-reference"]
     },
     {
       "id": "moon", "name": "Moon", "type": "moon", "parent": "earth",
@@ -156,37 +158,37 @@
       "id": "io", "name": "Io", "type": "moon", "parent": "jupiter",
       "physical": { "radius_km": 1821.6, "diameter_km": 3643.2, "mass_kg": 8.9319e22, "surface_gravity_ms2": 1.796 },
       "orbit": { "reference": "parent", "semimajor_axis_km": 421800, "eccentricity": 0.0041, "periapsis_km": null, "apoapsis_km": null },
-      "atmosphere": { "hasAtmosphere": null, "surface_pressure_pa": null, "density_kg_m3": null, "composition": { "CO2": null, "N2": null, "O2": null, "CH4": null, "H2": null, "He": null } },
+      "atmosphere": { "hasAtmosphere": true, "surface_pressure_pa": 0.0002, "density_kg_m3": 1.28e-8, "composition": { "CO2": 0, "SO2": 1, "N2": 0, "O2": 0, "CH4": 0, "H2": 0, "He": 0 } },
       "light_reference": { "solar_irradiance_w_m2": 50.5, "light_travel_time_seconds": 2597.1, "distance_basis": "parent_semimajor_axis" },
       "visual": { "baseColor": "#d9bd4a", "texture": null, "material": "moon-yellow" },
-      "source_ids": ["nasa-jovian-satellites", "jpl-satellite-elements"]
+      "source_ids": ["nasa-jovian-satellites", "bagenal-2020-io-europa", "derived-atmospheric-density", "jpl-satellite-elements"]
     },
     {
       "id": "europa", "name": "Europa", "type": "moon", "parent": "jupiter",
       "physical": { "radius_km": 1560.8, "diameter_km": 3121.6, "mass_kg": 4.7998e22, "surface_gravity_ms2": 1.314 },
       "orbit": { "reference": "parent", "semimajor_axis_km": 671100, "eccentricity": 0.0094, "periapsis_km": null, "apoapsis_km": null },
-      "atmosphere": { "hasAtmosphere": null, "surface_pressure_pa": null, "density_kg_m3": null, "composition": { "CO2": null, "N2": null, "O2": null, "CH4": null, "H2": null, "He": null } },
+      "atmosphere": { "hasAtmosphere": true, "surface_pressure_pa": 2e-8, "density_kg_m3": 7.7e-13, "composition": { "CO2": 0, "SO2": 0, "N2": 0, "O2": 1, "CH4": 0, "H2": 0, "He": 0 } },
       "light_reference": { "solar_irradiance_w_m2": 50.5, "light_travel_time_seconds": 2597.1, "distance_basis": "parent_semimajor_axis" },
       "visual": { "baseColor": "#d8cfb7", "texture": null, "material": "moon-ice" },
-      "source_ids": ["nasa-jovian-satellites", "jpl-satellite-elements"]
+      "source_ids": ["nasa-jovian-satellites", "bagenal-2020-io-europa", "derived-atmospheric-density", "jpl-satellite-elements"]
     },
     {
       "id": "ganymede", "name": "Ganymede", "type": "moon", "parent": "jupiter",
       "physical": { "radius_km": 2631.2, "diameter_km": 5262.4, "mass_kg": 1.4819e23, "surface_gravity_ms2": 1.428 },
       "orbit": { "reference": "parent", "semimajor_axis_km": 1070400, "eccentricity": 0.0013, "periapsis_km": null, "apoapsis_km": null },
-      "atmosphere": { "hasAtmosphere": null, "surface_pressure_pa": null, "density_kg_m3": null, "composition": { "CO2": null, "N2": null, "O2": null, "CH4": null, "H2": null, "He": null } },
+      "atmosphere": { "hasAtmosphere": true, "surface_pressure_pa": 2e-7, "density_kg_m3": 6.4e-12, "composition": { "CO2": 0, "SO2": 0, "N2": 0, "O2": 1, "CH4": 0, "H2": 0, "He": 0 } },
       "light_reference": { "solar_irradiance_w_m2": 50.5, "light_travel_time_seconds": 2597.1, "distance_basis": "parent_semimajor_axis" },
       "visual": { "baseColor": "#9b8972", "texture": "textures/moon-craters.svg", "material": "moon-tan" },
-      "source_ids": ["nasa-jovian-satellites", "jpl-satellite-elements"]
+      "source_ids": ["nasa-jovian-satellites", "ganymede-atmosphere-estimate", "derived-atmospheric-density", "jpl-satellite-elements"]
     },
     {
       "id": "callisto", "name": "Callisto", "type": "moon", "parent": "jupiter",
       "physical": { "radius_km": 2410.3, "diameter_km": 4820.6, "mass_kg": 1.0759e23, "surface_gravity_ms2": 1.235 },
       "orbit": { "reference": "parent", "semimajor_axis_km": 1882700, "eccentricity": 0.0074, "periapsis_km": null, "apoapsis_km": null },
-      "atmosphere": { "hasAtmosphere": null, "surface_pressure_pa": null, "density_kg_m3": null, "composition": { "CO2": null, "N2": null, "O2": null, "CH4": null, "H2": null, "He": null } },
+      "atmosphere": { "hasAtmosphere": true, "surface_pressure_pa": 7.5e-7, "density_kg_m3": 2.65e-11, "composition": { "CO2": 1, "SO2": 0, "N2": 0, "O2": 0, "CH4": 0, "H2": 0, "He": 0 } },
       "light_reference": { "solar_irradiance_w_m2": 50.5, "light_travel_time_seconds": 2597.1, "distance_basis": "parent_semimajor_axis" },
       "visual": { "baseColor": "#574e46", "texture": "textures/moon-craters.svg", "material": "moon-dark" },
-      "source_ids": ["nasa-jovian-satellites", "jpl-satellite-elements"]
+      "source_ids": ["nasa-jovian-satellites", "callisto-co2-atmosphere", "derived-atmospheric-density", "jpl-satellite-elements"]
     },
     {
       "id": "titan", "name": "Titan", "type": "moon", "parent": "saturn",
@@ -264,10 +266,10 @@
       "id": "triton", "name": "Triton", "type": "moon", "parent": "neptune",
       "physical": { "radius_km": 1353.4, "diameter_km": 2706.8, "mass_kg": 2.14e22, "surface_gravity_ms2": 0.779 },
       "orbit": { "reference": "parent", "semimajor_axis_km": 354759, "eccentricity": 0.000016, "periapsis_km": null, "apoapsis_km": null },
-      "atmosphere": { "hasAtmosphere": true, "surface_pressure_pa": 1.4, "density_kg_m3": null, "composition": { "CO2": null, "N2": null, "O2": null, "CH4": null, "H2": null, "He": null } },
+      "atmosphere": { "hasAtmosphere": true, "surface_pressure_pa": 1.4, "density_kg_m3": 0.000124, "composition": { "CO2": 0, "SO2": 0, "N2": 0.9998, "O2": 0, "CH4": 0.0002, "H2": 0, "He": 0 } },
       "light_reference": { "solar_irradiance_w_m2": 1.510, "light_travel_time_seconds": 14994.0, "distance_basis": "parent_semimajor_axis" },
       "visual": { "baseColor": "#b7aaa3", "texture": null, "material": "moon-ice" },
-      "source_ids": ["nasa-neptunian-satellites", "nasa-triton", "jpl-satellite-elements"]
+      "source_ids": ["nasa-neptunian-satellites", "nasa-triton", "triton-nitrogen-atmosphere", "derived-atmospheric-density", "jpl-satellite-elements"]
     },
     {
       "id": "proteus", "name": "Proteus", "type": "moon", "parent": "neptune",

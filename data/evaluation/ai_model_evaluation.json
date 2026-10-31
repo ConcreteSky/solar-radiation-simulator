@@ -1,10 +1,10 @@
 {
-  "model_version": "1.0.0",
+  "model_version": "1.1.0",
   "random_seed": 741,
   "dataset_path": "data\\training\\light_training_data.csv",
   "dataset_audit": {
     "samples": 10000,
-    "columns": 20,
+    "columns": 21,
     "split_counts": {
       "train": 8000,
       "validation": 1000,
@@ -15,174 +15,180 @@
     "duplicate_records": 0,
     "duplicate_feature_records": 0,
     "maximum_energy_conservation_error": 2.220446049250313e-16,
-    "maximum_atmospheric_composition_error": 2.2000001820288162e-10,
+    "maximum_atmospheric_composition_error": 1.7000001406586307e-10,
     "feature_distributions": {
       "distance_from_sun_km": {
-        "min": 44880124.11,
-        "mean": 1954577154.1022692,
-        "std": 2566166457.169417,
-        "max": 10462909060.0
+        "min": 44903119.36,
+        "mean": 1878424501.3951848,
+        "std": 2491406349.531534,
+        "max": 10457208310.0
       },
       "incoming_solar_irradiance_w_m2": {
-        "min": 0.2792726553,
-        "mean": 1358.8710564414216,
-        "std": 2833.5275846524996,
-        "max": 15178.37285
+        "min": 0.2795772293,
+        "mean": 1368.5010096838437,
+        "std": 2877.202768626086,
+        "max": 15162.8309
       },
       "surface_pressure_pa": {
         "min": 0.0,
-        "mean": 350824.80140329717,
-        "std": 1229943.339102327,
-        "max": 9996037.861
+        "mean": 277537.60315878066,
+        "std": 1087417.4725007406,
+        "max": 9976963.509
       },
       "atmospheric_density_kg_m3": {
         "min": 0.0,
-        "mean": 2.9743874295093624,
-        "std": 11.737000016903426,
+        "mean": 2.9407547309910087,
+        "std": 12.219826095065931,
         "max": 100.0
       },
       "co2_fraction": {
         "min": 0.0,
-        "mean": 0.19550593052238532,
-        "std": 0.31367646068736527,
-        "max": 0.9998063725
+        "mean": 0.1409447745467264,
+        "std": 0.27998575679564314,
+        "max": 0.9988779184
+      },
+      "so2_fraction": {
+        "min": 0.0,
+        "mean": 0.11745705226317159,
+        "std": 0.28956358802932325,
+        "max": 0.9999972415
       },
       "n2_fraction": {
         "min": 0.0,
-        "mean": 0.2340245321120372,
-        "std": 0.32570829999163625,
-        "max": 0.9995139419
+        "mean": 0.16288739159001353,
+        "std": 0.2890862829285954,
+        "max": 0.9993364715
       },
       "o2_fraction": {
         "min": 0.0,
-        "mean": 0.05585198325598426,
-        "std": 0.1091351987147901,
-        "max": 0.7305288955
+        "mean": 0.1346347098368153,
+        "std": 0.29098365825537387,
+        "max": 0.9999997997
       },
       "ch4_fraction": {
         "min": 0.0,
-        "mean": 0.04268222381911052,
-        "std": 0.08439980561549171,
-        "max": 0.8294904575
+        "mean": 0.02878557507816722,
+        "std": 0.06684252553206599,
+        "max": 0.6820172669
       },
       "h2_fraction": {
         "min": 0.0,
-        "mean": 0.13304646154207753,
-        "std": 0.2662730829571143,
-        "max": 0.9744809186
+        "mean": 0.09660312298206496,
+        "std": 0.23408326053504916,
+        "max": 0.9694272263
       },
       "he_fraction": {
         "min": 0.0,
-        "mean": 0.05438886874845412,
-        "std": 0.10380958598507534,
-        "max": 0.7867640338
+        "mean": 0.03768737370267961,
+        "std": 0.08423891220466997,
+        "max": 0.7373763285
       }
     },
     "target_distributions": {
       "transmitted_light_fraction": {
-        "min": 0.250401,
-        "mean": 0.8662440944999998,
-        "std": 0.1535268925194203,
+        "min": 0.263385,
+        "mean": 0.8818718965999999,
+        "std": 0.1437421656992001,
         "max": 1.0
       },
       "scattered_light_fraction": {
         "min": 0.0,
-        "mean": 0.09543810479999999,
-        "std": 0.10676152974208972,
-        "max": 0.536766
+        "mean": 0.0835351827,
+        "std": 0.09910659501203141,
+        "max": 0.528033
       },
       "absorbed_light_fraction": {
         "min": 0.0,
-        "mean": 0.038317800699999995,
-        "std": 0.04942379102360415,
-        "max": 0.322613
+        "mean": 0.034592920699999995,
+        "std": 0.04692796370880156,
+        "max": 0.303811
       },
       "relative_brightness": {
-        "min": 0.000425,
-        "mean": 0.34796011400000004,
-        "std": 0.3811946047474663,
+        "min": 0.000476,
+        "mean": 0.35184680150000003,
+        "std": 0.38364745872214073,
         "max": 1.0
       }
     }
   },
-  "split_policy": "Predefined deterministic 80/10/10 train/validation/test split from generator version 1.0.0; the test split was not used for model selection.",
+  "split_policy": "Predefined deterministic 80/10/10 train/validation/test split from generator version 1.1.0; the test split was not used for model selection.",
   "candidate_validation_results": {
     "linear_regression": {
       "validation_metrics": {
         "per_target": {
           "transmitted_light_fraction": {
-            "mae": 0.02695399008422352,
-            "mae_percentage_points": 2.6953990084223522,
-            "rmse": 0.05006848750984776,
-            "r2": 0.8977527567549524
+            "mae": 0.020949489977872927,
+            "mae_percentage_points": 2.094948997787293,
+            "rmse": 0.03649957760730274,
+            "r2": 0.934760337647313
           },
           "scattered_light_fraction": {
-            "mae": 0.022710999377094546,
-            "mae_percentage_points": 2.2710999377094545,
-            "rmse": 0.040288108217119735,
-            "r2": 0.8644644888731455
+            "mae": 0.018325495429746028,
+            "mae_percentage_points": 1.8325495429746028,
+            "rmse": 0.03128000053875957,
+            "r2": 0.896847532147359
           },
           "absorbed_light_fraction": {
-            "mae": 0.006884205517851167,
-            "mae_percentage_points": 0.6884205517851167,
-            "rmse": 0.013027732564390075,
-            "r2": 0.9312211357631285
+            "mae": 0.0047453797046444965,
+            "mae_percentage_points": 0.4745379704644497,
+            "rmse": 0.008833237416691439,
+            "r2": 0.9656411655029016
           },
           "relative_brightness": {
-            "mae": 0.07862532484698678,
-            "mae_percentage_points": 7.862532484698678,
-            "rmse": 0.0950685133440509,
-            "r2": 0.9377841843605297
+            "mae": 0.07834013597617279,
+            "mae_percentage_points": 7.834013597617279,
+            "rmse": 0.09412477227595427,
+            "r2": 0.9396096671737026
           }
         },
-        "mean_mae": 0.033793629956539006,
-        "mean_rmse": 0.049613210408852124
+        "mean_mae": 0.03059012527210906,
+        "mean_rmse": 0.042684396959677004
       },
       "physical_consistency": {
         "rows": 1000,
-        "minor_correction_count": 428,
-        "minor_correction_rate": 0.428,
-        "serious_violation_count": 28,
-        "serious_violation_rate": 0.028,
-        "negative_fraction_rows": 226,
-        "over_one_rows": 180,
-        "maximum_energy_sum_error": 7.771561172376096e-16,
-        "mean_energy_sum_error": 1.4843681839238343e-16
+        "minor_correction_count": 475,
+        "minor_correction_rate": 0.475,
+        "serious_violation_count": 22,
+        "serious_violation_rate": 0.022,
+        "negative_fraction_rows": 278,
+        "over_one_rows": 221,
+        "maximum_energy_sum_error": 4.440892098500626e-16,
+        "mean_energy_sum_error": 9.325873406851315e-17
       },
-      "fit_seconds": 0.035495700081810355,
-      "inference_ms_per_sample": 0.002624299842864275,
-      "serialized_size_bytes": 4834
+      "fit_seconds": 0.03828549990430474,
+      "inference_ms_per_sample": 0.0029061001259833574,
+      "serialized_size_bytes": 4866
     },
     "random_forest": {
       "validation_metrics": {
         "per_target": {
           "transmitted_light_fraction": {
-            "mae": 0.0058702437506802825,
-            "mae_percentage_points": 0.5870243750680283,
-            "rmse": 0.01389484731895799,
-            "r2": 0.9921253688402911
+            "mae": 0.004643399278267299,
+            "mae_percentage_points": 0.46433992782672995,
+            "rmse": 0.011215979354028596,
+            "r2": 0.9938395784718609
           },
           "scattered_light_fraction": {
-            "mae": 0.0053322311048241994,
-            "mae_percentage_points": 0.53322311048242,
-            "rmse": 0.012328809683608062,
-            "r2": 0.9873076615293322
+            "mae": 0.004707230222178788,
+            "mae_percentage_points": 0.4707230222178788,
+            "rmse": 0.011726406059239403,
+            "r2": 0.9855030721852103
           },
           "absorbed_light_fraction": {
-            "mae": 0.0024571168814222365,
-            "mae_percentage_points": 0.24571168814222366,
-            "rmse": 0.007071403141676784,
-            "r2": 0.9797358437829663
+            "mae": 0.001921114668184372,
+            "mae_percentage_points": 0.1921114668184372,
+            "rmse": 0.005800164211448135,
+            "r2": 0.985185766174055
           },
           "relative_brightness": {
-            "mae": 0.003434040574134504,
-            "mae_percentage_points": 0.3434040574134504,
-            "rmse": 0.008566303706614736,
-            "r2": 0.9994948570116067
+            "mae": 0.002475858174799825,
+            "mae_percentage_points": 0.24758581747998248,
+            "rmse": 0.006518295181370285,
+            "r2": 0.9997103806373986
           }
         },
-        "mean_mae": 0.004273408077765306,
-        "mean_rmse": 0.010465340962714393
+        "mean_mae": 0.003436900585857571,
+        "mean_rmse": 0.008815211201521605
       },
       "physical_consistency": {
         "rows": 1000,
@@ -192,58 +198,58 @@
         "serious_violation_rate": 0.0,
         "negative_fraction_rows": 0,
         "over_one_rows": 0,
-        "maximum_energy_sum_error": 2.9976021664879227e-15,
-        "mean_energy_sum_error": 8.137934770502398e-16
+        "maximum_energy_sum_error": 2.886579864025407e-15,
+        "mean_energy_sum_error": 8.86402062860725e-16
       },
-      "fit_seconds": 0.6264355001039803,
-      "inference_ms_per_sample": 0.02862729993648827,
-      "serialized_size_bytes": 59306651
+      "fit_seconds": 0.6333833998069167,
+      "inference_ms_per_sample": 0.028157199965789914,
+      "serialized_size_bytes": 57373627
     },
     "hist_gradient_boosting": {
       "validation_metrics": {
         "per_target": {
           "transmitted_light_fraction": {
-            "mae": 0.0019561538522539696,
-            "mae_percentage_points": 0.19561538522539695,
-            "rmse": 0.004320828440302171,
-            "r2": 0.9992385231428136
+            "mae": 0.002010257897829873,
+            "mae_percentage_points": 0.2010257897829873,
+            "rmse": 0.004938168032790508,
+            "r2": 0.9988058256050242
           },
           "scattered_light_fraction": {
-            "mae": 0.0016194651931749281,
-            "mae_percentage_points": 0.16194651931749282,
-            "rmse": 0.0033557887580133584,
-            "r2": 0.9990596520598117
+            "mae": 0.00151928503171586,
+            "mae_percentage_points": 0.151928503171586,
+            "rmse": 0.003809791839449851,
+            "r2": 0.9984697985353407
           },
           "absorbed_light_fraction": {
-            "mae": 0.00072062900984762,
-            "mae_percentage_points": 0.072062900984762,
-            "rmse": 0.0020530766017868114,
-            "r2": 0.9982918435800939
+            "mae": 0.0005777718761596105,
+            "mae_percentage_points": 0.057777187615961054,
+            "rmse": 0.0016776846552879305,
+            "r2": 0.9987605777698644
           },
           "relative_brightness": {
-            "mae": 0.0022794283845911493,
-            "mae_percentage_points": 0.22794283845911492,
-            "rmse": 0.004799071597558711,
-            "r2": 0.9998414589053936
+            "mae": 0.0019720676534394476,
+            "mae_percentage_points": 0.19720676534394477,
+            "rmse": 0.004161088294002058,
+            "r2": 0.9998819751632227
           }
         },
-        "mean_mae": 0.0016439191099669168,
-        "mean_rmse": 0.0036321913494152627
+        "mean_mae": 0.0015198456147861978,
+        "mean_rmse": 0.003646683205382587
       },
       "physical_consistency": {
         "rows": 1000,
-        "minor_correction_count": 999,
-        "minor_correction_rate": 0.999,
+        "minor_correction_count": 1000,
+        "minor_correction_rate": 1.0,
         "serious_violation_count": 0,
         "serious_violation_rate": 0.0,
-        "negative_fraction_rows": 72,
-        "over_one_rows": 27,
-        "maximum_energy_sum_error": 0.03687579288343912,
-        "mean_energy_sum_error": 0.0015608763359791996
+        "negative_fraction_rows": 63,
+        "over_one_rows": 42,
+        "maximum_energy_sum_error": 0.03112875373868973,
+        "mean_energy_sum_error": 0.0014969356108998784
       },
-      "fit_seconds": 1.0488787000067532,
-      "inference_ms_per_sample": 0.01509879995137453,
-      "serialized_size_bytes": 2678493
+      "fit_seconds": 3.4340484000276774,
+      "inference_ms_per_sample": 0.038178700022399426,
+      "serialized_size_bytes": 2679229
     }
   },
   "selection": {
@@ -257,221 +263,221 @@
     "metrics_on_raw_predictions": {
       "per_target": {
         "transmitted_light_fraction": {
-          "mae": 0.0018764505900954588,
-          "mae_percentage_points": 0.1876450590095459,
-          "rmse": 0.004789317770521355,
-          "r2": 0.998970486220706
+          "mae": 0.0017779429342740863,
+          "mae_percentage_points": 0.17779429342740863,
+          "rmse": 0.00454025341600443,
+          "r2": 0.9989189548111024
         },
         "scattered_light_fraction": {
-          "mae": 0.0014495626941804579,
-          "mae_percentage_points": 0.1449562694180458,
-          "rmse": 0.0033430285592721217,
-          "r2": 0.9989801295644907
+          "mae": 0.0013407178587518324,
+          "mae_percentage_points": 0.13407178587518323,
+          "rmse": 0.003047445667216127,
+          "r2": 0.9989724045129728
         },
         "absorbed_light_fraction": {
-          "mae": 0.000600504506072804,
-          "mae_percentage_points": 0.0600504506072804,
-          "rmse": 0.0015688879850175787,
-          "r2": 0.9988874072137317
+          "mae": 0.0004550325636902919,
+          "mae_percentage_points": 0.04550325636902919,
+          "rmse": 0.0012931144162228383,
+          "r2": 0.9991742387174023
         },
         "relative_brightness": {
-          "mae": 0.0018551423061217958,
-          "mae_percentage_points": 0.1855142306121796,
-          "rmse": 0.003995873788223191,
-          "r2": 0.9998929352773912
+          "mae": 0.0020933582681716264,
+          "mae_percentage_points": 0.20933582681716265,
+          "rmse": 0.00448134292572318,
+          "r2": 0.9998666862184855
         }
       },
-      "mean_mae": 0.0014454150241176291,
-      "mean_rmse": 0.003424277025758562
+      "mean_mae": 0.0014167629062219592,
+      "mean_rmse": 0.003340539106291644
     },
     "physical_consistency": {
       "rows": 1000,
-      "minor_correction_count": 999,
-      "minor_correction_rate": 0.999,
+      "minor_correction_count": 709,
+      "minor_correction_rate": 0.709,
       "serious_violation_count": 0,
       "serious_violation_rate": 0.0,
-      "negative_fraction_rows": 35,
-      "over_one_rows": 21,
-      "maximum_energy_sum_error": 0.02801763001447366,
-      "mean_energy_sum_error": 0.0014115601490347833
+      "negative_fraction_rows": 50,
+      "over_one_rows": 34,
+      "maximum_energy_sum_error": 0.0378821704415232,
+      "mean_energy_sum_error": 0.0014908462429986946
     },
     "grouped_generalization": {
       "inner_system_le_0_75_au": {
-        "samples": 181,
+        "samples": 175,
         "per_target": {
           "transmitted_light_fraction": {
-            "mae": 0.0015572996801028439,
-            "mae_percentage_points": 0.15572996801028438,
-            "rmse": 0.0038750715131456418,
-            "r2": 0.9994950103022058
+            "mae": 0.0024964446462442894,
+            "mae_percentage_points": 0.24964446462442894,
+            "rmse": 0.0059359868409860446,
+            "r2": 0.998194156317487
           },
           "scattered_light_fraction": {
-            "mae": 0.001293551803147094,
-            "mae_percentage_points": 0.12935518031470938,
-            "rmse": 0.0031380428121594267,
-            "r2": 0.9993368765873565
+            "mae": 0.0016992724044391171,
+            "mae_percentage_points": 0.16992724044391172,
+            "rmse": 0.0036614791218591157,
+            "r2": 0.9985141910110634
           },
           "absorbed_light_fraction": {
-            "mae": 0.000513564983977836,
-            "mae_percentage_points": 0.051356498397783605,
-            "rmse": 0.001239407399053515,
-            "r2": 0.9994606655437103
+            "mae": 0.0005904214703801707,
+            "mae_percentage_points": 0.05904214703801707,
+            "rmse": 0.0014719810838413302,
+            "r2": 0.9990163525944689
           },
           "relative_brightness": {
-            "mae": 0.001547065985137586,
-            "mae_percentage_points": 0.1547065985137586,
-            "rmse": 0.003130676078582312,
-            "r2": 0.9992208602071045
+            "mae": 0.0020098738236094924,
+            "mae_percentage_points": 0.20098738236094923,
+            "rmse": 0.004237495256430635,
+            "r2": 0.997912468395753
           }
         },
-        "mean_mae": 0.0012278706130913401,
-        "mean_rmse": 0.002845799450735224,
+        "mean_mae": 0.0016990030861682675,
+        "mean_rmse": 0.0038267355757792814,
         "physical_consistency": {
-          "rows": 181,
-          "minor_correction_count": 181,
-          "minor_correction_rate": 1.0,
+          "rows": 175,
+          "minor_correction_count": 140,
+          "minor_correction_rate": 0.8,
           "serious_violation_count": 0,
           "serious_violation_rate": 0.0,
-          "negative_fraction_rows": 8,
-          "over_one_rows": 11,
-          "maximum_energy_sum_error": 0.02656518288782006,
-          "mean_energy_sum_error": 0.0013348086113886839
+          "negative_fraction_rows": 9,
+          "over_one_rows": 16,
+          "maximum_energy_sum_error": 0.0378821704415232,
+          "mean_energy_sum_error": 0.0021264065332617594
         }
       },
       "outer_system_gt_8_au": {
-        "samples": 398,
+        "samples": 389,
         "per_target": {
           "transmitted_light_fraction": {
-            "mae": 0.002030704889517477,
-            "mae_percentage_points": 0.2030704889517477,
-            "rmse": 0.004562124679226857,
-            "r2": 0.9990522075261907
+            "mae": 0.0017597480249365626,
+            "mae_percentage_points": 0.17597480249365627,
+            "rmse": 0.00441556491506954,
+            "r2": 0.9990423166591654
           },
           "scattered_light_fraction": {
-            "mae": 0.0014354548223654028,
-            "mae_percentage_points": 0.1435454822365403,
-            "rmse": 0.003123481079409609,
-            "r2": 0.9990751496488822
+            "mae": 0.0012907623345959345,
+            "mae_percentage_points": 0.12907623345959346,
+            "rmse": 0.0028365900595289646,
+            "r2": 0.9991645520772731
           },
           "absorbed_light_fraction": {
-            "mae": 0.0007339749464080464,
-            "mae_percentage_points": 0.07339749464080464,
-            "rmse": 0.002015764626956336,
-            "r2": 0.9982393746596587
+            "mae": 0.00045094693376568465,
+            "mae_percentage_points": 0.04509469337656846,
+            "rmse": 0.0013965569762749302,
+            "r2": 0.9991032156205832
           },
           "relative_brightness": {
-            "mae": 0.00038683535146155423,
-            "mae_percentage_points": 0.038683535146155426,
-            "rmse": 0.0006746120691464813,
-            "r2": 0.9975423809763058
+            "mae": 0.0003504547506681401,
+            "mae_percentage_points": 0.03504547506681401,
+            "rmse": 0.0005856278810307203,
+            "r2": 0.998201301110993
           }
         },
-        "mean_mae": 0.0011467425024381203,
-        "mean_rmse": 0.002593995613684821,
+        "mean_mae": 0.0009629780109915804,
+        "mean_rmse": 0.002308584957976039,
         "physical_consistency": {
-          "rows": 398,
-          "minor_correction_count": 397,
-          "minor_correction_rate": 0.9974874371859297,
+          "rows": 389,
+          "minor_correction_count": 281,
+          "minor_correction_rate": 0.7223650385604113,
           "serious_violation_count": 0,
           "serious_violation_rate": 0.0,
-          "negative_fraction_rows": 12,
-          "over_one_rows": 2,
-          "maximum_energy_sum_error": 0.025610644424428175,
-          "mean_energy_sum_error": 0.0014587156605874168
+          "negative_fraction_rows": 22,
+          "over_one_rows": 7,
+          "maximum_energy_sum_error": 0.032464193280360876,
+          "mean_energy_sum_error": 0.0015377226764595653
         }
       },
       "dense_atmosphere_gt_200k_pa": {
-        "samples": 129,
+        "samples": 100,
         "per_target": {
           "transmitted_light_fraction": {
-            "mae": 0.008279789177849141,
-            "mae_percentage_points": 0.8279789177849141,
-            "rmse": 0.012159413602893096,
-            "r2": 0.9922482699833266
+            "mae": 0.009679649480333676,
+            "mae_percentage_points": 0.9679649480333676,
+            "rmse": 0.012522466656994682,
+            "r2": 0.9909497847655068
           },
           "scattered_light_fraction": {
-            "mae": 0.005535661691561817,
-            "mae_percentage_points": 0.5535661691561817,
-            "rmse": 0.007929057270013204,
-            "r2": 0.9922652444734563
+            "mae": 0.005323789052690042,
+            "mae_percentage_points": 0.5323789052690042,
+            "rmse": 0.006823397139350995,
+            "r2": 0.9932016527340451
           },
           "absorbed_light_fraction": {
-            "mae": 0.002863495396916216,
-            "mae_percentage_points": 0.2863495396916216,
-            "rmse": 0.003998745499687628,
-            "r2": 0.995236328746801
+            "mae": 0.002475468750121103,
+            "mae_percentage_points": 0.2475468750121103,
+            "rmse": 0.0037044832924689034,
+            "r2": 0.9959720549814506
           },
           "relative_brightness": {
-            "mae": 0.004659003272094409,
-            "mae_percentage_points": 0.46590032720944086,
-            "rmse": 0.008227087524757542,
-            "r2": 0.9991714876253449
+            "mae": 0.005532015373497262,
+            "mae_percentage_points": 0.5532015373497262,
+            "rmse": 0.00994134631026742,
+            "r2": 0.9988989787517244
           }
         },
-        "mean_mae": 0.005334487384605396,
-        "mean_rmse": 0.008078575974337868,
+        "mean_mae": 0.005752730664160521,
+        "mean_rmse": 0.008247923349770502,
         "physical_consistency": {
-          "rows": 129,
-          "minor_correction_count": 129,
+          "rows": 100,
+          "minor_correction_count": 100,
           "minor_correction_rate": 1.0,
           "serious_violation_count": 0,
           "serious_violation_rate": 0.0,
           "negative_fraction_rows": 0,
           "over_one_rows": 0,
-          "maximum_energy_sum_error": 0.02801763001447366,
-          "mean_energy_sum_error": 0.006185506981481942
+          "maximum_energy_sum_error": 0.0378821704415232,
+          "mean_energy_sum_error": 0.008921900800039769
         }
       },
       "airless": {
-        "samples": 285,
+        "samples": 297,
         "per_target": {
           "transmitted_light_fraction": {
-            "mae": 3.278401459417025e-05,
-            "mae_percentage_points": 0.003278401459417025,
-            "rmse": 3.32347926698225e-05,
+            "mae": 4.0234435662004425e-05,
+            "mae_percentage_points": 0.004023443566200442,
+            "rmse": 4.043002775044217e-05,
             "r2": null
           },
           "scattered_light_fraction": {
-            "mae": 3.17158220995567e-05,
-            "mae_percentage_points": 0.00317158220995567,
-            "rmse": 3.171582209955671e-05,
+            "mae": 3.0185285167280648e-05,
+            "mae_percentage_points": 0.0030185285167280648,
+            "rmse": 3.074377974716979e-05,
             "r2": null
           },
           "absorbed_light_fraction": {
-            "mae": 1.4390431588477255e-05,
-            "mae_percentage_points": 0.0014390431588477254,
-            "rmse": 2.041982773634787e-05,
+            "mae": 1.0708558717743843e-05,
+            "mae_percentage_points": 0.0010708558717743843,
+            "rmse": 1.0708558717743843e-05,
             "r2": null
           },
           "relative_brightness": {
-            "mae": 0.0008705598926145164,
-            "mae_percentage_points": 0.08705598926145164,
-            "rmse": 0.0017436050154747773,
-            "r2": 0.9999784784087603
+            "mae": 0.001366974753029832,
+            "mae_percentage_points": 0.1366974753029832,
+            "rmse": 0.002456896795553986,
+            "r2": 0.9999533593298539
           }
         },
-        "mean_mae": 0.00023736254022418014,
-        "mean_rmse": 0.0004572438644951261,
+        "mean_mae": 0.00036202575814421524,
+        "mean_rmse": 0.0006346947904423355,
         "physical_consistency": {
-          "rows": 285,
-          "minor_correction_count": 285,
-          "minor_correction_rate": 1.0,
+          "rows": 297,
+          "minor_correction_count": 7,
+          "minor_correction_rate": 0.02356902356902357,
           "serious_violation_count": 0,
           "serious_violation_rate": 0.0,
           "negative_fraction_rows": 0,
           "over_one_rows": 0,
-          "maximum_energy_sum_error": 0.00014994305670223973,
-          "mean_energy_sum_error": 1.401315284457272e-05
+          "maximum_energy_sum_error": 3.0242739412322805e-05,
+          "mean_energy_sum_error": 6.594082229587395e-07
         }
       }
     },
-    "batch_inference_ms_per_sample": 0.014766199979931116,
-    "single_inference_median_ms": 9.026899933815002,
-    "model_size_bytes": 2679028
+    "batch_inference_ms_per_sample": 0.03983190003782511,
+    "single_inference_median_ms": 29.162000049836934,
+    "model_size_bytes": 2679267
   },
   "real_body_evaluation": {
     "comparison": "machine learning versus deterministic educational physics",
-    "evaluated_bodies": 19,
+    "evaluated_bodies": 28,
     "excluded_bodies": [
       {
         "destination": "jupiter",
@@ -488,93 +494,57 @@
       {
         "destination": "neptune",
         "reason": "Missing required model features: surface_pressure_pa, atmospheric_density_kg_m3"
-      },
-      {
-        "destination": "pluto",
-        "reason": "Atmospheric composition is unavailable."
-      },
-      {
-        "destination": "eris",
-        "reason": "Atmosphere state is unknown."
-      },
-      {
-        "destination": "haumea",
-        "reason": "Atmosphere state is unknown."
-      },
-      {
-        "destination": "makemake",
-        "reason": "Atmosphere state is unknown."
-      },
-      {
-        "destination": "io",
-        "reason": "Atmosphere state is unknown."
-      },
-      {
-        "destination": "europa",
-        "reason": "Atmosphere state is unknown."
-      },
-      {
-        "destination": "ganymede",
-        "reason": "Atmosphere state is unknown."
-      },
-      {
-        "destination": "callisto",
-        "reason": "Atmosphere state is unknown."
-      },
-      {
-        "destination": "triton",
-        "reason": "Atmospheric composition is unavailable."
       }
     ],
     "metrics_on_raw_predictions": {
       "per_target": {
         "transmitted_light_fraction": {
-          "mae": 0.00031109625856395873,
-          "mae_percentage_points": 0.031109625856395873,
-          "rmse": 0.0007756371130309158,
-          "r2": 0.9999447371349478
+          "mae": 0.0016943394426646896,
+          "mae_percentage_points": 0.16943394426646896,
+          "rmse": 0.004399743955649065,
+          "r2": 0.998422475760325
         },
         "scattered_light_fraction": {
-          "mae": 0.0004909278246347012,
-          "mae_percentage_points": 0.04909278246347012,
-          "rmse": 0.001687831244344524,
-          "r2": 0.9993317404584975
+          "mae": 0.0014616855818237646,
+          "mae_percentage_points": 0.14616855818237645,
+          "rmse": 0.0041936964704184666,
+          "r2": 0.9965664016074748
         },
         "absorbed_light_fraction": {
-          "mae": 0.00016388538964487816,
-          "mae_percentage_points": 0.016388538964487817,
-          "rmse": 0.00045328912848400865,
-          "r2": 0.9998886626346756
+          "mae": 0.00018957262960810398,
+          "mae_percentage_points": 0.0189572629608104,
+          "rmse": 0.0004980264551216494,
+          "r2": 0.9998595863114377
         },
         "relative_brightness": {
-          "mae": 0.0017416044045063521,
-          "mae_percentage_points": 0.17416044045063522,
-          "rmse": 0.00295377455231219,
-          "r2": 0.9999312199808285
+          "mae": 0.0016181218146154763,
+          "mae_percentage_points": 0.16181218146154763,
+          "rmse": 0.0024594717945297068,
+          "r2": 0.9999397240019694
         }
       },
-      "mean_mae": 0.0006768784693374725,
-      "mean_rmse": 0.0014676330095429097
+      "mean_mae": 0.0012409298671780086,
+      "mean_rmse": 0.0028877346689297223
     },
     "physical_consistency": {
-      "rows": 19,
-      "minor_correction_count": 19,
-      "minor_correction_rate": 1.0,
+      "rows": 28,
+      "minor_correction_count": 11,
+      "minor_correction_rate": 0.39285714285714285,
       "serious_violation_count": 0,
       "serious_violation_rate": 0.0,
       "negative_fraction_rows": 0,
       "over_one_rows": 0,
-      "maximum_energy_sum_error": 0.003454077270213962,
-      "mean_energy_sum_error": 0.0004853453619407577
+      "maximum_energy_sum_error": 0.006062259800697856,
+      "mean_energy_sum_error": 0.00044143712133134664
     },
     "per_body": [
       {
         "destination": "mercury",
         "prediction": {
-          "transmitted_light_fraction": 0.850043,
-          "scattered_light_fraction": 0.099969,
-          "absorbed_light_fraction": 0.049988,
-          "relative_brightness": 0.90003
+          "transmitted_light_fraction": 0.85004,
+          "scattered_light_fraction": 0.09997,
+          "absorbed_light_fraction": 0.04999,
+          "relative_brightness": 0.900005
         },
         "deterministic": {
           "transmitted_light_fraction": 0.85,
@@ -583,20 +553,20 @@
           "relative_brightness": 0.9
         },
         "absolute_errors": {
-          "transmitted_light_fraction": 4.300000000001525e-05,
-          "scattered_light_fraction": 3.100000000000325e-05,
-          "absorbed_light_fraction": 1.2000000000005062e-05,
-          "relative_brightness": 2.999999999997449e-05
+          "transmitted_light_fraction": 4.0000000000040004e-05,
+          "scattered_light_fraction": 3.0000000000002247e-05,
+          "absorbed_light_fraction": 1.0000000000003062e-05,
+          "relative_brightness": 5.000000000032756e-06
         },
         "minor_correction_applied": true
       },
       {
         "destination": "venus",
         "prediction": {
-          "transmitted_light_fraction": 0.434231,
-          "scattered_light_fraction": 0.33562,
-          "absorbed_light_fraction": 0.230149,
-          "relative_brightness": 0.603543
+          "transmitted_light_fraction": 0.427159,
+          "scattered_light_fraction": 0.34091,
+          "absorbed_light_fraction": 0.231931,
+          "relative_brightness": 0.604155
         },
         "deterministic": {
           "transmitted_light_fraction": 0.433673,
@@ -605,20 +575,20 @@
           "relative_brightness": 0.601545
         },
         "absolute_errors": {
-          "transmitted_light_fraction": 0.0005580000000000029,
-          "scattered_light_fraction": 0.00012500000000004174,
-          "absorbed_light_fraction": 0.0004330000000000167,
-          "relative_brightness": 0.0019980000000000553
+          "transmitted_light_fraction": 0.006513999999999964,
+          "scattered_light_fraction": 0.005164999999999975,
+          "absorbed_light_fraction": 0.001348999999999989,
+          "relative_brightness": 0.002610000000000001
         },
         "minor_correction_applied": true
       },
       {
         "destination": "earth",
         "prediction": {
-          "transmitted_light_fraction": 0.834966,
-          "scattered_light_fraction": 0.140227,
-          "absorbed_light_fraction": 0.024807,
-          "relative_brightness": 0.896735
+          "transmitted_light_fraction": 0.846249,
+          "scattered_light_fraction": 0.127594,
+          "absorbed_light_fraction": 0.026157,
+          "relative_brightness": 0.903496
         },
         "deterministic": {
           "transmitted_light_fraction": 0.834967,
@@ -627,20 +597,20 @@
           "relative_brightness": 0.905011
         },
         "absolute_errors": {
-          "transmitted_light_fraction": 1.0000000000287557e-06,
-          "scattered_light_fraction": 0.00014000000000000123,
-          "absorbed_light_fraction": 0.00013900000000000023,
-          "relative_brightness": 0.008276000000000061
+          "transmitted_light_fraction": 0.011282000000000014,
+          "scattered_light_fraction": 0.012492999999999976,
+          "absorbed_light_fraction": 0.0012110000000000003,
+          "relative_brightness": 0.001515000000000044
         },
         "minor_correction_applied": true
       },
       {
         "destination": "mars",
         "prediction": {
-          "transmitted_light_fraction": 0.997789,
-          "scattered_light_fraction": 0.001502,
-          "absorbed_light_fraction": 0.000709,
-          "relative_brightness": 0.681495
+          "transmitted_light_fraction": 0.998346,
+          "scattered_light_fraction": 0.001013,
+          "absorbed_light_fraction": 0.000641,
+          "relative_brightness": 0.681443
         },
         "deterministic": {
           "transmitted_light_fraction": 0.997818,
@@ -649,20 +619,20 @@
           "relative_brightness": 0.6873
         },
         "absolute_errors": {
-          "transmitted_light_fraction": 2.8999999999945736e-05,
-          "scattered_light_fraction": 0.00018800000000000002,
-          "absorbed_light_fraction": 0.00021699999999999996,
-          "relative_brightness": 0.00580500000000006
+          "transmitted_light_fraction": 0.0005279999999999729,
+          "scattered_light_fraction": 0.0006770000000000001,
+          "absorbed_light_fraction": 0.00014899999999999994,
+          "relative_brightness": 0.005857000000000001
         },
         "minor_correction_applied": true
       },
       {
         "destination": "ceres",
         "prediction": {
-          "transmitted_light_fraction": 0.850043,
+          "transmitted_light_fraction": 0.85004,
           "scattered_light_fraction": 0.09997,
-          "absorbed_light_fraction": 0.049987,
-          "relative_brightness": 0.30371
+          "absorbed_light_fraction": 0.04999,
+          "relative_brightness": 0.301978
         },
         "deterministic": {
           "transmitted_light_fraction": 0.85,
@@ -671,20 +641,108 @@
           "relative_brightness": 0.304125
         },
         "absolute_errors": {
-          "transmitted_light_fraction": 4.300000000001525e-05,
+          "transmitted_light_fraction": 4.0000000000040004e-05,
           "scattered_light_fraction": 3.0000000000002247e-05,
-          "absorbed_light_fraction": 1.3000000000006062e-05,
-          "relative_brightness": 0.0004149999999999987
+          "absorbed_light_fraction": 1.0000000000003062e-05,
+          "relative_brightness": 0.0021469999999999545
+        },
+        "minor_correction_applied": false
+      },
+      {
+        "destination": "pluto",
+        "prediction": {
+          "transmitted_light_fraction": 0.999328,
+          "scattered_light_fraction": 0.000625,
+          "absorbed_light_fraction": 4.7e-05,
+          "relative_brightness": 0.003032
+        },
+        "deterministic": {
+          "transmitted_light_fraction": 0.99999,
+          "scattered_light_fraction": 9e-06,
+          "absorbed_light_fraction": 1e-06,
+          "relative_brightness": 0.002505
+        },
+        "absolute_errors": {
+          "transmitted_light_fraction": 0.0006620000000000514,
+          "scattered_light_fraction": 0.000616,
+          "absorbed_light_fraction": 4.6e-05,
+          "relative_brightness": 0.0005270000000000001
         },
         "minor_correction_applied": true
       },
       {
+        "destination": "eris",
+        "prediction": {
+          "transmitted_light_fraction": 0.85004,
+          "scattered_light_fraction": 0.09997,
+          "absorbed_light_fraction": 0.04999,
+          "relative_brightness": 0.000905
+        },
+        "deterministic": {
+          "transmitted_light_fraction": 0.85,
+          "scattered_light_fraction": 0.1,
+          "absorbed_light_fraction": 0.05,
+          "relative_brightness": 0.000761
+        },
+        "absolute_errors": {
+          "transmitted_light_fraction": 4.0000000000040004e-05,
+          "scattered_light_fraction": 3.0000000000002247e-05,
+          "absorbed_light_fraction": 1.0000000000003062e-05,
+          "relative_brightness": 0.00014400000000000003
+        },
+        "minor_correction_applied": false
+      },
+      {
+        "destination": "haumea",
+        "prediction": {
+          "transmitted_light_fraction": 0.85004,
+          "scattered_light_fraction": 0.09997,
+          "absorbed_light_fraction": 0.04999,
+          "relative_brightness": 0.001833
+        },
+        "deterministic": {
+          "transmitted_light_fraction": 0.85,
+          "scattered_light_fraction": 0.1,
+          "absorbed_light_fraction": 0.05,
+          "relative_brightness": 0.001886
+        },
+        "absolute_errors": {
+          "transmitted_light_fraction": 4.0000000000040004e-05,
+          "scattered_light_fraction": 3.0000000000002247e-05,
+          "absorbed_light_fraction": 1.0000000000003062e-05,
+          "relative_brightness": 5.3000000000000096e-05
+        },
+        "minor_correction_applied": false
+      },
+      {
+        "destination": "makemake",
+        "prediction": {
+          "transmitted_light_fraction": 0.85004,
+          "scattered_light_fraction": 0.09997,
+          "absorbed_light_fraction": 0.04999,
+          "relative_brightness": 0.001646
+        },
+        "deterministic": {
+          "transmitted_light_fraction": 0.85,
+          "scattered_light_fraction": 0.1,
+          "absorbed_light_fraction": 0.05,
+          "relative_brightness": 0.001701
+        },
+        "absolute_errors": {
+          "transmitted_light_fraction": 4.0000000000040004e-05,
+          "scattered_light_fraction": 3.0000000000002247e-05,
+          "absorbed_light_fraction": 1.0000000000003062e-05,
+          "relative_brightness": 5.5000000000000144e-05
+        },
+        "minor_correction_applied": false
+      },
+      {
         "destination": "moon",
         "prediction": {
-          "transmitted_light_fraction": 0.850043,
-          "scattered_light_fraction": 0.099969,
-          "absorbed_light_fraction": 0.049988,
-          "relative_brightness": 0.893982
+          "transmitted_light_fraction": 0.85004,
+          "scattered_light_fraction": 0.09997,
+          "absorbed_light_fraction": 0.04999,
+          "relative_brightness": 0.898366
         },
         "deterministic": {
           "transmitted_light_fraction": 0.85,
@@ -693,20 +751,20 @@
           "relative_brightness": 0.9
         },
         "absolute_errors": {
-          "transmitted_light_fraction": 4.300000000001525e-05,
-          "scattered_light_fraction": 3.100000000000325e-05,
-          "absorbed_light_fraction": 1.2000000000005062e-05,
-          "relative_brightness": 0.006017999999999968
+          "transmitted_light_fraction": 4.0000000000040004e-05,
+          "scattered_light_fraction": 3.0000000000002247e-05,
+          "absorbed_light_fraction": 1.0000000000003062e-05,
+          "relative_brightness": 0.0016340000000000243
         },
-        "minor_correction_applied": true
+        "minor_correction_applied": false
       },
       {
         "destination": "phobos",
         "prediction": {
-          "transmitted_light_fraction": 0.850043,
-          "scattered_light_fraction": 0.099969,
-          "absorbed_light_fraction": 0.049988,
-          "relative_brightness": 0.622482
+          "transmitted_light_fraction": 0.85004,
+          "scattered_light_fraction": 0.09997,
+          "absorbed_light_fraction": 0.04999,
+          "relative_brightness": 0.622704
         },
         "deterministic": {
           "transmitted_light_fraction": 0.85,
@@ -715,20 +773,20 @@
           "relative_brightness": 0.619398
         },
         "absolute_errors": {
-          "transmitted_light_fraction": 4.300000000001525e-05,
-          "scattered_light_fraction": 3.100000000000325e-05,
-          "absorbed_light_fraction": 1.2000000000005062e-05,
-          "relative_brightness": 0.0030839999999999756
+          "transmitted_light_fraction": 4.0000000000040004e-05,
+          "scattered_light_fraction": 3.0000000000002247e-05,
+          "absorbed_light_fraction": 1.0000000000003062e-05,
+          "relative_brightness": 0.003306000000000031
         },
-        "minor_correction_applied": true
+        "minor_correction_applied": false
       },
       {
         "destination": "deimos",
         "prediction": {
-          "transmitted_light_fraction": 0.850043,
-          "scattered_light_fraction": 0.099969,
-          "absorbed_light_fraction": 0.049988,
-          "relative_brightness": 0.622482
+          "transmitted_light_fraction": 0.85004,
+          "scattered_light_fraction": 0.09997,
+          "absorbed_light_fraction": 0.04999,
+          "relative_brightness": 0.622704
         },
         "deterministic": {
           "transmitted_light_fraction": 0.85,
@@ -737,20 +795,108 @@
           "relative_brightness": 0.619398
         },
         "absolute_errors": {
-          "transmitted_light_fraction": 4.300000000001525e-05,
-          "scattered_light_fraction": 3.100000000000325e-05,
-          "absorbed_light_fraction": 1.2000000000005062e-05,
-          "relative_brightness": 0.0030839999999999756
+          "transmitted_light_fraction": 4.0000000000040004e-05,
+          "scattered_light_fraction": 3.0000000000002247e-05,
+          "absorbed_light_fraction": 1.0000000000003062e-05,
+          "relative_brightness": 0.003306000000000031
+        },
+        "minor_correction_applied": false
+      },
+      {
+        "destination": "io",
+        "prediction": {
+          "transmitted_light_fraction": 0.998597,
+          "scattered_light_fraction": 0.001209,
+          "absorbed_light_fraction": 0.000194,
+          "relative_brightness": 0.119771
+        },
+        "deterministic": {
+          "transmitted_light_fraction": 1.0,
+          "scattered_light_fraction": 0.0,
+          "absorbed_light_fraction": 0.0,
+          "relative_brightness": 0.124732
+        },
+        "absolute_errors": {
+          "transmitted_light_fraction": 0.001403000000000043,
+          "scattered_light_fraction": 0.001209,
+          "absorbed_light_fraction": 0.000194,
+          "relative_brightness": 0.004960999999999993
+        },
+        "minor_correction_applied": true
+      },
+      {
+        "destination": "europa",
+        "prediction": {
+          "transmitted_light_fraction": 0.999086,
+          "scattered_light_fraction": 0.000815,
+          "absorbed_light_fraction": 9.9e-05,
+          "relative_brightness": 0.120024
+        },
+        "deterministic": {
+          "transmitted_light_fraction": 1.0,
+          "scattered_light_fraction": 0.0,
+          "absorbed_light_fraction": 0.0,
+          "relative_brightness": 0.124732
+        },
+        "absolute_errors": {
+          "transmitted_light_fraction": 0.0009139999999999704,
+          "scattered_light_fraction": 0.000815,
+          "absorbed_light_fraction": 9.9e-05,
+          "relative_brightness": 0.00470799999999999
+        },
+        "minor_correction_applied": true
+      },
+      {
+        "destination": "ganymede",
+        "prediction": {
+          "transmitted_light_fraction": 0.999086,
+          "scattered_light_fraction": 0.000815,
+          "absorbed_light_fraction": 9.9e-05,
+          "relative_brightness": 0.120024
+        },
+        "deterministic": {
+          "transmitted_light_fraction": 1.0,
+          "scattered_light_fraction": 0.0,
+          "absorbed_light_fraction": 0.0,
+          "relative_brightness": 0.124732
+        },
+        "absolute_errors": {
+          "transmitted_light_fraction": 0.0009139999999999704,
+          "scattered_light_fraction": 0.000815,
+          "absorbed_light_fraction": 9.9e-05,
+          "relative_brightness": 0.00470799999999999
+        },
+        "minor_correction_applied": true
+      },
+      {
+        "destination": "callisto",
+        "prediction": {
+          "transmitted_light_fraction": 0.998498,
+          "scattered_light_fraction": 0.001308,
+          "absorbed_light_fraction": 0.000194,
+          "relative_brightness": 0.119803
+        },
+        "deterministic": {
+          "transmitted_light_fraction": 1.0,
+          "scattered_light_fraction": 0.0,
+          "absorbed_light_fraction": 0.0,
+          "relative_brightness": 0.124732
+        },
+        "absolute_errors": {
+          "transmitted_light_fraction": 0.0015020000000000033,
+          "scattered_light_fraction": 0.001308,
+          "absorbed_light_fraction": 0.000194,
+          "relative_brightness": 0.004928999999999989
         },
         "minor_correction_applied": true
       },
       {
         "destination": "titan",
         "prediction": {
-          "transmitted_light_fraction": 0.70922,
-          "scattered_light_fraction": 0.232929,
-          "absorbed_light_fraction": 0.057851,
-          "relative_brightness": 0.035618
+          "transmitted_light_fraction": 0.720291,
+          "scattered_light_fraction": 0.221658,
+          "absorbed_light_fraction": 0.058051,
+          "relative_brightness": 0.035221
         },
         "deterministic": {
           "transmitted_light_fraction": 0.704683,
@@ -759,20 +905,20 @@
           "relative_brightness": 0.033826
         },
         "absolute_errors": {
-          "transmitted_light_fraction": 0.004537000000000013,
-          "scattered_light_fraction": 0.0064830000000000165,
-          "absorbed_light_fraction": 0.0019459999999999963,
-          "relative_brightness": 0.001791999999999995
+          "transmitted_light_fraction": 0.015608000000000066,
+          "scattered_light_fraction": 0.01775400000000002,
+          "absorbed_light_fraction": 0.002145999999999995,
+          "relative_brightness": 0.0013950000000000004
         },
         "minor_correction_applied": true
       },
       {
         "destination": "rhea",
         "prediction": {
-          "transmitted_light_fraction": 0.850043,
+          "transmitted_light_fraction": 0.85004,
           "scattered_light_fraction": 0.09997,
-          "absorbed_light_fraction": 0.049987,
-          "relative_brightness": 0.037329
+          "absorbed_light_fraction": 0.04999,
+          "relative_brightness": 0.037362
         },
         "deterministic": {
           "transmitted_light_fraction": 0.85,
@@ -781,20 +927,20 @@
           "relative_brightness": 0.036928
         },
         "absolute_errors": {
-          "transmitted_light_fraction": 4.300000000001525e-05,
+          "transmitted_light_fraction": 4.0000000000040004e-05,
           "scattered_light_fraction": 3.0000000000002247e-05,
-          "absorbed_light_fraction": 1.3000000000006062e-05,
-          "relative_brightness": 0.0004009999999999986
+          "absorbed_light_fraction": 1.0000000000003062e-05,
+          "relative_brightness": 0.0004339999999999969
         },
-        "minor_correction_applied": true
+        "minor_correction_applied": false
       },
       {
         "destination": "iapetus",
         "prediction": {
-          "transmitted_light_fraction": 0.850043,
+          "transmitted_light_fraction": 0.85004,
           "scattered_light_fraction": 0.09997,
-          "absorbed_light_fraction": 0.049987,
-          "relative_brightness": 0.037329
+          "absorbed_light_fraction": 0.04999,
+          "relative_brightness": 0.037362
         },
         "deterministic": {
           "transmitted_light_fraction": 0.85,
@@ -803,20 +949,20 @@
           "relative_brightness": 0.036928
         },
         "absolute_errors": {
-          "transmitted_light_fraction": 4.300000000001525e-05,
+          "transmitted_light_fraction": 4.0000000000040004e-05,
           "scattered_light_fraction": 3.0000000000002247e-05,
-          "absorbed_light_fraction": 1.3000000000006062e-05,
-          "relative_brightness": 0.0004009999999999986
+          "absorbed_light_fraction": 1.0000000000003062e-05,
+          "relative_brightness": 0.0004339999999999969
         },
-        "minor_correction_applied": true
+        "minor_correction_applied": false
       },
       {
         "destination": "dione",
         "prediction": {
-          "transmitted_light_fraction": 0.850043,
+          "transmitted_light_fraction": 0.85004,
           "scattered_light_fraction": 0.09997,
-          "absorbed_light_fraction": 0.049987,
-          "relative_brightness": 0.037329
+          "absorbed_light_fraction": 0.04999,
+          "relative_brightness": 0.037362
         },
         "deterministic": {
           "transmitted_light_fraction": 0.85,
@@ -825,20 +971,20 @@
           "relative_brightness": 0.036928
         },
         "absolute_errors": {
-          "transmitted_light_fraction": 4.300000000001525e-05,
+          "transmitted_light_fraction": 4.0000000000040004e-05,
           "scattered_light_fraction": 3.0000000000002247e-05,
-          "absorbed_light_fraction": 1.3000000000006062e-05,
-          "relative_brightness": 0.0004009999999999986
+          "absorbed_light_fraction": 1.0000000000003062e-05,
+          "relative_brightness": 0.0004339999999999969
         },
-        "minor_correction_applied": true
+        "minor_correction_applied": false
       },
       {
         "destination": "titania",
         "prediction": {
-          "transmitted_light_fraction": 0.850043,
+          "transmitted_light_fraction": 0.85004,
           "scattered_light_fraction": 0.09997,
-          "absorbed_light_fraction": 0.049987,
-          "relative_brightness": 0.00981
+          "absorbed_light_fraction": 0.04999,
+          "relative_brightness": 0.009829
         },
         "deterministic": {
           "transmitted_light_fraction": 0.85,
@@ -847,20 +993,20 @@
           "relative_brightness": 0.009464
         },
         "absolute_errors": {
-          "transmitted_light_fraction": 4.300000000001525e-05,
+          "transmitted_light_fraction": 4.0000000000040004e-05,
           "scattered_light_fraction": 3.0000000000002247e-05,
-          "absorbed_light_fraction": 1.3000000000006062e-05,
-          "relative_brightness": 0.0003459999999999991
+          "absorbed_light_fraction": 1.0000000000003062e-05,
+          "relative_brightness": 0.000364999999999999
         },
-        "minor_correction_applied": true
+        "minor_correction_applied": false
       },
       {
         "destination": "oberon",
         "prediction": {
-          "transmitted_light_fraction": 0.850043,
+          "transmitted_light_fraction": 0.85004,
           "scattered_light_fraction": 0.09997,
-          "absorbed_light_fraction": 0.049987,
-          "relative_brightness": 0.00981
+          "absorbed_light_fraction": 0.04999,
+          "relative_brightness": 0.009829
         },
         "deterministic": {
           "transmitted_light_fraction": 0.85,
@@ -869,20 +1015,20 @@
           "relative_brightness": 0.009464
         },
         "absolute_errors": {
-          "transmitted_light_fraction": 4.300000000001525e-05,
+          "transmitted_light_fraction": 4.0000000000040004e-05,
           "scattered_light_fraction": 3.0000000000002247e-05,
-          "absorbed_light_fraction": 1.3000000000006062e-05,
-          "relative_brightness": 0.0003459999999999991
+          "absorbed_light_fraction": 1.0000000000003062e-05,
+          "relative_brightness": 0.000364999999999999
         },
-        "minor_correction_applied": true
+        "minor_correction_applied": false
       },
       {
         "destination": "umbriel",
         "prediction": {
-          "transmitted_light_fraction": 0.850043,
+          "transmitted_light_fraction": 0.85004,
           "scattered_light_fraction": 0.09997,
-          "absorbed_light_fraction": 0.049987,
-          "relative_brightness": 0.00981
+          "absorbed_light_fraction": 0.04999,
+          "relative_brightness": 0.009829
         },
         "deterministic": {
           "transmitted_light_fraction": 0.85,
@@ -891,20 +1037,20 @@
           "relative_brightness": 0.009464
         },
         "absolute_errors": {
-          "transmitted_light_fraction": 4.300000000001525e-05,
+          "transmitted_light_fraction": 4.0000000000040004e-05,
           "scattered_light_fraction": 3.0000000000002247e-05,
-          "absorbed_light_fraction": 1.3000000000006062e-05,
-          "relative_brightness": 0.0003459999999999991
+          "absorbed_light_fraction": 1.0000000000003062e-05,
+          "relative_brightness": 0.000364999999999999
         },
-        "minor_correction_applied": true
+        "minor_correction_applied": false
       },
       {
         "destination": "ariel",
         "prediction": {
-          "transmitted_light_fraction": 0.850043,
+          "transmitted_light_fraction": 0.85004,
           "scattered_light_fraction": 0.09997,
-          "absorbed_light_fraction": 0.049987,
-          "relative_brightness": 0.00981
+          "absorbed_light_fraction": 0.04999,
+          "relative_brightness": 0.009829
         },
         "deterministic": {
           "transmitted_light_fraction": 0.85,
@@ -913,20 +1059,42 @@
           "relative_brightness": 0.009464
         },
         "absolute_errors": {
-          "transmitted_light_fraction": 4.300000000001525e-05,
+          "transmitted_light_fraction": 4.0000000000040004e-05,
           "scattered_light_fraction": 3.0000000000002247e-05,
-          "absorbed_light_fraction": 1.3000000000006062e-05,
-          "relative_brightness": 0.0003459999999999991
+          "absorbed_light_fraction": 1.0000000000003062e-05,
+          "relative_brightness": 0.000364999999999999
+        },
+        "minor_correction_applied": false
+      },
+      {
+        "destination": "triton",
+        "prediction": {
+          "transmitted_light_fraction": 0.999328,
+          "scattered_light_fraction": 0.000625,
+          "absorbed_light_fraction": 4.7e-05,
+          "relative_brightness": 0.004753
+        },
+        "deterministic": {
+          "transmitted_light_fraction": 0.999985,
+          "scattered_light_fraction": 1.3e-05,
+          "absorbed_light_fraction": 2e-06,
+          "relative_brightness": 0.004299
+        },
+        "absolute_errors": {
+          "transmitted_light_fraction": 0.0006570000000000187,
+          "scattered_light_fraction": 0.000612,
+          "absorbed_light_fraction": 4.4999999999999996e-05,
+          "relative_brightness": 0.0004540000000000004
         },
         "minor_correction_applied": true
       },
       {
         "destination": "proteus",
         "prediction": {
-          "transmitted_light_fraction": 0.850043,
+          "transmitted_light_fraction": 0.85004,
           "scattered_light_fraction": 0.09997,
-          "absorbed_light_fraction": 0.049987,
-          "relative_brightness": 0.003869
+          "absorbed_light_fraction": 0.04999,
+          "relative_brightness": 0.003793
         },
         "deterministic": {
           "transmitted_light_fraction": 0.85,
@@ -935,20 +1103,20 @@
           "relative_brightness": 0.003869
         },
         "absolute_errors": {
-          "transmitted_light_fraction": 4.300000000001525e-05,
+          "transmitted_light_fraction": 4.0000000000040004e-05,
           "scattered_light_fraction": 3.0000000000002247e-05,
-          "absorbed_light_fraction": 1.3000000000006062e-05,
-          "relative_brightness": 0.0
+          "absorbed_light_fraction": 1.0000000000003062e-05,
+          "relative_brightness": 7.600000000000011e-05
         },
-        "minor_correction_applied": true
+        "minor_correction_applied": false
       },
       {
         "destination": "nereid",
         "prediction": {
-          "transmitted_light_fraction": 0.850043,
+          "transmitted_light_fraction": 0.85004,
           "scattered_light_fraction": 0.09997,
-          "absorbed_light_fraction": 0.049987,
-          "relative_brightness": 0.003869
+          "absorbed_light_fraction": 0.04999,
+          "relative_brightness": 0.003793
         },
         "deterministic": {
           "transmitted_light_fraction": 0.85,
@@ -957,20 +1125,20 @@
           "relative_brightness": 0.003869
         },
         "absolute_errors": {
-          "transmitted_light_fraction": 4.300000000001525e-05,
+          "transmitted_light_fraction": 4.0000000000040004e-05,
           "scattered_light_fraction": 3.0000000000002247e-05,
-          "absorbed_light_fraction": 1.3000000000006062e-05,
-          "relative_brightness": 0.0
+          "absorbed_light_fraction": 1.0000000000003062e-05,
+          "relative_brightness": 7.600000000000011e-05
         },
-        "minor_correction_applied": true
+        "minor_correction_applied": false
       },
       {
         "destination": "larissa",
         "prediction": {
-          "transmitted_light_fraction": 0.850043,
+          "transmitted_light_fraction": 0.85004,
           "scattered_light_fraction": 0.09997,
-          "absorbed_light_fraction": 0.049987,
-          "relative_brightness": 0.003869
+          "absorbed_light_fraction": 0.04999,
+          "relative_brightness": 0.003793
         },
         "deterministic": {
           "transmitted_light_fraction": 0.85,
@@ -979,12 +1147,12 @@
           "relative_brightness": 0.003869
         },
         "absolute_errors": {
-          "transmitted_light_fraction": 4.300000000001525e-05,
+          "transmitted_light_fraction": 4.0000000000040004e-05,
           "scattered_light_fraction": 3.0000000000002247e-05,
-          "absorbed_light_fraction": 1.3000000000006062e-05,
-          "relative_brightness": 0.0
+          "absorbed_light_fraction": 1.0000000000003062e-05,
+          "relative_brightness": 7.600000000000011e-05
         },
-        "minor_correction_applied": true
+        "minor_correction_applied": false
       }
     ],
     "independent_observation_comparison": {

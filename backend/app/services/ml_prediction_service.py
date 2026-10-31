@@ -187,7 +187,7 @@ def _analysis_results(
         column_factor = optical.column_factor
     else:
         normalized_composition = {
-            gas: 0.0 for gas in ("CO2", "N2", "O2", "CH4", "H2", "He")
+            gas: 0.0 for gas in ("CO2", "SO2", "N2", "O2", "CH4", "H2", "He")
         }
         column_factor = 0.0
     color = classify_dominant_color(

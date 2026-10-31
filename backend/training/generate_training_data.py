@@ -22,10 +22,10 @@ from app.services.solar_input_service import (  # noqa: E402
     derive_irradiance,
 )
 
-GENERATOR_VERSION = "1.0.0"
+GENERATOR_VERSION = "1.1.0"
 DEFAULT_SEED = 741
 DEFAULT_SAMPLES = 10_000
-GASES = ("CO2", "N2", "O2", "CH4", "H2", "He")
+GASES = ("CO2", "SO2", "N2", "O2", "CH4", "H2", "He")
 COLOR_CODES = {
     "white": 0,
     "yellow": 1,
@@ -45,6 +45,7 @@ INPUT_COLUMNS = [
     "surface_pressure_pa",
     "atmospheric_density_kg_m3",
     "co2_fraction",
+    "so2_fraction",
     "n2_fraction",
     "o2_fraction",
     "ch4_fraction",
@@ -64,18 +65,21 @@ TRAINING_COLUMNS = METADATA_COLUMNS + INPUT_COLUMNS + OUTPUT_COLUMNS
 
 COMPOSITION_ARCHETYPES = np.array(
     [
-        [3.0, 5.0, 2.0, 0.2, 0.1, 0.1],
-        [12.0, 1.0, 0.1, 0.1, 0.1, 0.1],
-        [0.1, 12.0, 0.1, 1.0, 0.1, 0.1],
-        [0.1, 0.1, 0.1, 0.4, 12.0, 3.0],
-        [1.0, 1.0, 1.0, 1.0, 1.0, 1.0],
+        [3.0, 0.1, 5.0, 2.0, 0.2, 0.1, 0.1],
+        [12.0, 0.2, 1.0, 0.1, 0.1, 0.1, 0.1],
+        [0.1, 12.0, 0.2, 0.1, 0.1, 0.1, 0.1],
+        [0.1, 0.1, 0.1, 12.0, 0.1, 0.1, 0.1],
+        [0.1, 0.1, 12.0, 0.1, 1.0, 0.1, 0.1],
+        [0.1, 0.1, 0.1, 0.1, 0.4, 12.0, 3.0],
+        [1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0],
     ]
 )
 
 
 def _sample_pressure(rng: np.random.Generator) -> float:
-    regime = rng.choice(4, p=[0.20, 0.25, 0.35, 0.20])
+    regime = rng.choice(5, p=[0.15, 0.15, 0.25, 0.30, 0.15])
     bounds = (
+        (1e-9, 0.01),
         (0.01, 100.0),
         (100.0, 20_000.0),
         (20_000.0, 200_000.0),
@@ -94,7 +98,7 @@ def _density_from_state(
     pressure_pa: float, temperature_k: float, fractions: np.ndarray
 ) -> float:
     molar_masses_kg_mol = np.array(
-        [0.04401, 0.028014, 0.031998, 0.016043, 0.002016, 0.004003]
+        [0.04401, 0.064066, 0.028014, 0.031998, 0.016043, 0.002016, 0.004003]
     )
     mean_molar_mass = float(np.dot(fractions, molar_masses_kg_mol))
     specific_gas_constant = 8.314462618 / mean_molar_mass
@@ -147,6 +151,7 @@ def generate_training_frame(sample_count: int, seed: int) -> pd.DataFrame:
                 "surface_pressure_pa": pressure,
                 "atmospheric_density_kg_m3": density,
                 "co2_fraction": composition["CO2"],
+                "so2_fraction": composition["SO2"],
                 "n2_fraction": composition["N2"],
                 "o2_fraction": composition["O2"],
                 "ch4_fraction": composition["CH4"],

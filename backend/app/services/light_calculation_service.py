@@ -31,7 +31,7 @@ from .spectral_color_service import (
 )
 from .validation import clamp01, conserve_fractions, fractions_are_valid
 
-PHYSICS_MODEL_VERSION = "1.0.0"
+PHYSICS_MODEL_VERSION = "1.1.0"
 
 
 @dataclass(frozen=True)
@@ -122,7 +122,9 @@ def calculate_light_behavior(inputs: PhysicsInput) -> PhysicsOutput:
     warnings: list[str] = []
     partial = False
     column_factor = 0.0
-    normalized_composition = {gas: 0.0 for gas in ("CO2", "N2", "O2", "CH4", "H2", "He")}
+    normalized_composition = {
+        gas: 0.0 for gas in ("CO2", "SO2", "N2", "O2", "CH4", "H2", "He")
+    }
 
     if inputs.has_atmosphere is True:
         optical: AtmosphericResult = calculate_atmosphere(

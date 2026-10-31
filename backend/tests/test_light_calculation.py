@@ -56,9 +56,17 @@ class LightCalculationTests(unittest.TestCase):
         self.assertEqual(titan.results.scatteredLightColor.label, "orange")
 
     def test_unknown_composition_uses_neutral_scattered_color(self) -> None:
-        pluto = analyze_destination("pluto")
-        self.assertEqual(pluto.results.scatteredLightColor.label, "neutral")
-        self.assertEqual(pluto.results.scatteredLightColor.confidence, "fallback")
+        scenario = AtmosphereScenario(
+            hasAtmosphere=True,
+            surfacePressurePa=1,
+            atmosphericDensityKgM3=0.0001,
+            composition=AtmosphericComposition(
+                CO2=None, SO2=None, N2=None, O2=None, CH4=None, H2=None, He=None
+            ),
+        )
+        analysis = analyze_destination("pluto", scenario=scenario)
+        self.assertEqual(analysis.results.scatteredLightColor.label, "neutral")
+        self.assertEqual(analysis.results.scatteredLightColor.confidence, "fallback")
 
     def test_scenario_composition_recalculates_scattered_color(self) -> None:
         baseline = analyze_destination("earth")

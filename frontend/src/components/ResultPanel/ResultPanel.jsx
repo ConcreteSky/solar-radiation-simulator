@@ -5,7 +5,7 @@ import {
   createAppearanceSummary,
 } from '../../utils/lightAnalysis.js'
 
-const GASES = ['CO2', 'N2', 'O2', 'CH4', 'H2', 'He']
+const GASES = ['CO2', 'SO2', 'N2', 'O2', 'CH4', 'H2', 'He']
 const COMPARISON_FIELDS = [
   ['Transmitted', 'transmitted', 'transmittedAbsoluteError'],
   ['Scattered', 'scattered', 'scatteredAbsoluteError'],

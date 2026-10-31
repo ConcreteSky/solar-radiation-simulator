@@ -3,9 +3,10 @@ from __future__ import annotations
 import math
 from dataclasses import dataclass
 
-GASES = ("CO2", "N2", "O2", "CH4", "H2", "He")
+GASES = ("CO2", "SO2", "N2", "O2", "CH4", "H2", "He")
 SCATTER_WEIGHTS = {
     "CO2": 0.45,
+    "SO2": 0.45,
     "N2": 1.0,
     "O2": 1.05,
     "CH4": 0.35,
@@ -14,6 +15,7 @@ SCATTER_WEIGHTS = {
 }
 ABSORPTION_WEIGHTS = {
     "CO2": 0.25,
+    "SO2": 0.25,
     "N2": 0.02,
     "O2": 0.12,
     "CH4": 1.5,

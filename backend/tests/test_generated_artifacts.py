@@ -21,6 +21,7 @@ class GeneratedArtifactTests(unittest.TestCase):
         )
         gas_columns = (
             "co2_fraction",
+            "so2_fraction",
             "n2_fraction",
             "o2_fraction",
             "ch4_fraction",

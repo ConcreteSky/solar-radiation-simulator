@@ -6,6 +6,7 @@
     "surface_pressure_pa",
     "atmospheric_density_kg_m3",
     "co2_fraction",
+    "so2_fraction",
     "n2_fraction",
     "o2_fraction",
     "ch4_fraction",
@@ -19,8 +20,8 @@
     "relative_brightness"
   ],
   "model_name": "hist_gradient_boosting",
-  "model_version": "1.0.0",
+  "model_version": "1.1.0",
   "training_seed": 741,
-  "generator_version": "1.0.0",
-  "model_size_bytes": 2679028
+  "generator_version": "1.1.0",
+  "model_size_bytes": 2679267
 }

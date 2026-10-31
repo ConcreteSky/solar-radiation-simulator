@@ -20,6 +20,7 @@ class OrbitProperties(BaseModel):
 
 class AtmosphericComposition(BaseModel):
     CO2: float | None = Field(ge=0, le=1)
+    SO2: float | None = Field(default=None, ge=0, le=1)
     N2: float | None = Field(ge=0, le=1)
     O2: float | None = Field(ge=0, le=1)
     CH4: float | None = Field(ge=0, le=1)

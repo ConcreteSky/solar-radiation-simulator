@@ -19,6 +19,7 @@
         "atmosphericDensityKgM3": 0.0,
         "composition": {
           "CO2": 0.0,
+          "SO2": null,
           "N2": 0.0,
           "O2": 0.0,
           "CH4": 0.0,
@@ -37,6 +38,28 @@
         "absorbed": 0.05,
         "relativeBrightness": 0.9,
         "dominantColor": "white",
+        "scatteredLightColor": {
+          "label": "neutral",
+          "rgb": [
+            244,
+            232,
+            190
+          ],
+          "spectralBand": "broad-visible",
+          "confidence": "fallback",
+          "basis": "neutral-fallback"
+        },
+        "transmittedLightColor": {
+          "label": "white",
+          "rgb": [
+            244,
+            244,
+            238
+          ],
+          "spectralBand": "broad-visible",
+          "confidence": "modeled",
+          "basis": "existing-dominant-light-classification"
+        },
         "apparentSizeCategory": "large"
       },
       "validation": {
@@ -50,7 +73,8 @@
         "nasa-mercury",
         "nasa-planet-table",
         "nlr-e490"
-      ]
+      ],
+      "astronomy": null
     },
     {
       "destination": "venus",
@@ -67,6 +91,7 @@
         "atmosphericDensityKgM3": 65.0,
         "composition": {
           "CO2": 0.965,
+          "SO2": null,
           "N2": 0.035,
           "O2": null,
           "CH4": null,
@@ -85,6 +110,28 @@
         "absorbed": 0.230582,
         "relativeBrightness": 0.601545,
         "dominantColor": "pale yellow",
+        "scatteredLightColor": {
+          "label": "blue",
+          "rgb": [
+            132,
+            180,
+            242
+          ],
+          "spectralBand": "short-visible",
+          "confidence": "modeled",
+          "basis": "molecular-rayleigh-scattering"
+        },
+        "transmittedLightColor": {
+          "label": "pale yellow",
+          "rgb": [
+            244,
+            230,
+            163
+          ],
+          "spectralBand": "broad-visible",
+          "confidence": "modeled",
+          "basis": "existing-dominant-light-classification"
+        },
         "apparentSizeCategory": "large"
       },
       "validation": {
@@ -96,7 +143,8 @@
         "nasa-venus",
         "nasa-planet-table",
         "nlr-e490"
-      ]
+      ],
+      "astronomy": null
     },
     {
       "destination": "earth",
@@ -113,6 +161,7 @@
         "atmosphericDensityKgM3": 1.217,
         "composition": {
           "CO2": 0.00042,
+          "SO2": null,
           "N2": 0.7808,
           "O2": 0.2095,
           "CH4": 1.94e-06,
@@ -131,6 +180,28 @@
         "absorbed": 0.024946,
         "relativeBrightness": 0.905011,
         "dominantColor": "yellow",
+        "scatteredLightColor": {
+          "label": "blue",
+          "rgb": [
+            132,
+            180,
+            242
+          ],
+          "spectralBand": "short-visible",
+          "confidence": "modeled",
+          "basis": "molecular-rayleigh-scattering"
+        },
+        "transmittedLightColor": {
+          "label": "yellow",
+          "rgb": [
+            255,
+            214,
+            107
+          ],
+          "spectralBand": "broad-visible",
+          "confidence": "modeled",
+          "basis": "existing-dominant-light-classification"
+        },
         "apparentSizeCategory": "medium"
       },
       "validation": {
@@ -142,7 +213,8 @@
         "nasa-earth",
         "nasa-planet-table",
         "nlr-e490"
-      ]
+      ],
+      "astronomy": null
     },
     {
       "destination": "mars",
@@ -159,6 +231,7 @@
         "atmosphericDensityKgM3": 0.02,
         "composition": {
           "CO2": 0.9532,
+          "SO2": null,
           "N2": 0.027,
           "O2": 0.0013,
           "CH4": null,
@@ -177,6 +250,28 @@
         "absorbed": 0.000492,
         "relativeBrightness": 0.6873,
         "dominantColor": "white",
+        "scatteredLightColor": {
+          "label": "blue",
+          "rgb": [
+            132,
+            180,
+            242
+          ],
+          "spectralBand": "short-visible",
+          "confidence": "modeled",
+          "basis": "molecular-rayleigh-scattering"
+        },
+        "transmittedLightColor": {
+          "label": "white",
+          "rgb": [
+            244,
+            244,
+            238
+          ],
+          "spectralBand": "broad-visible",
+          "confidence": "modeled",
+          "basis": "existing-dominant-light-classification"
+        },
         "apparentSizeCategory": "small"
       },
       "validation": {
@@ -188,7 +283,8 @@
         "nasa-mars",
         "nasa-planet-table",
         "nlr-e490"
-      ]
+      ],
+      "astronomy": null
     },
     {
       "destination": "jupiter",
@@ -205,6 +301,7 @@
         "atmosphericDensityKgM3": null,
         "composition": {
           "CO2": null,
+          "SO2": null,
           "N2": null,
           "O2": null,
           "CH4": 0.003,
@@ -223,6 +320,28 @@
         "absorbed": 0.002852,
         "relativeBrightness": 0.122396,
         "dominantColor": "white",
+        "scatteredLightColor": {
+          "label": "blue",
+          "rgb": [
+            132,
+            180,
+            242
+          ],
+          "spectralBand": "short-visible",
+          "confidence": "modeled",
+          "basis": "molecular-rayleigh-scattering"
+        },
+        "transmittedLightColor": {
+          "label": "white",
+          "rgb": [
+            244,
+            244,
+            238
+          ],
+          "spectralBand": "broad-visible",
+          "confidence": "modeled",
+          "basis": "existing-dominant-light-classification"
+        },
         "apparentSizeCategory": "small"
       },
       "validation": {
@@ -238,7 +357,8 @@
         "nasa-jupiter",
         "nasa-planet-table",
         "nlr-e490"
-      ]
+      ],
+      "astronomy": null
     },
     {
       "destination": "saturn",
@@ -255,6 +375,7 @@
         "atmosphericDensityKgM3": null,
         "composition": {
           "CO2": null,
+          "SO2": null,
           "N2": null,
           "O2": null,
           "CH4": 0.0045,
@@ -273,6 +394,28 @@
         "absorbed": 0.002878,
         "relativeBrightness": 0.040232,
         "dominantColor": "dim white",
+        "scatteredLightColor": {
+          "label": "blue",
+          "rgb": [
+            132,
+            180,
+            242
+          ],
+          "spectralBand": "short-visible",
+          "confidence": "modeled",
+          "basis": "molecular-rayleigh-scattering"
+        },
+        "transmittedLightColor": {
+          "label": "dim white",
+          "rgb": [
+            174,
+            184,
+            197
+          ],
+          "spectralBand": "broad-visible",
+          "confidence": "modeled",
+          "basis": "existing-dominant-light-classification"
+        },
         "apparentSizeCategory": "very small"
       },
       "validation": {
@@ -288,7 +431,8 @@
         "nasa-saturn",
         "nasa-planet-table",
         "nlr-e490"
-      ]
+      ],
+      "astronomy": null
     },
     {
       "destination": "uranus",
@@ -305,6 +449,7 @@
         "atmosphericDensityKgM3": null,
         "composition": {
           "CO2": null,
+          "SO2": null,
           "N2": null,
           "O2": null,
           "CH4": 0.023,
@@ -323,6 +468,28 @@
         "absorbed": 0.003075,
         "relativeBrightness": 0.010324,
         "dominantColor": "pale blue",
+        "scatteredLightColor": {
+          "label": "cyan",
+          "rgb": [
+            137,
+            205,
+            218
+          ],
+          "spectralBand": "blue-green-visible",
+          "confidence": "supported",
+          "basis": "methane-red-absorption"
+        },
+        "transmittedLightColor": {
+          "label": "pale blue",
+          "rgb": [
+            169,
+            220,
+            232
+          ],
+          "spectralBand": "broad-visible",
+          "confidence": "modeled",
+          "basis": "existing-dominant-light-classification"
+        },
         "apparentSizeCategory": "very small"
       },
       "validation": {
@@ -338,7 +505,8 @@
         "nasa-uranus",
         "nasa-planet-table",
         "nlr-e490"
-      ]
+      ],
+      "astronomy": null
     },
     {
       "destination": "neptune",
@@ -355,6 +523,7 @@
         "atmosphericDensityKgM3": null,
         "composition": {
           "CO2": null,
+          "SO2": null,
           "N2": null,
           "O2": null,
           "CH4": 0.015,
@@ -373,6 +542,28 @@
         "absorbed": 0.002978,
         "relativeBrightness": 0.004223,
         "dominantColor": "pale blue",
+        "scatteredLightColor": {
+          "label": "cyan",
+          "rgb": [
+            137,
+            205,
+            218
+          ],
+          "spectralBand": "blue-green-visible",
+          "confidence": "supported",
+          "basis": "methane-red-absorption"
+        },
+        "transmittedLightColor": {
+          "label": "pale blue",
+          "rgb": [
+            169,
+            220,
+            232
+          ],
+          "spectralBand": "broad-visible",
+          "confidence": "modeled",
+          "basis": "existing-dominant-light-classification"
+        },
         "apparentSizeCategory": "very small"
       },
       "validation": {
@@ -388,7 +579,8 @@
         "nasa-neptune",
         "nasa-planet-table",
         "nlr-e490"
-      ]
+      ],
+      "astronomy": null
     },
     {
       "destination": "ceres",
@@ -405,6 +597,7 @@
         "atmosphericDensityKgM3": 0.0,
         "composition": {
           "CO2": 0.0,
+          "SO2": null,
           "N2": 0.0,
           "O2": 0.0,
           "CH4": 0.0,
@@ -423,6 +616,28 @@
         "absorbed": 0.05,
         "relativeBrightness": 0.304125,
         "dominantColor": "white",
+        "scatteredLightColor": {
+          "label": "neutral",
+          "rgb": [
+            244,
+            232,
+            190
+          ],
+          "spectralBand": "broad-visible",
+          "confidence": "fallback",
+          "basis": "neutral-fallback"
+        },
+        "transmittedLightColor": {
+          "label": "white",
+          "rgb": [
+            244,
+            244,
+            238
+          ],
+          "spectralBand": "broad-visible",
+          "confidence": "modeled",
+          "basis": "existing-dominant-light-classification"
+        },
         "apparentSizeCategory": "small"
       },
       "validation": {
@@ -437,28 +652,30 @@
         "jpl-small-bodies",
         "derived-light-reference",
         "nlr-e490"
-      ]
+      ],
+      "astronomy": null
     },
     {
       "destination": "pluto",
       "name": "Pluto",
       "bodyType": "dwarf_planet",
       "hasAtmosphere": true,
-      "calculationStatus": "partial",
+      "calculationStatus": "complete",
       "inputs": {
         "distanceFromSunKm": 5906380000.0,
         "solarIrradianceWm2": 0.878,
         "derivedSolarIrradianceWm2": 0.876376,
         "irradianceSource": "stored_reference",
-        "surfacePressurePa": null,
-        "atmosphericDensityKgM3": null,
+        "surfacePressurePa": 1.0,
+        "atmosphericDensityKgM3": 8.4e-05,
         "composition": {
-          "CO2": null,
-          "N2": null,
-          "O2": null,
-          "CH4": null,
-          "H2": null,
-          "He": null
+          "CO2": 0.0,
+          "SO2": 0.0,
+          "N2": 0.995,
+          "O2": 0.0,
+          "CH4": 0.005,
+          "H2": 0.0,
+          "He": 0.0
         },
         "solarSpectrumVisibleFraction": 0.700153,
         "solarSpectrumRangeNm": [
@@ -467,49 +684,70 @@
         ]
       },
       "results": {
-        "transmitted": 0.989036,
-        "scattered": 0.008292,
-        "absorbed": 0.002672,
-        "relativeBrightness": 0.002488,
-        "dominantColor": "dim white",
+        "transmitted": 0.99999,
+        "scattered": 9e-06,
+        "absorbed": 1e-06,
+        "relativeBrightness": 0.002505,
+        "dominantColor": "orange",
+        "scatteredLightColor": {
+          "label": "orange",
+          "rgb": [
+            232,
+            158,
+            76
+          ],
+          "spectralBand": null,
+          "confidence": "supported",
+          "basis": "nitrogen-methane-photochemical-haze"
+        },
+        "transmittedLightColor": {
+          "label": "orange",
+          "rgb": [
+            245,
+            154,
+            74
+          ],
+          "spectralBand": "broad-visible",
+          "confidence": "modeled",
+          "basis": "existing-dominant-light-classification"
+        },
         "apparentSizeCategory": "very small"
       },
       "validation": {
         "energySum": 1.0,
         "valid": true,
-        "warnings": [
-          "Surface pressure is missing from the scientific catalog.",
-          "Atmospheric density is missing from the scientific catalog.",
-          "Atmospheric composition is unavailable; neutral coefficients were used.",
-          "A minimal composition-only optical column fallback was applied."
-        ]
+        "warnings": []
       },
       "sourceIds": [
         "nasa-pluto",
+        "new-horizons-pluto-atmosphere",
+        "derived-atmospheric-density",
         "nasa-planet-table",
         "nlr-e490"
-      ]
+      ],
+      "astronomy": null
     },
     {
       "destination": "eris",
       "name": "Eris",
       "bodyType": "dwarf_planet",
-      "hasAtmosphere": null,
-      "calculationStatus": "partial",
+      "hasAtmosphere": false,
+      "calculationStatus": "complete",
       "inputs": {
         "distanceFromSunKm": 10166000000.0,
         "solarIrradianceWm2": 0.296,
         "derivedSolarIrradianceWm2": 0.295824,
         "irradianceSource": "stored_reference",
-        "surfacePressurePa": null,
-        "atmosphericDensityKgM3": null,
+        "surfacePressurePa": 0.0,
+        "atmosphericDensityKgM3": 0.0,
         "composition": {
-          "CO2": null,
-          "N2": null,
-          "O2": null,
-          "CH4": null,
-          "H2": null,
-          "He": null
+          "CO2": 0.0,
+          "SO2": 0.0,
+          "N2": 0.0,
+          "O2": 0.0,
+          "CH4": 0.0,
+          "H2": 0.0,
+          "He": 0.0
         },
         "solarSpectrumVisibleFraction": 0.700153,
         "solarSpectrumRangeNm": [
@@ -523,43 +761,67 @@
         "absorbed": 0.05,
         "relativeBrightness": 0.000761,
         "dominantColor": "dim white",
+        "scatteredLightColor": {
+          "label": "neutral",
+          "rgb": [
+            244,
+            232,
+            190
+          ],
+          "spectralBand": "broad-visible",
+          "confidence": "fallback",
+          "basis": "neutral-fallback"
+        },
+        "transmittedLightColor": {
+          "label": "dim white",
+          "rgb": [
+            174,
+            184,
+            197
+          ],
+          "spectralBand": "broad-visible",
+          "confidence": "modeled",
+          "basis": "existing-dominant-light-classification"
+        },
         "apparentSizeCategory": "very small"
       },
       "validation": {
         "energySum": 1.0,
         "valid": true,
         "warnings": [
-          "Atmosphere state is unknown; the airless/tenuous fallback was used.",
           "No scientific surface albedo is stored; the generic airless surface partition was used."
         ]
       },
       "sourceIds": [
         "nasa-eris",
+        "eris-occultation-atmosphere-limit",
         "jpl-small-bodies",
         "derived-light-reference",
         "nlr-e490"
-      ]
+      ],
+      "astronomy": null
     },
     {
       "destination": "haumea",
       "name": "Haumea",
       "bodyType": "dwarf_planet",
-      "hasAtmosphere": null,
-      "calculationStatus": "partial",
+      "hasAtmosphere": false,
+      "calculationStatus": "complete",
       "inputs": {
         "distanceFromSunKm": 6452000000.0,
         "solarIrradianceWm2": 0.734,
         "derivedSolarIrradianceWm2": 0.73442,
         "irradianceSource": "stored_reference",
-        "surfacePressurePa": null,
-        "atmosphericDensityKgM3": null,
+        "surfacePressurePa": 0.0,
+        "atmosphericDensityKgM3": 0.0,
         "composition": {
-          "CO2": null,
-          "N2": null,
-          "O2": null,
-          "CH4": null,
-          "H2": null,
-          "He": null
+          "CO2": 0.0,
+          "SO2": 0.0,
+          "N2": 0.0,
+          "O2": 0.0,
+          "CH4": 0.0,
+          "H2": 0.0,
+          "He": 0.0
         },
         "solarSpectrumVisibleFraction": 0.700153,
         "solarSpectrumRangeNm": [
@@ -573,43 +835,67 @@
         "absorbed": 0.05,
         "relativeBrightness": 0.001886,
         "dominantColor": "dim white",
+        "scatteredLightColor": {
+          "label": "neutral",
+          "rgb": [
+            244,
+            232,
+            190
+          ],
+          "spectralBand": "broad-visible",
+          "confidence": "fallback",
+          "basis": "neutral-fallback"
+        },
+        "transmittedLightColor": {
+          "label": "dim white",
+          "rgb": [
+            174,
+            184,
+            197
+          ],
+          "spectralBand": "broad-visible",
+          "confidence": "modeled",
+          "basis": "existing-dominant-light-classification"
+        },
         "apparentSizeCategory": "very small"
       },
       "validation": {
         "energySum": 1.0,
         "valid": true,
         "warnings": [
-          "Atmosphere state is unknown; the airless/tenuous fallback was used.",
           "No scientific surface albedo is stored; the generic airless surface partition was used."
         ]
       },
       "sourceIds": [
         "nasa-haumea",
+        "haumea-occultation-atmosphere-limit",
         "jpl-small-bodies",
         "derived-light-reference",
         "nlr-e490"
-      ]
+      ],
+      "astronomy": null
     },
     {
       "destination": "makemake",
       "name": "Makemake",
       "bodyType": "dwarf_planet",
-      "hasAtmosphere": null,
-      "calculationStatus": "partial",
+      "hasAtmosphere": false,
+      "calculationStatus": "complete",
       "inputs": {
         "distanceFromSunKm": 6796000000.0,
         "solarIrradianceWm2": 0.662,
         "derivedSolarIrradianceWm2": 0.661952,
         "irradianceSource": "stored_reference",
-        "surfacePressurePa": null,
-        "atmosphericDensityKgM3": null,
+        "surfacePressurePa": 0.0,
+        "atmosphericDensityKgM3": 0.0,
         "composition": {
-          "CO2": null,
-          "N2": null,
-          "O2": null,
-          "CH4": null,
-          "H2": null,
-          "He": null
+          "CO2": 0.0,
+          "SO2": 0.0,
+          "N2": 0.0,
+          "O2": 0.0,
+          "CH4": 0.0,
+          "H2": 0.0,
+          "He": 0.0
         },
         "solarSpectrumVisibleFraction": 0.700153,
         "solarSpectrumRangeNm": [
@@ -623,22 +909,45 @@
         "absorbed": 0.05,
         "relativeBrightness": 0.001701,
         "dominantColor": "dim white",
+        "scatteredLightColor": {
+          "label": "neutral",
+          "rgb": [
+            244,
+            232,
+            190
+          ],
+          "spectralBand": "broad-visible",
+          "confidence": "fallback",
+          "basis": "neutral-fallback"
+        },
+        "transmittedLightColor": {
+          "label": "dim white",
+          "rgb": [
+            174,
+            184,
+            197
+          ],
+          "spectralBand": "broad-visible",
+          "confidence": "modeled",
+          "basis": "existing-dominant-light-classification"
+        },
         "apparentSizeCategory": "very small"
       },
       "validation": {
         "energySum": 1.0,
         "valid": true,
         "warnings": [
-          "Atmosphere state is unknown; the airless/tenuous fallback was used.",
           "No scientific surface albedo is stored; the generic airless surface partition was used."
         ]
       },
       "sourceIds": [
         "nasa-makemake",
+        "makemake-occultation-atmosphere-limit",
         "jpl-small-bodies",
         "derived-light-reference",
         "nlr-e490"
-      ]
+      ],
+      "astronomy": null
     },
     {
       "destination": "moon",
@@ -655,6 +964,7 @@
         "atmosphericDensityKgM3": 0.0,
         "composition": {
           "CO2": 0.0,
+          "SO2": null,
           "N2": 0.0,
           "O2": 0.0,
           "CH4": 0.0,
@@ -673,6 +983,28 @@
         "absorbed": 0.05,
         "relativeBrightness": 0.9,
         "dominantColor": "white",
+        "scatteredLightColor": {
+          "label": "neutral",
+          "rgb": [
+            244,
+            232,
+            190
+          ],
+          "spectralBand": "broad-visible",
+          "confidence": "fallback",
+          "basis": "neutral-fallback"
+        },
+        "transmittedLightColor": {
+          "label": "white",
+          "rgb": [
+            244,
+            244,
+            238
+          ],
+          "spectralBand": "broad-visible",
+          "confidence": "modeled",
+          "basis": "existing-dominant-light-classification"
+        },
         "apparentSizeCategory": "medium"
       },
       "validation": {
@@ -685,7 +1017,8 @@
       "sourceIds": [
         "nasa-moon",
         "nlr-e490"
-      ]
+      ],
+      "astronomy": null
     },
     {
       "destination": "phobos",
@@ -702,6 +1035,7 @@
         "atmosphericDensityKgM3": 0.0,
         "composition": {
           "CO2": 0.0,
+          "SO2": null,
           "N2": 0.0,
           "O2": 0.0,
           "CH4": 0.0,
@@ -720,6 +1054,28 @@
         "absorbed": 0.05,
         "relativeBrightness": 0.619398,
         "dominantColor": "white",
+        "scatteredLightColor": {
+          "label": "neutral",
+          "rgb": [
+            244,
+            232,
+            190
+          ],
+          "spectralBand": "broad-visible",
+          "confidence": "fallback",
+          "basis": "neutral-fallback"
+        },
+        "transmittedLightColor": {
+          "label": "white",
+          "rgb": [
+            244,
+            244,
+            238
+          ],
+          "spectralBand": "broad-visible",
+          "confidence": "modeled",
+          "basis": "existing-dominant-light-classification"
+        },
         "apparentSizeCategory": "small"
       },
       "validation": {
@@ -733,7 +1089,8 @@
         "nasa-mars-moons",
         "jpl-satellite-elements",
         "nlr-e490"
-      ]
+      ],
+      "astronomy": null
     },
     {
       "destination": "deimos",
@@ -750,6 +1107,7 @@
         "atmosphericDensityKgM3": 0.0,
         "composition": {
           "CO2": 0.0,
+          "SO2": null,
           "N2": 0.0,
           "O2": 0.0,
           "CH4": 0.0,
@@ -768,6 +1126,28 @@
         "absorbed": 0.05,
         "relativeBrightness": 0.619398,
         "dominantColor": "white",
+        "scatteredLightColor": {
+          "label": "neutral",
+          "rgb": [
+            244,
+            232,
+            190
+          ],
+          "spectralBand": "broad-visible",
+          "confidence": "fallback",
+          "basis": "neutral-fallback"
+        },
+        "transmittedLightColor": {
+          "label": "white",
+          "rgb": [
+            244,
+            244,
+            238
+          ],
+          "spectralBand": "broad-visible",
+          "confidence": "modeled",
+          "basis": "existing-dominant-light-classification"
+        },
         "apparentSizeCategory": "small"
       },
       "validation": {
@@ -781,28 +1161,30 @@
         "nasa-mars-moons",
         "jpl-satellite-elements",
         "nlr-e490"
-      ]
+      ],
+      "astronomy": null
     },
     {
       "destination": "io",
       "name": "Io",
       "bodyType": "moon",
-      "hasAtmosphere": null,
-      "calculationStatus": "partial",
+      "hasAtmosphere": true,
+      "calculationStatus": "complete",
       "inputs": {
         "distanceFromSunKm": 778600000.0,
         "solarIrradianceWm2": 50.5,
         "derivedSolarIrradianceWm2": 50.431806,
         "irradianceSource": "stored_reference",
-        "surfacePressurePa": null,
-        "atmosphericDensityKgM3": null,
+        "surfacePressurePa": 0.0002,
+        "atmosphericDensityKgM3": 1.28e-08,
         "composition": {
-          "CO2": null,
-          "N2": null,
-          "O2": null,
-          "CH4": null,
-          "H2": null,
-          "He": null
+          "CO2": 0.0,
+          "SO2": 1.0,
+          "N2": 0.0,
+          "O2": 0.0,
+          "CH4": 0.0,
+          "H2": 0.0,
+          "He": 0.0
         },
         "solarSpectrumVisibleFraction": 0.700153,
         "solarSpectrumRangeNm": [
@@ -811,47 +1193,70 @@
         ]
       },
       "results": {
-        "transmitted": 0.85,
-        "scattered": 0.1,
-        "absorbed": 0.05,
-        "relativeBrightness": 0.112259,
-        "dominantColor": "gray-white",
+        "transmitted": 1.0,
+        "scattered": 0.0,
+        "absorbed": 0.0,
+        "relativeBrightness": 0.124732,
+        "dominantColor": "white",
+        "scatteredLightColor": {
+          "label": "blue",
+          "rgb": [
+            132,
+            180,
+            242
+          ],
+          "spectralBand": "short-visible",
+          "confidence": "modeled",
+          "basis": "molecular-rayleigh-scattering"
+        },
+        "transmittedLightColor": {
+          "label": "white",
+          "rgb": [
+            244,
+            244,
+            238
+          ],
+          "spectralBand": "broad-visible",
+          "confidence": "modeled",
+          "basis": "existing-dominant-light-classification"
+        },
         "apparentSizeCategory": "small"
       },
       "validation": {
         "energySum": 1.0,
         "valid": true,
-        "warnings": [
-          "Atmosphere state is unknown; the airless/tenuous fallback was used.",
-          "No scientific surface albedo is stored; the generic airless surface partition was used."
-        ]
+        "warnings": []
       },
       "sourceIds": [
         "nasa-jovian-satellites",
+        "bagenal-2020-io-europa",
+        "derived-atmospheric-density",
         "jpl-satellite-elements",
         "nlr-e490"
-      ]
+      ],
+      "astronomy": null
     },
     {
       "destination": "europa",
       "name": "Europa",
       "bodyType": "moon",
-      "hasAtmosphere": null,
-      "calculationStatus": "partial",
+      "hasAtmosphere": true,
+      "calculationStatus": "complete",
       "inputs": {
         "distanceFromSunKm": 778600000.0,
         "solarIrradianceWm2": 50.5,
         "derivedSolarIrradianceWm2": 50.431806,
         "irradianceSource": "stored_reference",
-        "surfacePressurePa": null,
-        "atmosphericDensityKgM3": null,
+        "surfacePressurePa": 2e-08,
+        "atmosphericDensityKgM3": 7.7e-13,
         "composition": {
-          "CO2": null,
-          "N2": null,
-          "O2": null,
-          "CH4": null,
-          "H2": null,
-          "He": null
+          "CO2": 0.0,
+          "SO2": 0.0,
+          "N2": 0.0,
+          "O2": 1.0,
+          "CH4": 0.0,
+          "H2": 0.0,
+          "He": 0.0
         },
         "solarSpectrumVisibleFraction": 0.700153,
         "solarSpectrumRangeNm": [
@@ -860,47 +1265,70 @@
         ]
       },
       "results": {
-        "transmitted": 0.85,
-        "scattered": 0.1,
-        "absorbed": 0.05,
-        "relativeBrightness": 0.112259,
-        "dominantColor": "gray-white",
+        "transmitted": 1.0,
+        "scattered": 0.0,
+        "absorbed": 0.0,
+        "relativeBrightness": 0.124732,
+        "dominantColor": "white",
+        "scatteredLightColor": {
+          "label": "blue",
+          "rgb": [
+            132,
+            180,
+            242
+          ],
+          "spectralBand": "short-visible",
+          "confidence": "modeled",
+          "basis": "molecular-rayleigh-scattering"
+        },
+        "transmittedLightColor": {
+          "label": "white",
+          "rgb": [
+            244,
+            244,
+            238
+          ],
+          "spectralBand": "broad-visible",
+          "confidence": "modeled",
+          "basis": "existing-dominant-light-classification"
+        },
         "apparentSizeCategory": "small"
       },
       "validation": {
         "energySum": 1.0,
         "valid": true,
-        "warnings": [
-          "Atmosphere state is unknown; the airless/tenuous fallback was used.",
-          "No scientific surface albedo is stored; the generic airless surface partition was used."
-        ]
+        "warnings": []
       },
       "sourceIds": [
         "nasa-jovian-satellites",
+        "bagenal-2020-io-europa",
+        "derived-atmospheric-density",
         "jpl-satellite-elements",
         "nlr-e490"
-      ]
+      ],
+      "astronomy": null
     },
     {
       "destination": "ganymede",
       "name": "Ganymede",
       "bodyType": "moon",
-      "hasAtmosphere": null,
-      "calculationStatus": "partial",
+      "hasAtmosphere": true,
+      "calculationStatus": "complete",
       "inputs": {
         "distanceFromSunKm": 778600000.0,
         "solarIrradianceWm2": 50.5,
         "derivedSolarIrradianceWm2": 50.431806,
         "irradianceSource": "stored_reference",
-        "surfacePressurePa": null,
-        "atmosphericDensityKgM3": null,
+        "surfacePressurePa": 2e-07,
+        "atmosphericDensityKgM3": 6.4e-12,
         "composition": {
-          "CO2": null,
-          "N2": null,
-          "O2": null,
-          "CH4": null,
-          "H2": null,
-          "He": null
+          "CO2": 0.0,
+          "SO2": 0.0,
+          "N2": 0.0,
+          "O2": 1.0,
+          "CH4": 0.0,
+          "H2": 0.0,
+          "He": 0.0
         },
         "solarSpectrumVisibleFraction": 0.700153,
         "solarSpectrumRangeNm": [
@@ -909,47 +1337,70 @@
         ]
       },
       "results": {
-        "transmitted": 0.85,
-        "scattered": 0.1,
-        "absorbed": 0.05,
-        "relativeBrightness": 0.112259,
-        "dominantColor": "gray-white",
+        "transmitted": 1.0,
+        "scattered": 0.0,
+        "absorbed": 0.0,
+        "relativeBrightness": 0.124732,
+        "dominantColor": "white",
+        "scatteredLightColor": {
+          "label": "blue",
+          "rgb": [
+            132,
+            180,
+            242
+          ],
+          "spectralBand": "short-visible",
+          "confidence": "modeled",
+          "basis": "molecular-rayleigh-scattering"
+        },
+        "transmittedLightColor": {
+          "label": "white",
+          "rgb": [
+            244,
+            244,
+            238
+          ],
+          "spectralBand": "broad-visible",
+          "confidence": "modeled",
+          "basis": "existing-dominant-light-classification"
+        },
         "apparentSizeCategory": "small"
       },
       "validation": {
         "energySum": 1.0,
         "valid": true,
-        "warnings": [
-          "Atmosphere state is unknown; the airless/tenuous fallback was used.",
-          "No scientific surface albedo is stored; the generic airless surface partition was used."
-        ]
+        "warnings": []
       },
       "sourceIds": [
         "nasa-jovian-satellites",
+        "ganymede-atmosphere-estimate",
+        "derived-atmospheric-density",
         "jpl-satellite-elements",
         "nlr-e490"
-      ]
+      ],
+      "astronomy": null
     },
     {
       "destination": "callisto",
       "name": "Callisto",
       "bodyType": "moon",
-      "hasAtmosphere": null,
-      "calculationStatus": "partial",
+      "hasAtmosphere": true,
+      "calculationStatus": "complete",
       "inputs": {
         "distanceFromSunKm": 778600000.0,
         "solarIrradianceWm2": 50.5,
         "derivedSolarIrradianceWm2": 50.431806,
         "irradianceSource": "stored_reference",
-        "surfacePressurePa": null,
-        "atmosphericDensityKgM3": null,
+        "surfacePressurePa": 7.5e-07,
+        "atmosphericDensityKgM3": 2.65e-11,
         "composition": {
-          "CO2": null,
-          "N2": null,
-          "O2": null,
-          "CH4": null,
-          "H2": null,
-          "He": null
+          "CO2": 1.0,
+          "SO2": 0.0,
+          "N2": 0.0,
+          "O2": 0.0,
+          "CH4": 0.0,
+          "H2": 0.0,
+          "He": 0.0
         },
         "solarSpectrumVisibleFraction": 0.700153,
         "solarSpectrumRangeNm": [
@@ -958,26 +1409,48 @@
         ]
       },
       "results": {
-        "transmitted": 0.85,
-        "scattered": 0.1,
-        "absorbed": 0.05,
-        "relativeBrightness": 0.112259,
-        "dominantColor": "gray-white",
+        "transmitted": 1.0,
+        "scattered": 0.0,
+        "absorbed": 0.0,
+        "relativeBrightness": 0.124732,
+        "dominantColor": "white",
+        "scatteredLightColor": {
+          "label": "blue",
+          "rgb": [
+            132,
+            180,
+            242
+          ],
+          "spectralBand": "short-visible",
+          "confidence": "modeled",
+          "basis": "molecular-rayleigh-scattering"
+        },
+        "transmittedLightColor": {
+          "label": "white",
+          "rgb": [
+            244,
+            244,
+            238
+          ],
+          "spectralBand": "broad-visible",
+          "confidence": "modeled",
+          "basis": "existing-dominant-light-classification"
+        },
         "apparentSizeCategory": "small"
       },
       "validation": {
         "energySum": 1.0,
         "valid": true,
-        "warnings": [
-          "Atmosphere state is unknown; the airless/tenuous fallback was used.",
-          "No scientific surface albedo is stored; the generic airless surface partition was used."
-        ]
+        "warnings": []
       },
       "sourceIds": [
         "nasa-jovian-satellites",
+        "callisto-co2-atmosphere",
+        "derived-atmospheric-density",
         "jpl-satellite-elements",
         "nlr-e490"
-      ]
+      ],
+      "astronomy": null
     },
     {
       "destination": "titan",
@@ -994,6 +1467,7 @@
         "atmosphericDensityKgM3": 5.3,
         "composition": {
           "CO2": null,
+          "SO2": null,
           "N2": 0.984,
           "O2": null,
           "CH4": 0.014,
@@ -1012,6 +1486,28 @@
         "absorbed": 0.055905,
         "relativeBrightness": 0.033826,
         "dominantColor": "orange",
+        "scatteredLightColor": {
+          "label": "orange",
+          "rgb": [
+            232,
+            158,
+            76
+          ],
+          "spectralBand": null,
+          "confidence": "supported",
+          "basis": "nitrogen-methane-photochemical-haze"
+        },
+        "transmittedLightColor": {
+          "label": "orange",
+          "rgb": [
+            245,
+            154,
+            74
+          ],
+          "spectralBand": "broad-visible",
+          "confidence": "modeled",
+          "basis": "existing-dominant-light-classification"
+        },
         "apparentSizeCategory": "very small"
       },
       "validation": {
@@ -1024,7 +1520,8 @@
         "nasa-titan",
         "jpl-satellite-elements",
         "nlr-e490"
-      ]
+      ],
+      "astronomy": null
     },
     {
       "destination": "rhea",
@@ -1041,6 +1538,7 @@
         "atmosphericDensityKgM3": 0.0,
         "composition": {
           "CO2": 0.0,
+          "SO2": null,
           "N2": 0.0,
           "O2": 0.0,
           "CH4": 0.0,
@@ -1059,6 +1557,28 @@
         "absorbed": 0.05,
         "relativeBrightness": 0.036928,
         "dominantColor": "dim white",
+        "scatteredLightColor": {
+          "label": "neutral",
+          "rgb": [
+            244,
+            232,
+            190
+          ],
+          "spectralBand": "broad-visible",
+          "confidence": "fallback",
+          "basis": "neutral-fallback"
+        },
+        "transmittedLightColor": {
+          "label": "dim white",
+          "rgb": [
+            174,
+            184,
+            197
+          ],
+          "spectralBand": "broad-visible",
+          "confidence": "modeled",
+          "basis": "existing-dominant-light-classification"
+        },
         "apparentSizeCategory": "very small"
       },
       "validation": {
@@ -1072,7 +1592,8 @@
         "nasa-saturnian-satellites",
         "jpl-satellite-elements",
         "nlr-e490"
-      ]
+      ],
+      "astronomy": null
     },
     {
       "destination": "iapetus",
@@ -1089,6 +1610,7 @@
         "atmosphericDensityKgM3": 0.0,
         "composition": {
           "CO2": 0.0,
+          "SO2": null,
           "N2": 0.0,
           "O2": 0.0,
           "CH4": 0.0,
@@ -1107,6 +1629,28 @@
         "absorbed": 0.05,
         "relativeBrightness": 0.036928,
         "dominantColor": "dim white",
+        "scatteredLightColor": {
+          "label": "neutral",
+          "rgb": [
+            244,
+            232,
+            190
+          ],
+          "spectralBand": "broad-visible",
+          "confidence": "fallback",
+          "basis": "neutral-fallback"
+        },
+        "transmittedLightColor": {
+          "label": "dim white",
+          "rgb": [
+            174,
+            184,
+            197
+          ],
+          "spectralBand": "broad-visible",
+          "confidence": "modeled",
+          "basis": "existing-dominant-light-classification"
+        },
         "apparentSizeCategory": "very small"
       },
       "validation": {
@@ -1120,7 +1664,8 @@
         "nasa-saturnian-satellites",
         "jpl-satellite-elements",
         "nlr-e490"
-      ]
+      ],
+      "astronomy": null
     },
     {
       "destination": "dione",
@@ -1137,6 +1682,7 @@
         "atmosphericDensityKgM3": 0.0,
         "composition": {
           "CO2": 0.0,
+          "SO2": null,
           "N2": 0.0,
           "O2": 0.0,
           "CH4": 0.0,
@@ -1155,6 +1701,28 @@
         "absorbed": 0.05,
         "relativeBrightness": 0.036928,
         "dominantColor": "dim white",
+        "scatteredLightColor": {
+          "label": "neutral",
+          "rgb": [
+            244,
+            232,
+            190
+          ],
+          "spectralBand": "broad-visible",
+          "confidence": "fallback",
+          "basis": "neutral-fallback"
+        },
+        "transmittedLightColor": {
+          "label": "dim white",
+          "rgb": [
+            174,
+            184,
+            197
+          ],
+          "spectralBand": "broad-visible",
+          "confidence": "modeled",
+          "basis": "existing-dominant-light-classification"
+        },
         "apparentSizeCategory": "very small"
       },
       "validation": {
@@ -1168,7 +1736,8 @@
         "nasa-saturnian-satellites",
         "jpl-satellite-elements",
         "nlr-e490"
-      ]
+      ],
+      "astronomy": null
     },
     {
       "destination": "titania",
@@ -1185,6 +1754,7 @@
         "atmosphericDensityKgM3": 0.0,
         "composition": {
           "CO2": 0.0,
+          "SO2": null,
           "N2": 0.0,
           "O2": 0.0,
           "CH4": 0.0,
@@ -1203,6 +1773,28 @@
         "absorbed": 0.05,
         "relativeBrightness": 0.009464,
         "dominantColor": "dim white",
+        "scatteredLightColor": {
+          "label": "neutral",
+          "rgb": [
+            244,
+            232,
+            190
+          ],
+          "spectralBand": "broad-visible",
+          "confidence": "fallback",
+          "basis": "neutral-fallback"
+        },
+        "transmittedLightColor": {
+          "label": "dim white",
+          "rgb": [
+            174,
+            184,
+            197
+          ],
+          "spectralBand": "broad-visible",
+          "confidence": "modeled",
+          "basis": "existing-dominant-light-classification"
+        },
         "apparentSizeCategory": "very small"
       },
       "validation": {
@@ -1216,7 +1808,8 @@
         "nasa-uranian-satellites",
         "jpl-satellite-elements",
         "nlr-e490"
-      ]
+      ],
+      "astronomy": null
     },
     {
       "destination": "oberon",
@@ -1233,6 +1826,7 @@
         "atmosphericDensityKgM3": 0.0,
         "composition": {
           "CO2": 0.0,
+          "SO2": null,
           "N2": 0.0,
           "O2": 0.0,
           "CH4": 0.0,
@@ -1251,6 +1845,28 @@
         "absorbed": 0.05,
         "relativeBrightness": 0.009464,
         "dominantColor": "dim white",
+        "scatteredLightColor": {
+          "label": "neutral",
+          "rgb": [
+            244,
+            232,
+            190
+          ],
+          "spectralBand": "broad-visible",
+          "confidence": "fallback",
+          "basis": "neutral-fallback"
+        },
+        "transmittedLightColor": {
+          "label": "dim white",
+          "rgb": [
+            174,
+            184,
+            197
+          ],
+          "spectralBand": "broad-visible",
+          "confidence": "modeled",
+          "basis": "existing-dominant-light-classification"
+        },
         "apparentSizeCategory": "very small"
       },
       "validation": {
@@ -1264,7 +1880,8 @@
         "nasa-uranian-satellites",
         "jpl-satellite-elements",
         "nlr-e490"
-      ]
+      ],
+      "astronomy": null
     },
     {
       "destination": "umbriel",
@@ -1281,6 +1898,7 @@
         "atmosphericDensityKgM3": 0.0,
         "composition": {
           "CO2": 0.0,
+          "SO2": null,
           "N2": 0.0,
           "O2": 0.0,
           "CH4": 0.0,
@@ -1299,6 +1917,28 @@
         "absorbed": 0.05,
         "relativeBrightness": 0.009464,
         "dominantColor": "dim white",
+        "scatteredLightColor": {
+          "label": "neutral",
+          "rgb": [
+            244,
+            232,
+            190
+          ],
+          "spectralBand": "broad-visible",
+          "confidence": "fallback",
+          "basis": "neutral-fallback"
+        },
+        "transmittedLightColor": {
+          "label": "dim white",
+          "rgb": [
+            174,
+            184,
+            197
+          ],
+          "spectralBand": "broad-visible",
+          "confidence": "modeled",
+          "basis": "existing-dominant-light-classification"
+        },
         "apparentSizeCategory": "very small"
       },
       "validation": {
@@ -1312,7 +1952,8 @@
         "nasa-uranian-satellites",
         "jpl-satellite-elements",
         "nlr-e490"
-      ]
+      ],
+      "astronomy": null
     },
     {
       "destination": "ariel",
@@ -1329,6 +1970,7 @@
         "atmosphericDensityKgM3": 0.0,
         "composition": {
           "CO2": 0.0,
+          "SO2": null,
           "N2": 0.0,
           "O2": 0.0,
           "CH4": 0.0,
@@ -1347,6 +1989,28 @@
         "absorbed": 0.05,
         "relativeBrightness": 0.009464,
         "dominantColor": "dim white",
+        "scatteredLightColor": {
+          "label": "neutral",
+          "rgb": [
+            244,
+            232,
+            190
+          ],
+          "spectralBand": "broad-visible",
+          "confidence": "fallback",
+          "basis": "neutral-fallback"
+        },
+        "transmittedLightColor": {
+          "label": "dim white",
+          "rgb": [
+            174,
+            184,
+            197
+          ],
+          "spectralBand": "broad-visible",
+          "confidence": "modeled",
+          "basis": "existing-dominant-light-classification"
+        },
         "apparentSizeCategory": "very small"
       },
       "validation": {
@@ -1360,28 +2024,30 @@
         "nasa-uranian-satellites",
         "jpl-satellite-elements",
         "nlr-e490"
-      ]
+      ],
+      "astronomy": null
     },
     {
       "destination": "triton",
       "name": "Triton",
       "bodyType": "moon",
       "hasAtmosphere": true,
-      "calculationStatus": "partial",
+      "calculationStatus": "complete",
       "inputs": {
         "distanceFromSunKm": 4495100000.0,
         "solarIrradianceWm2": 1.51,
         "derivedSolarIrradianceWm2": 1.513055,
         "irradianceSource": "stored_reference",
         "surfacePressurePa": 1.4,
-        "atmosphericDensityKgM3": null,
+        "atmosphericDensityKgM3": 0.000124,
         "composition": {
-          "CO2": null,
-          "N2": null,
-          "O2": null,
-          "CH4": null,
-          "H2": null,
-          "He": null
+          "CO2": 0.0,
+          "SO2": 0.0,
+          "N2": 0.9998,
+          "O2": 0.0,
+          "CH4": 0.0002,
+          "H2": 0.0,
+          "He": 0.0
         },
         "solarSpectrumVisibleFraction": 0.700153,
         "solarSpectrumRangeNm": [
@@ -1390,27 +2056,49 @@
         ]
       },
       "results": {
-        "transmitted": 0.999999,
-        "scattered": 1e-06,
-        "absorbed": 0.0,
+        "transmitted": 0.999985,
+        "scattered": 1.3e-05,
+        "absorbed": 2e-06,
         "relativeBrightness": 0.004299,
         "dominantColor": "dim white",
+        "scatteredLightColor": {
+          "label": "blue",
+          "rgb": [
+            132,
+            180,
+            242
+          ],
+          "spectralBand": "short-visible",
+          "confidence": "modeled",
+          "basis": "molecular-rayleigh-scattering"
+        },
+        "transmittedLightColor": {
+          "label": "dim white",
+          "rgb": [
+            174,
+            184,
+            197
+          ],
+          "spectralBand": "broad-visible",
+          "confidence": "modeled",
+          "basis": "existing-dominant-light-classification"
+        },
         "apparentSizeCategory": "very small"
       },
       "validation": {
         "energySum": 1.0,
         "valid": true,
-        "warnings": [
-          "Atmospheric density is missing from the scientific catalog.",
-          "Atmospheric composition is unavailable; neutral coefficients were used."
-        ]
+        "warnings": []
       },
       "sourceIds": [
         "nasa-neptunian-satellites",
         "nasa-triton",
+        "triton-nitrogen-atmosphere",
+        "derived-atmospheric-density",
         "jpl-satellite-elements",
         "nlr-e490"
-      ]
+      ],
+      "astronomy": null
     },
     {
       "destination": "proteus",
@@ -1427,6 +2115,7 @@
         "atmosphericDensityKgM3": 0.0,
         "composition": {
           "CO2": 0.0,
+          "SO2": null,
           "N2": 0.0,
           "O2": 0.0,
           "CH4": 0.0,
@@ -1445,6 +2134,28 @@
         "absorbed": 0.05,
         "relativeBrightness": 0.003869,
         "dominantColor": "dim white",
+        "scatteredLightColor": {
+          "label": "neutral",
+          "rgb": [
+            244,
+            232,
+            190
+          ],
+          "spectralBand": "broad-visible",
+          "confidence": "fallback",
+          "basis": "neutral-fallback"
+        },
+        "transmittedLightColor": {
+          "label": "dim white",
+          "rgb": [
+            174,
+            184,
+            197
+          ],
+          "spectralBand": "broad-visible",
+          "confidence": "modeled",
+          "basis": "existing-dominant-light-classification"
+        },
         "apparentSizeCategory": "very small"
       },
       "validation": {
@@ -1458,7 +2169,8 @@
         "nasa-neptunian-satellites",
         "jpl-satellite-elements",
         "nlr-e490"
-      ]
+      ],
+      "astronomy": null
     },
     {
       "destination": "nereid",
@@ -1475,6 +2187,7 @@
         "atmosphericDensityKgM3": 0.0,
         "composition": {
           "CO2": 0.0,
+          "SO2": null,
           "N2": 0.0,
           "O2": 0.0,
           "CH4": 0.0,
@@ -1493,6 +2206,28 @@
         "absorbed": 0.05,
         "relativeBrightness": 0.003869,
         "dominantColor": "dim white",
+        "scatteredLightColor": {
+          "label": "neutral",
+          "rgb": [
+            244,
+            232,
+            190
+          ],
+          "spectralBand": "broad-visible",
+          "confidence": "fallback",
+          "basis": "neutral-fallback"
+        },
+        "transmittedLightColor": {
+          "label": "dim white",
+          "rgb": [
+            174,
+            184,
+            197
+          ],
+          "spectralBand": "broad-visible",
+          "confidence": "modeled",
+          "basis": "existing-dominant-light-classification"
+        },
         "apparentSizeCategory": "very small"
       },
       "validation": {
@@ -1506,7 +2241,8 @@
         "nasa-neptunian-satellites",
         "jpl-satellite-elements",
         "nlr-e490"
-      ]
+      ],
+      "astronomy": null
     },
     {
       "destination": "larissa",
@@ -1523,6 +2259,7 @@
         "atmosphericDensityKgM3": 0.0,
         "composition": {
           "CO2": 0.0,
+          "SO2": null,
           "N2": 0.0,
           "O2": 0.0,
           "CH4": 0.0,
@@ -1541,6 +2278,28 @@
         "absorbed": 0.05,
         "relativeBrightness": 0.003869,
         "dominantColor": "dim white",
+        "scatteredLightColor": {
+          "label": "neutral",
+          "rgb": [
+            244,
+            232,
+            190
+          ],
+          "spectralBand": "broad-visible",
+          "confidence": "fallback",
+          "basis": "neutral-fallback"
+        },
+        "transmittedLightColor": {
+          "label": "dim white",
+          "rgb": [
+            174,
+            184,
+            197
+          ],
+          "spectralBand": "broad-visible",
+          "confidence": "modeled",
+          "basis": "existing-dominant-light-classification"
+        },
         "apparentSizeCategory": "very small"
       },
       "validation": {
@@ -1554,7 +2313,8 @@
         "nasa-neptunian-satellites",
         "jpl-satellite-elements",
         "nlr-e490"
-      ]
+      ],
+      "astronomy": null
     }
   ]
 }

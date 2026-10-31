@@ -12,7 +12,7 @@ The same rules are used for real-body benchmarks and synthetic labels. There are
 
 - heliocentric semimajor-axis distance; a moon inherits its parent planet's heliocentric distance;
 - stored reference solar irradiance when available;
-- atmosphere state, pressure, density, and the stored CO2, N2, O2, CH4, H2, and He fractions;
+- atmosphere state, pressure, density, and the stored CO2, SO2, N2, O2, CH4, H2, and He fractions;
 - the local ASTM E-490 spectrum in `data/solarSpectrum.csv`.
 
 Rendered scene coordinates, display colors, textures, and materials are never scientific inputs. The E-490 table is integrated with the trapezoid rule over its stored 300.5–1000 nm range and over the broad 380–780 nm visible interval. Its calculated visible share is returned for traceability. The current aggregate model uses that common spectral shape as the reference; it does not fabricate missing wavelengths or resolve absorption lines.
@@ -40,6 +40,7 @@ Known gas fractions are normalized only inside the optical calculation. Missing 
 | Gas | Scattering weight | Absorption weight |
 | --- | ---: | ---: |
 | CO2 | 0.45 | 0.25 |
+| SO2 | 0.45 | 0.25 |
 | N2 | 1.00 | 0.02 |
 | O2 | 1.05 | 0.12 |
 | CH4 | 0.35 | 1.50 |
@@ -121,10 +122,10 @@ Thresholds intentionally create stable broad classes: small composition changes 
 - distance is log-uniform from 0.3 to 70 AU;
 - irradiance follows the same inverse-square relation;
 - 72% of samples have an atmosphere;
-- atmospheric pressure is sampled across near-vacuum (0.01–100 Pa), thin (100–20,000 Pa), moderate (20,000–200,000 Pa), and dense (200,000–10,000,000 Pa) regimes;
+- atmospheric pressure is sampled across ultra-tenuous (1e-9–0.01 Pa), near-vacuum (0.01–100 Pa), thin (100–20,000 Pa), moderate (20,000–200,000 Pa), and dense (200,000–10,000,000 Pa) regimes;
 - temperature is a hidden generation variable from 70–800 K;
 - density is derived with the ideal-gas relation and the sampled mixture's mean molar mass, capped at 100 kg/m³;
-- gas mixtures come from Dirichlet distributions around broad terrestrial, CO2-rich, N2/CH4-rich, H2/He-rich, and mixed archetypes and sum to one;
+- gas mixtures come from Dirichlet distributions around broad terrestrial, CO2-rich, SO2-rich, O2-rich exosphere, N2/CH4-rich, H2/He-rich, and mixed archetypes and sum to one;
 - airless rows have zero pressure, density, and gas fractions;
 - rows are assigned deterministically to 80% train, 10% validation, and 10% test splits.
 
