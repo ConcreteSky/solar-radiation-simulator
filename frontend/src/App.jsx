@@ -21,10 +21,9 @@ export default function App() {
   const selectBody = useCallback((bodyId) => {
     setSelectedBodyId(bodyId)
     if (bodyId) {
-      simulation.setPlaying(false)
       setAnalysisTimestampMs(simulation.getTimestampMs())
     }
-  }, [simulation.getTimestampMs, simulation.setPlaying])
+  }, [simulation.getTimestampMs])
 
   const togglePlaying = useCallback(() => {
     if (simulation.playing && selectedBodyId && selectedBodyId !== 'sun') {
@@ -33,36 +32,33 @@ export default function App() {
     simulation.setPlaying(!simulation.playing)
   }, [selectedBodyId, simulation.getTimestampMs, simulation.playing, simulation.setPlaying])
 
-  const setSimulationDate = useCallback((timestampMs) => {
-    simulation.setPlaying(false)
-    simulation.setTimestampMs(timestampMs)
-    if (selectedBodyId && selectedBodyId !== 'sun') setAnalysisTimestampMs(timestampMs)
-  }, [selectedBodyId, simulation.setPlaying, simulation.setTimestampMs])
-
-  const resetSimulation = useCallback(() => {
-    simulation.reset()
-    if (selectedBodyId && selectedBodyId !== 'sun') {
-      setAnalysisTimestampMs(SESSION_START_MS)
-    }
-  }, [selectedBodyId, simulation.reset])
-
   return (
-    <main className="app-shell" data-selected-body-id={selectedBodyId ?? ''}>
+    <main className="app-shell" data-selected-body-id={selectedBodyId === 'sun' ? '' : selectedBodyId ?? ''}>
       <section className="map-section">
         <header className="app-header">
-          <p className="eyebrow">Radiation environment map</p>
-          <h1>Solar Radiation<br />Simulator</h1>
-          <p className="instructions">Click a world to focus · Scroll to zoom · Drag to orbit</p>
-          <button
-            className="reset-view-button"
-            type="button"
-            onClick={() => {
-              setSelectedBodyId(null)
-              setResetViewSignal((value) => value + 1)
-            }}
-          >
-            Reset view
-          </button>
+          <div className="brand-block">
+            <span className="brand-mark" aria-hidden="true" />
+            <div>
+              <p>Solar environment laboratory</p>
+              <h1>Solar Radiation Simulator</h1>
+            </div>
+          </div>
+          <nav className="viewport-actions" aria-label="Viewport controls">
+            <SimulationControls
+              playing={simulation.playing}
+              onTogglePlaying={togglePlaying}
+            />
+            <button
+              className="reset-view-button"
+              type="button"
+              onClick={() => {
+                setSelectedBodyId(null)
+                setResetViewSignal((value) => value + 1)
+              }}
+            >
+              Reset view
+            </button>
+          </nav>
         </header>
 
         <div className="scene-shell" aria-label="Interactive 3D Solar System destination map">
@@ -76,21 +72,8 @@ export default function App() {
           />
         </div>
 
-        <SimulationControls
-          timestampMs={simulation.timestampMs}
-          playing={simulation.playing}
-          speed={simulation.speed}
-          onTogglePlaying={togglePlaying}
-          onSpeedChange={simulation.setSpeed}
-          onDateChange={setSimulationDate}
-          onReset={resetSimulation}
-        />
-
-        {selectedBody && (
-          <p className="current-selection" aria-live="polite">
-            Selected: <strong>{selectedBody.name}</strong>
-          </p>
-        )}
+        <p className="viewport-hint">Drag to orbit <span /> Scroll to zoom <span /> Select a world to inspect</p>
+        {selectedBody && selectedBody.id !== 'sun' && <SceneInspector body={selectedBody} />}
         <p className="map-disclaimer">
           Coplanar Keplerian positions are approximate. Distances and sizes are compressed only for display.
         </p>
@@ -102,5 +85,31 @@ export default function App() {
         simulationTimestampMs={analysisTimestampMs}
       />
     </main>
+  )
+}
+
+function titleCase(value) {
+  return value == null ? 'Not established' : String(value).replaceAll('_', ' ').replace(/\b\w/g, (letter) => letter.toUpperCase())
+}
+
+function SceneInspector({ body }) {
+  const environment = body.solarEnvironment
+  const magnetic = environment?.magnetic
+  const particle = environment?.particleEnvironment
+  return (
+    <aside className="scene-inspector" aria-live="polite" aria-label={`${body.name} scene inspector`}>
+      <header>
+        <p>{titleCase(body.type)}</p>
+        <h2>{body.name}</h2>
+      </header>
+      <dl>
+        <div><dt>Magnetic structure</dt><dd>{titleCase(magnetic?.family)}</dd></div>
+        <div><dt>Shielding</dt><dd>{titleCase(magnetic?.shielding)}</dd></div>
+        <div><dt>Radiation context</dt><dd data-hazard={particle?.radiationLevel === 'extreme' ? 'high' : undefined}>{titleCase(particle?.radiationLevel)}</dd></div>
+        <div><dt>Particle exposure</dt><dd>{titleCase(particle?.solarWindExposure)}</dd></div>
+      </dl>
+      <p>{environment?.summary}</p>
+      <a href="#light-analysis">Open full scientific analysis</a>
+    </aside>
   )
 }

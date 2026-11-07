@@ -44,13 +44,14 @@ function OrbitingMoon({
 
   return (
     <>
-      <OrbitPath radius={orbitRadius} eccentricity={moon.orbit.eccentricity} moon />
+      <OrbitPath radius={orbitRadius} eccentricity={moon.orbit.eccentricity} moon selected={moon.id === selectedBodyId} />
       <group ref={groupRef} position={initialPosition}>
         <CelestialBody
           body={moon}
           position={[0, 0, 0]}
           radius={radius}
           selected={moon.id === selectedBodyId}
+          dimmed={Boolean(selectedBodyId) && moon.id !== selectedBodyId}
           showLabel={false}
           onSelect={onSelectBody}
         />

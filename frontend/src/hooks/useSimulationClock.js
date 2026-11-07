@@ -6,6 +6,8 @@ export const PLAYBACK_RATES = {
   fast: 30,
 }
 
+const DEFAULT_SPEED = 'slow'
+
 const SIMULATED_DAY_MS = 86_400_000
 const UI_REFRESH_MS = 250
 
@@ -15,11 +17,11 @@ export default function useSimulationClock(initialTimestampMs = Date.now()) {
     timestampMs: initialTimestampMs,
     performanceMs: performance.now(),
     playing: true,
-    speed: 'normal',
+    speed: DEFAULT_SPEED,
   })
   const [timestampMs, setTimestampMs] = useState(initialTimestampMs)
   const [playing, setPlaying] = useState(true)
-  const [speed, setSpeed] = useState('normal')
+  const [speed, setSpeed] = useState(DEFAULT_SPEED)
 
   const getTimestampMs = useCallback(() => {
     const current = clock.current
@@ -80,10 +82,10 @@ export default function useSimulationClock(initialTimestampMs = Date.now()) {
       timestampMs: initialTimestamp.current,
       performanceMs: performance.now(),
       playing: true,
-      speed: 'normal',
+      speed: DEFAULT_SPEED,
     }
     setTimestampMs(initialTimestamp.current)
-    setSpeed('normal')
+    setSpeed(DEFAULT_SPEED)
     setPlaying(true)
   }, [])
 

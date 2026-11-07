@@ -41,13 +41,14 @@ function OrbitingPrimary({
 
   return (
     <>
-      <OrbitPath radius={orbitRadius} eccentricity={body.orbit.eccentricity} />
+      <OrbitPath radius={orbitRadius} eccentricity={body.orbit.eccentricity} selected={selectedBodyId === body.id} />
       <group ref={groupRef} position={initialPosition}>
         <CelestialBody
           body={body}
           position={[0, 0, 0]}
           radius={bodyRadius}
           selected={selectedBodyId === body.id}
+          dimmed={Boolean(selectedBodyId) && selectedBodyId !== body.id}
           showLabel
           onSelect={onSelectBody}
         />
@@ -86,11 +87,11 @@ function SolarSystem({ bodies, selectedBodyId, onSelectBody, getSimulationTimest
 
   return (
     <>
-      <color attach="background" args={['#030610']} />
-      <fog attach="fog" args={['#030610', 175, 330]} />
-      <ambientLight intensity={0.46} color="#7890bd" />
-      <hemisphereLight args={['#a9c8ff', '#14182a', 0.45]} />
-      <pointLight position={[0, 0, 0]} intensity={3.4} decay={0} color="#ffd18a" />
+      <color attach="background" args={['#090a0c']} />
+      <fog attach="fog" args={['#090a0c', 155, 320]} />
+      <ambientLight intensity={0.72} color="#70788a" />
+      <hemisphereLight args={['#8790a4', '#242731', 0.66]} />
+      <pointLight position={[0, 0, 0]} intensity={3.2} decay={0} color="#aeb2c2" />
       <StarField />
 
       <CelestialBody
@@ -98,6 +99,7 @@ function SolarSystem({ bodies, selectedBodyId, onSelectBody, getSimulationTimest
         position={[0, 0, 0]}
         radius={4.25}
         selected={selectedBodyId === 'sun'}
+        dimmed={Boolean(selectedBodyId) && selectedBodyId !== 'sun'}
         showLabel
         onSelect={onSelectBody}
       />
@@ -139,10 +141,18 @@ function SolarSystemScene({
     return getRenderedHeliocentricPosition(body, bodies, focusTimestampMs)
   }, [bodies, selectedBodyId, focusTimestampMs])
   const clearSelection = useCallback(() => onSelectBody(null), [onSelectBody])
+  const focusedBody = useMemo(
+    () => bodies.find((candidate) => candidate.id === selectedBodyId),
+    [bodies, selectedBodyId],
+  )
+  const focusRadius = useMemo(
+    () => focusedBody ? getVisualBodyRadius(focusedBody) : 1,
+    [focusedBody],
+  )
 
   return (
     <Canvas
-      camera={{ position: [0, 270, 120], fov: 45, near: 0.1, far: 600 }}
+      camera={{ position: [12, 45, 78], fov: 42, near: 0.1, far: 600 }}
       dpr={[1, 1.5]}
       gl={{ antialias: true, powerPreference: 'high-performance' }}
       onCreated={({ gl }) => { gl.toneMappingExposure = 1.12 }}
@@ -156,7 +166,12 @@ function SolarSystemScene({
           getSimulationTimestampMs={getSimulationTimestampMs}
         />
       </Suspense>
-      <CameraControls resetSignal={resetViewSignal} focusPosition={focusPosition} />
+      <CameraControls
+        resetSignal={resetViewSignal}
+        focusPosition={focusPosition}
+        focusRadius={focusRadius}
+        focusActive={Boolean(focusedBody)}
+      />
     </Canvas>
   )
 }

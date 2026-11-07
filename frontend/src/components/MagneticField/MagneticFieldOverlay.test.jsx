@@ -1,4 +1,4 @@
-import { getMagneticVisualKind, getMagneticVisualScale } from './MagneticFieldOverlay.jsx'
+import { createMagnetotailEnvelope, getBodyFieldProfile, getMagneticVisualKind, getMagneticVisualScale } from './MagneticFieldOverlay.jsx'
 import { celestialBodies } from '../../data/catalog.js'
 
 const environment = (family) => ({ magnetic: { family } })
@@ -27,5 +27,23 @@ describe('magnetic visual families', () => {
   it('makes an extreme environment larger than a limited one without changing scientific data', () => {
     expect(getMagneticVisualScale({ magnetic: { shielding: 'extreme' } }))
       .toBeGreaterThan(getMagneticVisualScale({ magnetic: { shielding: 'limited' } }))
+  })
+
+  it('keeps the manually reviewed intrinsic bodies geometrically distinct', () => {
+    const intrinsic = { magnetic: { shielding: 'substantial' } }
+    expect(getBodyFieldProfile('mercury', intrinsic).scale).toBeLessThan(getBodyFieldProfile('earth', intrinsic).scale)
+    expect(getBodyFieldProfile('jupiter', intrinsic).tail).toBeGreaterThan(getBodyFieldProfile('earth', intrinsic).tail)
+    expect(getBodyFieldProfile('uranus', intrinsic).tilt).not.toBe(getBodyFieldProfile('neptune', intrinsic).tilt)
+    expect(getBodyFieldProfile('uranus', intrinsic).offset).not.toBe(getBodyFieldProfile('neptune', intrinsic).offset)
+  })
+
+  it('builds smooth symmetric envelopes that never cut through the body', () => {
+    const intrinsic = { magnetic: { shielding: 'substantial' } }
+    for (const bodyId of ['mercury', 'earth', 'jupiter', 'saturn', 'uranus', 'neptune', 'ganymede']) {
+      const points = createMagnetotailEnvelope(1, getBodyFieldProfile(bodyId, intrinsic), 0.2)
+      expect(Math.min(...points.map(([x, y, z]) => Math.hypot(x, y, z)))).toBeGreaterThan(1.02)
+      expect(points[0][0]).toBeCloseTo(points.at(-1)[0], 8)
+      expect(points[0][1]).toBeCloseTo(-points.at(-1)[1], 8)
+    }
   })
 })

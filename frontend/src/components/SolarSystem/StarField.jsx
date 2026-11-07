@@ -26,7 +26,7 @@ export default function StarField() {
 
   return (
     <points geometry={geometry} raycast={() => null}>
-      <pointsMaterial color="#d8e3ff" size={0.7} sizeAttenuation transparent opacity={0.72} />
+      <pointsMaterial color="#747b86" size={0.62} sizeAttenuation transparent opacity={0.64} />
     </points>
   )
 }

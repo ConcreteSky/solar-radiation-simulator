@@ -4,6 +4,12 @@ Interactive scientific-computing project for visible light, magnetic interaction
 
 **Live Application:** https://solar-radiation-simulator.vercel.app
 
+## Visual tour
+
+![Inner-system opening view](docs/screenshots/opening-view.png)
+
+![Earth selected with the 3D magnetic-field envelope](docs/screenshots/earth-magnetic-field.png)
+
 ## Project overview
 
 The Solar Radiation Simulator expands the original Solar Light Propagation Simulator without replacing it. Here, “radiation” is used broadly for energy and particles arriving from the Sun while the interface keeps visible photons and charged particles scientifically separate. Selecting a destination freezes one shared simulation time and resolves three layers: visible light, charged-particle/radiation context, and magnetic interaction. The light subsystem retains its measured reliability architecture: **Efficiency**, **Reliability**, and automatic deterministic **Fallback**.
@@ -15,7 +21,10 @@ The Sun is the only light source. The application requires no manual scientific 
 - Interactive React Three Fiber Solar System with shared-clock Keplerian motion and clickable destinations.
 - Eight planets, five dwarf planets, and nineteen selected moons, with no more than four moons per planet.
 - Coplanar simplified elliptical orbits, thin orbit rings, compressed distances, exaggerated body sizes, Saturn rings, and an efficient asteroid belt.
-- Mouse/touch camera rotation, cursor-centered zoom, selection focus, labels, and highlighting.
+- Tighter inner-system opening composition, mouse/touch rotation, cursor-centered zoom, damped selection focus, and restrained labels.
+- One slow orbital playback rate with a compact Play/Pause control; internal scientific time remains available without visible clock or speed-selector clutter.
+- NASA Blue Marble imagery for geographically correct Earth, plus reference-guided procedural textures for other bodies; natural colors stay separate from the graphite/violet interface palette.
+- Selected-body-only magnetic structures use smooth, nested bow-to-tail envelopes with a protected body clearance and sparse charged-particle flow; field strength and family remain visually distinct without line clutter.
 - Locally cached scientific catalog with units, source IDs, deliberate nulls, and ASTM E-490 spectrum data.
 - Explainable atmospheric and airless deterministic physics baseline with energy conservation.
 - Five-model HistGradientBoosting ensemble with uncertainty, OOD scoring, physical validation, and centralized deterministic fallback.

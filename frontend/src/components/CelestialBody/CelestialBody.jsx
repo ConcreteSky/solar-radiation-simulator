@@ -1,27 +1,37 @@
 import { Html, useTexture } from '@react-three/drei'
-import { memo, useEffect, useState } from 'react'
+import { memo, useEffect, useMemo, useState } from 'react'
 import { RepeatWrapping, SRGBColorSpace } from 'three'
-import { resolveTexture } from '../../data/textureRegistry.js'
+import earthBlueMarble from '../../assets/textures/earth-blue-marble.png'
+import { getPlanetTexture } from '../../data/planetTextureFactory.js'
 import MagneticFieldOverlay from '../MagneticField/MagneticFieldOverlay.jsx'
 
-function TexturedSurface({ radius, textureUrl, bodyScale }) {
-  const texture = useTexture(textureUrl)
-
+function EarthSurface({ radius, bodyScale }) {
+  const texture = useTexture(earthBlueMarble)
   useEffect(() => {
     texture.colorSpace = SRGBColorSpace
     texture.wrapS = RepeatWrapping
     texture.needsUpdate = true
   }, [texture])
+  return (
+    <mesh scale={bodyScale} rotation={[0, -0.42, 0]}>
+      <sphereGeometry args={[radius, 48, 32]} />
+      <meshStandardMaterial map={texture} emissiveMap={texture} color="#b4b7bd" roughness={0.82} emissive="#252a33" emissiveIntensity={0.28} />
+    </mesh>
+  )
+}
 
+function TexturedSurface({ body, radius, bodyScale }) {
+  const texture = useMemo(() => getPlanetTexture(body), [body])
+  if (!texture) return <ColorSurface body={body} radius={radius} bodyScale={bodyScale} />
   return (
     <mesh scale={bodyScale}>
       <sphereGeometry args={[radius, 28, 18]} />
       <meshStandardMaterial
         map={texture}
         color="#ffffff"
-        roughness={0.78}
+        roughness={body.type === 'moon' ? 0.94 : 0.8}
         emissive="#10141d"
-        emissiveIntensity={0.1}
+        emissiveIntensity={0.15}
       />
     </mesh>
   )
@@ -40,7 +50,7 @@ function ColorSurface({ body, radius, bodyScale }) {
           roughness={0.76}
           metalness={0.01}
           emissive={body.visual.baseColor}
-          emissiveIntensity={0.07}
+          emissiveIntensity={0.13}
         />
       )}
     </mesh>
@@ -67,11 +77,11 @@ function CelestialBody({
   position,
   radius,
   selected,
+  dimmed = false,
   showLabel,
   onSelect,
 }) {
   const [hovered, setHovered] = useState(false)
-  const textureUrl = resolveTexture(body.visual.texture)
   const bodyScale = body.id === 'haumea' ? [1.35, 0.74, 0.82] : [1, 1, 1]
   const highlighted = selected || hovered
   const hitRadius = body.type === 'moon'
@@ -92,7 +102,7 @@ function CelestialBody({
   return (
     <group
       position={position}
-      scale={selected ? 1.12 : hovered ? 1.05 : 1}
+      scale={selected ? (body.type === 'moon' ? 1.8 : 1.12) : hovered ? 1.05 : dimmed ? 0.42 : 1}
       onClick={(event) => {
         event.stopPropagation()
         onSelect(body.id)
@@ -106,8 +116,10 @@ function CelestialBody({
         <meshBasicMaterial transparent opacity={0} depthWrite={false} colorWrite={false} />
       </mesh>
 
-      {textureUrl ? (
-        <TexturedSurface radius={radius} textureUrl={textureUrl} bodyScale={bodyScale} />
+      {body.id === 'earth' ? (
+        <EarthSurface radius={radius} bodyScale={bodyScale} />
+      ) : body.id !== 'sun' ? (
+        <TexturedSurface body={body} radius={radius} bodyScale={bodyScale} />
       ) : (
         <ColorSurface body={body} radius={radius} bodyScale={bodyScale} />
       )}
@@ -115,13 +127,13 @@ function CelestialBody({
       {body.id === 'saturn' && <SaturnRings radius={radius} />}
 
       {selected && body.solarEnvironment && (
-        <MagneticFieldOverlay environment={body.solarEnvironment} radius={radius} />
+        <MagneticFieldOverlay bodyId={body.id} environment={body.solarEnvironment} radius={radius} />
       )}
 
-      {highlighted && (
-        <mesh scale={bodyScale}>
-          <sphereGeometry args={[radius * 1.16, 20, 14]} />
-          <meshBasicMaterial color="#ffe7a3" transparent opacity={selected ? 0.22 : 0.11} wireframe />
+      {hovered && !selected && (
+        <mesh rotation={[-Math.PI / 2, 0, 0]} position={[0, -radius * 1.18, 0]}>
+          <ringGeometry args={[radius * 1.28, radius * 1.38, 48]} />
+          <meshBasicMaterial color="#747b86" transparent opacity={0.38} side={2} />
         </mesh>
       )}
 

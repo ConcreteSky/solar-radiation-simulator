@@ -29,7 +29,7 @@ export default function AsteroidBelt({ innerRadius, outerRadius }) {
 
   return (
     <points geometry={geometry} raycast={() => null}>
-      <pointsMaterial color="#817262" size={0.22} sizeAttenuation transparent opacity={0.72} />
+      <pointsMaterial color="#5f6670" size={0.2} sizeAttenuation transparent opacity={0.58} />
     </points>
   )
 }

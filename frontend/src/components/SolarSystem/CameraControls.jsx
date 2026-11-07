@@ -3,16 +3,16 @@ import { useFrame, useThree } from '@react-three/fiber'
 import { useEffect, useRef } from 'react'
 import { Vector3 } from 'three'
 
-const OVERVIEW_POSITION = new Vector3(0, 270, 120)
-const SYSTEM_CENTER = new Vector3(0, 0, 0)
+const OVERVIEW_POSITION = new Vector3(12, 45, 78)
+const SYSTEM_CENTER = new Vector3(9, 0, 0)
 
-export default function CameraControls({ resetSignal, focusPosition }) {
+export default function CameraControls({ resetSignal, focusPosition, focusRadius = 1, focusActive = false }) {
   const controlsRef = useRef(null)
   const resetting = useRef(false)
   const focusing = useRef(false)
   const requestedFocus = useRef(new Vector3())
+  const requestedCamera = useRef(OVERVIEW_POSITION.clone())
   const nextTarget = useRef(new Vector3())
-  const targetShift = useRef(new Vector3())
   const camera = useThree((state) => state.camera)
   const canvas = useThree((state) => state.gl.domElement)
 
@@ -21,9 +21,15 @@ export default function CameraControls({ resetSignal, focusPosition }) {
   }, [resetSignal])
 
   useEffect(() => {
+    if (!focusActive) return
+    resetting.current = false
     requestedFocus.current.fromArray(focusPosition)
+    const direction = camera.position.clone().sub(requestedFocus.current).normalize()
+    const focusDistance = Math.max(18, Math.min(44, focusRadius * 10.5))
+    requestedCamera.current.copy(requestedFocus.current).addScaledVector(direction, focusDistance)
+    requestedCamera.current.y += focusRadius * 0.7
     focusing.current = true
-  }, [focusPosition])
+  }, [camera, focusActive, focusPosition, focusRadius])
 
   useEffect(() => {
     const cancelAutomaticMove = () => {
@@ -60,13 +66,16 @@ export default function CameraControls({ resetSignal, focusPosition }) {
 
     if (focusing.current) {
       nextTarget.current.copy(controls.target).lerp(requestedFocus.current, 0.13)
-      targetShift.current.copy(nextTarget.current).sub(controls.target)
       controls.target.copy(nextTarget.current)
-      camera.position.add(targetShift.current)
+      camera.position.lerp(requestedCamera.current, 0.1)
       controls.update()
 
-      if (controls.target.distanceToSquared(requestedFocus.current) < 0.01) {
+      if (
+        controls.target.distanceToSquared(requestedFocus.current) < 0.01
+        && camera.position.distanceToSquared(requestedCamera.current) < 0.04
+      ) {
         controls.target.copy(requestedFocus.current)
+        camera.position.copy(requestedCamera.current)
         controls.update()
         focusing.current = false
       }
@@ -79,7 +88,7 @@ export default function CameraControls({ resetSignal, focusPosition }) {
       makeDefault
       enableDamping
       dampingFactor={0.07}
-      minDistance={18}
+      minDistance={7}
       maxDistance={370}
       minPolarAngle={0.22}
       maxPolarAngle={Math.PI / 2.04}

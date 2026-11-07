@@ -5,6 +5,10 @@ const environmentById = new Map(environmentCatalog.records.map((record) => [reco
 
 export const celestialBodies = catalog.bodies.map((body) => ({
   ...body,
+  visual: {
+    ...body.visual,
+    texture: `procedural-scientific/${body.id}`,
+  },
   solarEnvironment: environmentById.get(body.id),
 }))
 
