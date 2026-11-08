@@ -20,6 +20,7 @@ function OrbitingPrimary({
   body,
   moons,
   selectedBodyId,
+  selectedMoonParentId,
   onSelectBody,
   getSimulationTimestampMs,
 }) {
@@ -48,7 +49,7 @@ function OrbitingPrimary({
           position={[0, 0, 0]}
           radius={bodyRadius}
           selected={selectedBodyId === body.id}
-          dimmed={Boolean(selectedBodyId) && selectedBodyId !== body.id}
+          dimmed={Boolean(selectedBodyId) && selectedBodyId !== body.id && selectedMoonParentId !== body.id}
           showLabel
           onSelect={onSelectBody}
         />
@@ -68,6 +69,10 @@ function OrbitingPrimary({
 
 function SolarSystem({ bodies, selectedBodyId, onSelectBody, getSimulationTimestampMs }) {
   const primaryBodies = useMemo(() => bodies.filter((body) => body.type !== 'moon'), [bodies])
+  const selectedMoonParentId = useMemo(
+    () => bodies.find((body) => body.id === selectedBodyId && body.type === 'moon')?.parent ?? null,
+    [bodies, selectedBodyId],
+  )
   const moonsByParent = useMemo(() => {
     const groups = new Map()
     bodies.filter((body) => body.type === 'moon').forEach((moon) => {
@@ -115,6 +120,7 @@ function SolarSystem({ bodies, selectedBodyId, onSelectBody, getSimulationTimest
             body={body}
             moons={moons}
             selectedBodyId={selectedBodyId}
+            selectedMoonParentId={selectedMoonParentId}
             onSelectBody={onSelectBody}
             getSimulationTimestampMs={getSimulationTimestampMs}
           />

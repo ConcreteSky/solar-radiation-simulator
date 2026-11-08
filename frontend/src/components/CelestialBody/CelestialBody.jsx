@@ -72,6 +72,13 @@ function SaturnRings({ radius }) {
   )
 }
 
+export function getBodyDisplayScale(body, { selected, hovered, dimmed }) {
+  if (selected) return body.type === 'moon' ? 1.18 : 1.12
+  if (hovered) return 1.05
+  if (dimmed) return 0.42
+  return 1
+}
+
 function CelestialBody({
   body,
   position,
@@ -102,7 +109,7 @@ function CelestialBody({
   return (
     <group
       position={position}
-      scale={selected ? (body.type === 'moon' ? 1.8 : 1.12) : hovered ? 1.05 : dimmed ? 0.42 : 1}
+      scale={getBodyDisplayScale(body, { selected, hovered, dimmed })}
       onClick={(event) => {
         event.stopPropagation()
         onSelect(body.id)

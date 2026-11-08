@@ -108,6 +108,7 @@ function SceneInspector({ body }) {
         <div><dt>Radiation context</dt><dd data-hazard={particle?.radiationLevel === 'extreme' ? 'high' : undefined}>{titleCase(particle?.radiationLevel)}</dd></div>
         <div><dt>Particle exposure</dt><dd>{titleCase(particle?.solarWindExposure)}</dd></div>
       </dl>
+      <div className="scene-particle-legend"><i aria-hidden="true" /><span>Neon green trails show charged solar particles</span></div>
       <p>{environment?.summary}</p>
       <a href="#light-analysis">Open full scientific analysis</a>
     </aside>

@@ -872,6 +872,8 @@ input { font: inherit; }
 .scene-inspector dt { color: #747b86; font-size: .67rem; }
 .scene-inspector dd { margin: 0; color: #a8adb7; font-size: .68rem; font-weight: 650; text-align: right; }
 .scene-inspector dd[data-hazard='high'] { color: #a84466; }
+.scene-particle-legend { display: flex; gap: 10px; margin: 18px 0 0; padding: 11px 12px; align-items: center; border: 1px solid #2a2f36; border-radius: 5px; color: #8f969f; background: #191c22; font-size: .66rem; line-height: 1.4; }
+.scene-particle-legend i { width: 22px; height: 3px; flex: none; border-radius: 999px; background: #76ff65; box-shadow: 0 0 9px rgb(118 255 101 / 72%); }
 .scene-inspector > p { margin: 20px 0; color: #747b86; font-size: .76rem; line-height: 1.65; }
 .scene-inspector a { display: block; padding: 10px 0; border-top: 1px solid #2a2f36; border-bottom: 1px solid #2a2f36; color: #9a8be0; font-family: 'Cascadia Mono','Consolas',monospace; font-size: .64rem; font-weight: 700; letter-spacing: .04em; text-decoration: none; text-transform: uppercase; }
 .scene-inspector a:hover, .scene-inspector a:focus-visible { color: #a8adb7; outline: none; }
@@ -890,4 +892,116 @@ input { font: inherit; }
   .playback-toggle, .reset-view-button { padding: 7px 8px; font-size: .56rem; }
   .viewport-hint { right: 12px; bottom: 12px; left: 12px; justify-content: center; font-size: .54rem; }
   .scene-inspector { right: 10px; bottom: 44px; width: calc(100% - 20px); padding: 20px; }
+}
+
+/* Lower analysis area aligned with the restrained graphite/violet viewport. */
+.analysis-section {
+  min-height: 760px;
+  padding: 96px 48px 132px;
+  border-top-color: #2a2f36;
+  color: #a8adb7;
+  background: radial-gradient(circle at 18% 0%, rgb(89 70 122 / 12%), transparent 34%), #0d0f13;
+}
+.analysis-inner { width: min(1320px, 100%); }
+.analysis-section .panel-kicker { color: #9a8be0; }
+.analysis-result-header { margin-bottom: 44px; }
+.analysis-result-header h2 { color: #d2d5da; }
+.scenario-controls {
+  margin: 0 0 42px;
+  border-color: #343943;
+  background: linear-gradient(135deg, #191c22, #121419 68%);
+  box-shadow: 0 18px 44px rgb(0 0 0 / 24%);
+}
+.scenario-controls summary { padding: 19px 22px; color: #9a8be0; }
+.scenario-controls summary::marker { color: #7b6ed6; }
+.scenario-controls summary:hover,
+.scenario-controls summary:focus-visible { color: #c4b9f2; background: rgb(123 110 214 / 8%); }
+.scenario-controls[open] summary { border-bottom-color: #2a2f36; background: #15171c; }
+.scenario-controls form { padding: 26px 22px 24px; }
+.scenario-fields { gap: 16px; margin-top: 20px; }
+.scenario-fields input { margin-top: 8px; padding: 11px; border-color: #343943; color: #d2d5da; background: #0d0f13; }
+.scenario-actions { gap: 12px; margin-top: 22px; }
+.scenario-actions button { border-color: #544b91; color: #b7aceb; background: #211e31; }
+.solar-interaction-profile { margin-top: 34px; }
+.profile-heading { gap: 24px; }
+.quality-badge { padding: 8px 12px; border-color: #544b91; color: #b7aceb; background: #191c22; }
+.quality-supported { border-color: #4a826f; color: #8fcbb7; }
+.quality-limited { border-color: #806c49; color: #c9b27e; }
+.quality-unknown { border-color: #665d7b; color: #aaa1bd; }
+.environment-summary { max-width: 1040px; margin: 14px 0 34px; color: #8f969f; font-size: .94rem; line-height: 1.75; }
+.interaction-grid { grid-template-columns: minmax(0, 1.16fr) minmax(0, 1fr); gap: 26px; }
+.interaction-panel,
+.light-interaction { border-color: #2a2f36; border-radius: 8px; background: #121419; box-shadow: 0 20px 48px rgb(0 0 0 / 18%), inset 0 1px rgb(255 255 255 / 3%); }
+.interaction-panel { padding: 26px; }
+.interaction-panel h3,
+.light-interaction h3 { color: #d2d5da; font-size: .9rem; }
+.interaction-panel h3 span { width: 24px; height: 24px; margin-right: 10px; background: #211e31; color: #9a8be0; }
+.panel-intro { margin: 12px 0 8px; color: #8f969f; font-size: .74rem; line-height: 1.65; }
+.interaction-panel svg text { fill: #747b86; }
+.profile-body { fill: #191c22; stroke: #7b6ed6; }
+.detailed-body { fill: #191c22; filter: drop-shadow(0 0 9px rgb(123 110 214 / 26%)); }
+.particle-flow { stroke: #76ff65; stroke-width: 2.1; opacity: .82; filter: drop-shadow(0 0 3px rgb(118 255 101 / 56%)); }
+.particle-dot { fill: #a0ff91; filter: drop-shadow(0 0 5px #76ff65); }
+.particle-title { fill: #8dff7d !important; }
+.stream-label-plate { fill: rgb(18 20 25 / 92%); stroke: rgb(123 110 214 / 28%); }
+.stream-note { fill: #8f969f !important; }
+.atmosphere-shell { fill: rgb(123 110 214 / 8%); stroke: #7b6ed6; }
+.callout-line { stroke: #5f6670; }
+.callout-label { fill: #8f969f !important; }
+.diagram-key { gap: 12px; margin-bottom: 14px; }
+.diagram-key > div { gap: 10px; padding: 12px 13px; border-color: #2a2f36; color: #8f969f; background: #191c22; font-size: .68rem; }
+.diagram-key strong { color: #c3c7ce; }
+.key-particle { border-top-color: #76ff65; filter: drop-shadow(0 0 3px #76ff65); }
+.profile-readouts { gap: 12px; }
+.profile-readouts > * { padding: 12px; color: #9ca2aa; background: #191c22; }
+.profile-readouts strong { color: #d2d5da; }
+.magnetic-panel .field-lines { color: #49b9ff; }
+.magnetic-panel .induced-lines { color: #66c7ee; }
+.magnetic-panel .crustal-lines { color: #9a8be0; }
+.magnetic-panel .parent-plasma-lines { color: #b58ae0; }
+.upstream-wind { stroke: #76ff65; stroke-width: 1.7; opacity: .86; }
+.upstream-wind marker path,
+#wind-arrow path,
+#particle-arrow path { fill: #76ff65; }
+.wind-label { fill: #8dff7d !important; }
+.tail-label { fill: #78cfff !important; }
+.field-explainer { gap: 2px; margin-top: 14px; background: #2a2f36; }
+.field-explainer > div { padding: 12px 13px; background: #191c22; }
+.field-explainer span,
+.metrics-panel dt,
+.light-interaction dt { color: #747b86; }
+.field-explainer strong,
+.metrics-panel dd,
+.light-interaction dd { color: #c3c7ce; }
+.shielding-stack { gap: 8px; margin-top: 22px; }
+.shielding-stack > div { padding: 12px 14px; color: #8f969f; background: #191c22; }
+.metrics-panel dl,
+.light-interaction dl { gap: 2px; margin-top: 20px; background: #2a2f36; }
+.metrics-panel dl div,
+.light-interaction dl div { padding: 13px 14px; background: #191c22; }
+.light-interaction { gap: 26px; margin-top: 28px; padding: 26px; }
+.subsystem-label { color: #9a8be0; }
+.classification-notice { margin-top: 22px; color: #747b86; line-height: 1.65; }
+.reliability-summary { gap: 22px; margin-top: 36px; }
+.result-source,
+.reliability-details { border-color: #2a2f36; background: #121419; }
+.result-source { padding: 20px 22px; }
+.result-source strong { color: #b7aceb; }
+.reliability-details summary { padding: 20px 22px; color: #a8adb7; }
+.reliability-details dl { gap: 2px; border-top-color: #2a2f36; background: #2a2f36; }
+.reliability-details dl div { padding: 16px 18px; background: #191c22; }
+.appearance-summary { margin-top: 34px; padding: 22px 24px; border-left-color: #7b6ed6; color: #b3b8c0; background: linear-gradient(90deg, rgb(33 30 49 / 82%), rgb(18 20 25 / 72%) 76%); }
+.analysis-timestamp { margin-top: 22px; color: #747b86; }
+
+@media (max-width: 980px) {
+  .analysis-section { padding: 76px 28px 104px; }
+  .interaction-grid,
+  .light-interaction { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 620px) {
+  .analysis-section { padding: 64px 16px 88px; }
+  .interaction-panel,
+  .light-interaction { padding: 20px; }
+  .reliability-summary { grid-template-columns: 1fr; }
 }

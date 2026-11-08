@@ -1,6 +1,6 @@
 import { fireEvent, render, screen } from '@testing-library/react'
 import { celestialBodies } from '../../data/catalog.js'
-import CelestialBody from './CelestialBody.jsx'
+import CelestialBody, { getBodyDisplayScale } from './CelestialBody.jsx'
 
 vi.mock('@react-three/drei', () => ({
   Html: ({ children }) => <div>{children}</div>,
@@ -8,8 +8,15 @@ vi.mock('@react-three/drei', () => ({
 }))
 
 const earth = celestialBodies.find((body) => body.id === 'earth')
+const moon = celestialBodies.find((body) => body.id === 'moon')
 
 describe('CelestialBody', () => {
+  it('does not inflate a selected moon beyond the primary-body scale', () => {
+    expect(getBodyDisplayScale(moon, { selected: true, hovered: false, dimmed: false })).toBe(1.18)
+    expect(getBodyDisplayScale(moon, { selected: true, hovered: false, dimmed: false }) * 0.86)
+      .toBeLessThan(1.2)
+  })
+
   it('allows the visible destination label to select its body', () => {
     const onSelect = vi.fn()
     render(

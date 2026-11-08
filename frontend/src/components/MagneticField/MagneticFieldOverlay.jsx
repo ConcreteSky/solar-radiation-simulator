@@ -1,12 +1,12 @@
 import { Line } from '@react-three/drei'
 import { useFrame } from '@react-three/fiber'
 import { memo, useMemo, useRef } from 'react'
-import { BufferAttribute, BufferGeometry, Vector3 } from 'three'
+import { AdditiveBlending, BufferAttribute, BufferGeometry, Vector3 } from 'three'
 
 const FIELD_COLOR = '#49b9ff'
 const FIELD_HIGHLIGHT = '#8bdcff'
-const WIND_COLOR = '#6d8da5'
-const HAZARD_COLOR = '#a84466'
+const WIND_COLOR = '#76ff65'
+const PARTICLE_COUNT = 18
 
 const VISIBLE_FAMILIES = new Set([
   'intrinsic_dipole', 'intrinsic_aligned', 'intrinsic_tilted_offset',
@@ -25,37 +25,63 @@ export function getMagneticVisualScale(environment) {
 export function getBodyFieldProfile(bodyId, environment) {
   const base = getMagneticVisualScale(environment)
   const bodyProfiles = {
-    mercury: { scale: 0.62, tail: 2.4, tilt: 0.04, compression: 0.56, offset: 0.08 },
-    earth: { scale: 1, tail: 4.8, tilt: 0.19, compression: 0.78, offset: 0 },
-    jupiter: { scale: 1.42, tail: 6.2, tilt: 0.16, compression: 0.9, offset: 0.08 },
-    saturn: { scale: 1.18, tail: 4.6, tilt: 0.015, compression: 0.96, offset: 0 },
-    uranus: { scale: 1.08, tail: 4.2, tilt: 1.02, compression: 0.82, offset: 0.34 },
-    neptune: { scale: 1.02, tail: 3.8, tilt: -0.82, compression: 0.86, offset: -0.42 },
-    ganymede: { scale: 0.7, tail: 2.2, tilt: 0.1, compression: 0.74, offset: 0 },
+    mercury: { scale: 0.62, tail: 2.25, tilt: 0.04, compression: 0.52, shells: 4, strength: 0.72, vertical: 0.82, tailPinch: 0.48, roundness: 1.34, skew: 0.02 },
+    venus: { scale: 0.68, tail: 3.15, tilt: 0, compression: 0.62, shells: 4, strength: 0.68, vertical: 1.08, tailPinch: 0.7, roundness: 1.08, skew: 0.05 },
+    earth: { scale: 1, tail: 4.8, tilt: 0.19, compression: 0.78, shells: 6, strength: 1, vertical: 1, tailPinch: 0.62, roundness: 1.08, skew: 0 },
+    mars: { scale: 0.68, tail: 1.85, tilt: 0.08, compression: 0.46, shells: 2, strength: 0.46, vertical: 0.92, tailPinch: 0.78, roundness: 1.4, skew: -0.08 },
+    jupiter: { scale: 1.42, tail: 7.4, tilt: 0.16, compression: 1.08, shells: 8, strength: 1, vertical: 1.32, tailPinch: 0.42, roundness: 0.92, skew: 0.05 },
+    saturn: { scale: 1.18, tail: 5.2, tilt: 0.015, compression: 0.96, shells: 5, strength: 0.86, vertical: 1.12, tailPinch: 0.7, roundness: 1.02, skew: 0 },
+    uranus: { scale: 1.08, tail: 4.1, tilt: 1.02, compression: 0.82, shells: 5, strength: 0.88, vertical: 1.14, tailPinch: 0.56, roundness: 1.18, skew: 0.2 },
+    neptune: { scale: 1.02, tail: 4.55, tilt: -0.82, compression: 0.86, shells: 5, strength: 0.9, vertical: 0.98, tailPinch: 0.52, roundness: 0.98, skew: -0.18 },
+    moon: { scale: 0.68, tail: 1.55, tilt: -0.16, compression: 0.42, shells: 2, strength: 0.42, vertical: 0.84, tailPinch: 0.82, roundness: 1.5, skew: 0.12 },
+    io: { scale: 0.62, tail: 3.8, tilt: 0.06, compression: 0.58, shells: 4, strength: 0.74, vertical: 0.86, tailPinch: 0.58, roundness: 1.22, skew: 0.14 },
+    europa: { scale: 0.68, tail: 2.55, tilt: -0.05, compression: 0.55, shells: 3, strength: 0.58, vertical: 0.9, tailPinch: 0.72, roundness: 1.26, skew: -0.04 },
+    ganymede: { scale: 0.7, tail: 2.3, tilt: 0.1, compression: 0.74, shells: 4, strength: 0.72, vertical: 0.9, tailPinch: 0.62, roundness: 1.12, skew: 0 },
+    callisto: { scale: 0.66, tail: 2.9, tilt: 0.03, compression: 0.52, shells: 3, strength: 0.5, vertical: 1.04, tailPinch: 0.76, roundness: 1.16, skew: 0.07 },
+    titan: { scale: 0.68, tail: 3.5, tilt: 0.07, compression: 0.68, shells: 4, strength: 0.66, vertical: 1.2, tailPinch: 0.7, roundness: 1.02, skew: -0.06 },
+    rhea: { scale: 0.62, tail: 2.5, tilt: -0.08, compression: 0.52, shells: 3, strength: 0.46, vertical: 0.86, tailPinch: 0.66, roundness: 1.32, skew: 0.08 },
+    dione: { scale: 0.62, tail: 2.25, tilt: 0.12, compression: 0.5, shells: 3, strength: 0.44, vertical: 0.82, tailPinch: 0.7, roundness: 1.38, skew: -0.08 },
+    titania: { scale: 0.62, tail: 2.8, tilt: 0.35, compression: 0.56, shells: 3, strength: 0.48, vertical: 0.94, tailPinch: 0.62, roundness: 1.2, skew: 0.14 },
+    oberon: { scale: 0.62, tail: 2.6, tilt: -0.28, compression: 0.53, shells: 3, strength: 0.44, vertical: 0.88, tailPinch: 0.66, roundness: 1.28, skew: -0.12 },
+    umbriel: { scale: 0.62, tail: 2.2, tilt: 0.22, compression: 0.48, shells: 3, strength: 0.4, vertical: 0.8, tailPinch: 0.7, roundness: 1.42, skew: 0.1 },
+    ariel: { scale: 0.62, tail: 2.45, tilt: -0.18, compression: 0.52, shells: 3, strength: 0.44, vertical: 0.86, tailPinch: 0.68, roundness: 1.3, skew: -0.06 },
+    triton: { scale: 0.62, tail: 3.25, tilt: 0.26, compression: 0.6, shells: 4, strength: 0.56, vertical: 1.04, tailPinch: 0.58, roundness: 1.14, skew: 0.12 },
+    proteus: { scale: 0.62, tail: 2.1, tilt: -0.1, compression: 0.46, shells: 3, strength: 0.4, vertical: 0.78, tailPinch: 0.72, roundness: 1.44, skew: -0.08 },
+    larissa: { scale: 0.62, tail: 1.95, tilt: 0.14, compression: 0.44, shells: 3, strength: 0.38, vertical: 0.76, tailPinch: 0.74, roundness: 1.48, skew: 0.07 },
   }
-  return bodyProfiles[bodyId] ?? { scale: base, tail: 3, tilt: 0, compression: 0.8, offset: 0 }
+  return bodyProfiles[bodyId] ?? { scale: base, tail: 3, tilt: 0, compression: 0.8, shells: 4, strength: 0.62, vertical: 1, tailPinch: 0.66, roundness: 1.12, skew: 0 }
 }
 
 export function createMagnetotailEnvelope(radius, profile, shell = 1) {
-  const clearance = radius * (1.08 + shell * 0.34)
+  const clearance = Math.max(
+    radius * (1.07 + shell * 0.28),
+    radius * (1.08 + shell * 0.34) * profile.vertical,
+  )
   const nose = radius * Math.max(1.28 + shell * 0.48, profile.compression * (1.45 + shell * 0.72))
   const tailLength = radius * profile.tail * (0.84 + shell * 0.18)
-  const tailHeight = clearance * (0.62 + shell * 0.12)
+  const tailHeight = clearance * (profile.tailPinch + shell * 0.1)
+  const upperHeight = tailHeight * (1 + profile.skew)
+  const lowerHeight = tailHeight * (1 - profile.skew)
   const upperTail = Array.from({ length: 25 }, (_, index) => {
     const t = 1 - index / 24
     const eased = t * t * (3 - 2 * t)
-    return [radius * 0.12 + tailLength * eased, tailHeight - (tailHeight - clearance) * (1 - eased), 0]
+    return [radius * 0.12 + tailLength * eased, upperHeight - (upperHeight - clearance) * (1 - eased), 0]
   })
   const bow = Array.from({ length: 49 }, (_, index) => {
     const angle = (index / 48) * Math.PI
     const sin = Math.sin(angle)
-    return [radius * 0.12 - nose * sin ** 1.08, clearance * Math.cos(angle), 0]
+    const y = clearance * Math.cos(angle) + radius * profile.skew * 0.2 * sin ** 2
+    return [radius * 0.12 - nose * sin ** profile.roundness, y, 0]
   })
-  const lowerTail = [...upperTail].reverse().map(([x, y, z]) => [x, -y, z])
+  const lowerTail = Array.from({ length: 25 }, (_, index) => {
+    const t = index / 24
+    const eased = t * t * (3 - 2 * t)
+    return [radius * 0.12 + tailLength * eased, -clearance + (clearance - lowerHeight) * eased, 0]
+  })
   return [...upperTail, ...bow.slice(1), ...lowerTail.slice(1)]
 }
 
-function SmoothEnvelope({ radius, profile, strength = 1, shells = 5, tilt = profile.tilt }) {
+function SmoothEnvelope({ radius, profile, strength = profile.strength, shells = profile.shells, tilt = profile.tilt }) {
   const shellValues = Array.from({ length: shells }, (_, index) => 0.2 + index * (0.8 / Math.max(shells - 1, 1)))
   return (
     <group rotation={[0, 0, tilt]}>
@@ -75,39 +101,42 @@ function SmoothEnvelope({ radius, profile, strength = 1, shells = 5, tilt = prof
   )
 }
 
-function IntrinsicField({ radius, profile, mini = false }) {
-  return <SmoothEnvelope radius={radius} profile={profile} strength={mini ? 0.72 : 1} shells={mini ? 4 : 6} />
+function IntrinsicField({ radius, profile }) {
+  return <SmoothEnvelope radius={radius} profile={profile} />
 }
 
 function DrapedField({ radius, profile, embedded = false }) {
-  const inducedProfile = { ...profile, compression: 0.64, tail: embedded ? 2.7 : 3.7, offset: 0 }
-  return <SmoothEnvelope radius={radius} profile={inducedProfile} strength={embedded ? 0.58 : 0.72} shells={4} tilt={0} />
+  return <SmoothEnvelope radius={radius} profile={profile} strength={embedded ? profile.strength * 0.82 : profile.strength} />
 }
 
 function CrustalField({ radius, profile }) {
-  const remnantProfile = { ...profile, compression: 0.48, tail: 2.25, offset: 0 }
-  return <SmoothEnvelope radius={radius} profile={remnantProfile} strength={0.5} shells={3} tilt={0.05} />
+  return <SmoothEnvelope radius={radius} profile={profile} />
 }
 
 function ParentPlasmaField({ radius, profile, bodyId }) {
-  const embeddedProfile = { ...profile, compression: 0.56, tail: bodyId === 'io' ? 3.4 : 2.9, offset: 0 }
-  return <SmoothEnvelope radius={radius} profile={embeddedProfile} strength={bodyId === 'io' ? 0.7 : 0.56} shells={4} tilt={0} />
+  return <SmoothEnvelope radius={radius} profile={profile} strength={bodyId === 'io' ? profile.strength : profile.strength * 0.9} />
 }
 
-function SolarWindFlow({ radius, family, hazardous }) {
-  const geometry = useMemo(() => {
+function SolarWindFlow({ radius, family }) {
+  const pointGeometry = useMemo(() => {
     const result = new BufferGeometry()
-    result.setAttribute('position', new BufferAttribute(new Float32Array(24 * 3), 3))
+    result.setAttribute('position', new BufferAttribute(new Float32Array(PARTICLE_COUNT * 3), 3))
     return result
   }, [])
-  const particles = useMemo(() => Array.from({ length: 24 }, (_, index) => ({
-    phase: (index / 24) * 13,
+  const trailGeometry = useMemo(() => {
+    const result = new BufferGeometry()
+    result.setAttribute('position', new BufferAttribute(new Float32Array(PARTICLE_COUNT * 2 * 3), 3))
+    return result
+  }, [])
+  const particles = useMemo(() => Array.from({ length: PARTICLE_COUNT }, (_, index) => ({
+    phase: (index / PARTICLE_COUNT) * 13,
     y: ((index * 7) % 9 - 4) * radius * 0.48,
     z: ((index * 11) % 11 - 5) * radius * 0.38,
   })), [radius])
 
   useFrame(({ clock }) => {
-    const positions = geometry.attributes.position.array
+    const positions = pointGeometry.attributes.position.array
+    const trails = trailGeometry.attributes.position.array
     const elapsed = clock.getElapsedTime()
     particles.forEach((particle, index) => {
       const x = -radius * 7 + ((particle.phase + elapsed * 1.25) % 13) * radius
@@ -127,14 +156,26 @@ function SolarWindFlow({ radius, family, hazardous }) {
       positions[index * 3] = x
       positions[index * 3 + 1] = y
       positions[index * 3 + 2] = z
+      trails[index * 6] = x - radius * 0.38
+      trails[index * 6 + 1] = y
+      trails[index * 6 + 2] = z
+      trails[index * 6 + 3] = x
+      trails[index * 6 + 4] = y
+      trails[index * 6 + 5] = z
     })
-    geometry.attributes.position.needsUpdate = true
+    pointGeometry.attributes.position.needsUpdate = true
+    trailGeometry.attributes.position.needsUpdate = true
   })
 
   return (
-    <points geometry={geometry} raycast={() => null}>
-      <pointsMaterial color={hazardous ? HAZARD_COLOR : WIND_COLOR} size={radius * 0.12} sizeAttenuation transparent opacity={0.72} />
-    </points>
+    <group raycast={() => null}>
+      <lineSegments geometry={trailGeometry}>
+        <lineBasicMaterial color={WIND_COLOR} transparent opacity={0.74} depthWrite={false} toneMapped={false} blending={AdditiveBlending} />
+      </lineSegments>
+      <points geometry={pointGeometry}>
+        <pointsMaterial color={WIND_COLOR} size={radius * 0.2} sizeAttenuation transparent opacity={0.94} depthWrite={false} toneMapped={false} blending={AdditiveBlending} />
+      </points>
+    </group>
   )
 }
 
@@ -144,7 +185,6 @@ function MagneticFieldOverlay({ bodyId, environment, radius }) {
   const family = getMagneticVisualKind(environment)
   const profile = getBodyFieldProfile(bodyId, environment)
   const groupRef = useRef()
-  const hazardous = environment?.particleEnvironment?.radiationLevel === 'extreme'
   useFrame(({ camera }) => {
     if (!groupRef.current) return
     groupRef.current.lookAt(camera.position)
@@ -155,7 +195,7 @@ function MagneticFieldOverlay({ bodyId, environment, radius }) {
   })
   return (
     <group ref={groupRef} userData={{ magneticFamily: family ?? 'none', visualScale: profile.scale }}>
-      <SolarWindFlow radius={radius} family={family} hazardous={hazardous} />
+      <SolarWindFlow radius={radius} family={family} />
       {family === 'intrinsic_dipole' && <IntrinsicField radius={radius} profile={profile} bodyId={bodyId} />}
       {family === 'intrinsic_aligned' && <IntrinsicField radius={radius} profile={profile} bodyId={bodyId} aligned />}
       {family === 'intrinsic_tilted_offset' && <IntrinsicField radius={radius} profile={profile} bodyId={bodyId} />}
