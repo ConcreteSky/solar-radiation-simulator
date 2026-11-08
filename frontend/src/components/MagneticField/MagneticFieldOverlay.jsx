@@ -1,7 +1,7 @@
 import { Line } from '@react-three/drei'
 import { useFrame } from '@react-three/fiber'
 import { memo, useMemo, useRef } from 'react'
-import { AdditiveBlending, BufferAttribute, BufferGeometry, Vector3 } from 'three'
+import { AdditiveBlending, Object3D, Vector3 } from 'three'
 
 const FIELD_COLOR = '#49b9ff'
 const FIELD_HIGHLIGHT = '#8bdcff'
@@ -118,16 +118,8 @@ function ParentPlasmaField({ radius, profile, bodyId }) {
 }
 
 function SolarWindFlow({ radius, family }) {
-  const pointGeometry = useMemo(() => {
-    const result = new BufferGeometry()
-    result.setAttribute('position', new BufferAttribute(new Float32Array(PARTICLE_COUNT * 3), 3))
-    return result
-  }, [])
-  const trailGeometry = useMemo(() => {
-    const result = new BufferGeometry()
-    result.setAttribute('position', new BufferAttribute(new Float32Array(PARTICLE_COUNT * 2 * 3), 3))
-    return result
-  }, [])
+  const particleMeshRef = useRef()
+  const particleTransform = useMemo(() => new Object3D(), [])
   const particles = useMemo(() => Array.from({ length: PARTICLE_COUNT }, (_, index) => ({
     phase: (index / PARTICLE_COUNT) * 13,
     y: ((index * 7) % 9 - 4) * radius * 0.48,
@@ -135,8 +127,8 @@ function SolarWindFlow({ radius, family }) {
   })), [radius])
 
   useFrame(({ clock }) => {
-    const positions = pointGeometry.attributes.position.array
-    const trails = trailGeometry.attributes.position.array
+    const particleMesh = particleMeshRef.current
+    if (!particleMesh) return
     const elapsed = clock.getElapsedTime()
     particles.forEach((particle, index) => {
       const x = -radius * 7 + ((particle.phase + elapsed * 1.25) % 13) * radius
@@ -153,29 +145,19 @@ function SolarWindFlow({ radius, family }) {
       } else if (family === 'parent_plasma') {
         y += Math.sin(x / (radius * 13) * Math.PI * 4 + index) * radius * 0.28
       }
-      positions[index * 3] = x
-      positions[index * 3 + 1] = y
-      positions[index * 3 + 2] = z
-      trails[index * 6] = x - radius * 0.38
-      trails[index * 6 + 1] = y
-      trails[index * 6 + 2] = z
-      trails[index * 6 + 3] = x
-      trails[index * 6 + 4] = y
-      trails[index * 6 + 5] = z
+      particleTransform.position.set(x, y, z)
+      particleTransform.scale.set(radius * 0.34, radius * 0.075, radius * 0.075)
+      particleTransform.updateMatrix()
+      particleMesh.setMatrixAt(index, particleTransform.matrix)
     })
-    pointGeometry.attributes.position.needsUpdate = true
-    trailGeometry.attributes.position.needsUpdate = true
+    particleMesh.instanceMatrix.needsUpdate = true
   })
 
   return (
-    <group raycast={() => null}>
-      <lineSegments geometry={trailGeometry}>
-        <lineBasicMaterial color={WIND_COLOR} transparent opacity={0.74} depthWrite={false} toneMapped={false} blending={AdditiveBlending} />
-      </lineSegments>
-      <points geometry={pointGeometry}>
-        <pointsMaterial color={WIND_COLOR} size={radius * 0.2} sizeAttenuation transparent opacity={0.94} depthWrite={false} toneMapped={false} blending={AdditiveBlending} />
-      </points>
-    </group>
+    <instancedMesh ref={particleMeshRef} args={[null, null, PARTICLE_COUNT]} raycast={() => null} frustumCulled={false}>
+      <boxGeometry args={[1, 1, 1]} />
+      <meshBasicMaterial color={WIND_COLOR} transparent opacity={0.9} depthWrite={false} toneMapped={false} blending={AdditiveBlending} />
+    </instancedMesh>
   )
 }
 

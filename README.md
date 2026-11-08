@@ -25,7 +25,7 @@ The Sun is the only light source. The application requires no manual scientific 
 - One slow orbital playback rate with a compact Play/Pause control; internal scientific time remains available without visible clock or speed-selector clutter.
 - NASA Blue Marble imagery for geographically correct Earth, plus reference-guided procedural textures for other bodies; natural colors stay separate from the graphite/violet interface palette.
 - Every supported body has a tailored magnetic silhouette—distinct shell count, tilt, compression, tail length, asymmetry, and strength—while protected body clearance prevents line intersections.
-- Charged solar particles use larger neon-green directional streaks and an explicit viewport legend, visually separating them from stars and asteroid-belt debris.
+- Charged solar particles use uniform neon-green directional pulses and an explicit viewport legend, visually separating them from stars and asteroid-belt debris.
 - Selected moons remain subordinate to their undimmed parent planet, while the expanded graphite analysis interface provides more space between scientific panels.
 - Locally cached scientific catalog with units, source IDs, deliberate nulls, and ASTM E-490 spectrum data.
 - Explainable atmospheric and airless deterministic physics baseline with energy conservation.

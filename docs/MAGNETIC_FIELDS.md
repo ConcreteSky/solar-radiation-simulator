@@ -15,7 +15,7 @@ The simulator distinguishes physical interaction families instead of drawing one
 
 The Three.js overlay is rendered only for the selected body. Every supported body has a reviewed visual profile that independently controls shell count, sunward compression, tail length and pinch, vertical extent, tilt, asymmetry, and opacity rather than inheriting one family-wide silhouette. Visible light is not bent by these fields.
 
-Larger neon-green heads and short directional trails represent charged solar-wind particles approaching from the Sun-facing direction. The color, size, motion, and explicit viewport legend keep them visually separate from neutral stars and asteroid-belt debris.
+Uniform neon-green rectangular pulses represent charged solar-wind particles approaching from the Sun-facing direction. They have no separate head or tail; their color, size, motion, and explicit viewport legend keep them visually separate from neutral stars and asteroid-belt debris.
 
 The field sizes are explanatory rather than to scale. Numeric field ranges are shown only when the source catalog supports them. Unknown and negligible cases receive no invented global structure; at most, direct sparse particle flow is shown.
 
