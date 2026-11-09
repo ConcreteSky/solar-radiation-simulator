@@ -4,12 +4,6 @@ Interactive scientific-computing project for visible light, magnetic interaction
 
 **Live Application:** https://solar-radiation-simulator.vercel.app
 
-## Visual tour
-
-![Inner-system opening view](docs/screenshots/opening-view.png)
-
-![Earth selected with the 3D magnetic-field envelope](docs/screenshots/earth-magnetic-field.png)
-
 ## Project overview
 
 The Solar Radiation Simulator expands the original Solar Light Propagation Simulator without replacing it. Here, “radiation” is used broadly for energy and particles arriving from the Sun while the interface keeps visible photons and charged particles scientifically separate. Selecting a destination freezes one shared simulation time and resolves three layers: visible light, charged-particle/radiation context, and magnetic interaction. The light subsystem retains its measured reliability architecture: **Efficiency**, **Reliability**, and automatic deterministic **Fallback**.
