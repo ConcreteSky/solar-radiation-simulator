@@ -6,6 +6,7 @@ const projectRoot = fileURLToPath(new URL('..', import.meta.url))
 
 export default defineConfig({
   plugins: [react()],
+  assetsInclude: ['**/*.glb'],
   server: {
     port: 5173,
     fs: {

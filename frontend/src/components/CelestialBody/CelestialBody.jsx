@@ -1,11 +1,37 @@
-import { Html, useTexture } from '@react-three/drei'
-import { memo, useEffect, useState } from 'react'
-import { RepeatWrapping, SRGBColorSpace } from 'three'
+import { Html, useGLTF, useTexture } from '@react-three/drei'
+import { memo, useEffect, useMemo, useState } from 'react'
+import {
+  AdditiveBlending,
+  Box3,
+  Color,
+  RepeatWrapping,
+  SRGBColorSpace,
+  Vector3,
+} from 'three'
 import { getSurfaceTreatment } from '../../data/surfaceTextureRegistry.js'
 import MagneticFieldOverlay from '../MagneticField/MagneticFieldOverlay.jsx'
 
 function ObservedSurface({ body, radius, bodyScale, treatment }) {
   const texture = useTexture(treatment.map)
+  const enhanceMappedMaterial = useMemo(() => (shader) => {
+    shader.uniforms.surfaceContrast = { value: treatment.contrast ?? 1 }
+    shader.uniforms.surfaceFallback = { value: new Color(body.visual.baseColor) }
+    shader.fragmentShader = shader.fragmentShader.replace(
+      '#include <common>',
+      `#include <common>
+      uniform float surfaceContrast;
+      uniform vec3 surfaceFallback;`,
+    )
+    shader.fragmentShader = shader.fragmentShader.replace(
+      '#include <map_fragment>',
+      `#include <map_fragment>
+      float surfaceLuma = dot(diffuseColor.rgb, vec3(0.2126, 0.7152, 0.0722));
+      float noDataMask = 1.0 - smoothstep(0.004, 0.035, surfaceLuma);
+      diffuseColor.rgb = mix(diffuseColor.rgb, surfaceFallback * 0.38, noDataMask);
+      diffuseColor.rgb = clamp((diffuseColor.rgb - 0.5) * surfaceContrast + 0.5, 0.0, 1.0);`,
+    )
+  }, [body.visual.baseColor, treatment.contrast])
+
   useEffect(() => {
     texture.colorSpace = SRGBColorSpace
     texture.wrapS = RepeatWrapping
@@ -16,13 +42,84 @@ function ObservedSurface({ body, radius, bodyScale, treatment }) {
       <sphereGeometry args={[radius, 48, 32]} />
       <meshStandardMaterial
         map={texture}
-        emissiveMap={texture}
-        color="#d4d6da"
+        color={treatment.tint ?? '#ffffff'}
         roughness={body.type === 'moon' ? 0.94 : 0.82}
-        emissive="#222832"
-        emissiveIntensity={0.2}
+        emissive={body.visual.baseColor}
+        emissiveIntensity={body.type === 'moon' ? 0.16 : 0.08}
+        onBeforeCompile={enhanceMappedMaterial}
       />
+      {treatment.atmosphereColor && (
+        <mesh scale={1.025}>
+          <sphereGeometry args={[radius, 48, 32]} />
+          <meshStandardMaterial
+            color={treatment.atmosphereColor}
+            transparent
+            opacity={0.16}
+            roughness={1}
+            depthWrite={false}
+          />
+        </mesh>
+      )}
     </mesh>
+  )
+}
+
+function OfficialModelSurface({ radius, treatment }) {
+  const { scene } = useGLTF(treatment.model)
+  const normalizedModel = useMemo(() => {
+    const object = scene.clone(true)
+    const bounds = new Box3().setFromObject(object)
+    const center = bounds.getCenter(new Vector3())
+    const size = bounds.getSize(new Vector3())
+    object.position.sub(center)
+
+    return {
+      object,
+      scale: (radius * 2) / Math.max(size.x, size.y, size.z),
+    }
+  }, [radius, scene])
+
+  return (
+    <primitive
+      object={normalizedModel.object}
+      scale={normalizedModel.scale}
+      rotation={[0, -0.35, 0]}
+    />
+  )
+}
+
+function ObservedPhotoSurface({ body, radius, bodyScale, treatment }) {
+  const texture = useTexture(treatment.photo)
+  useEffect(() => {
+    texture.colorSpace = SRGBColorSpace
+    texture.repeat.set(...treatment.repeat)
+    texture.offset.set(...treatment.offset)
+    texture.needsUpdate = true
+  }, [texture, treatment.offset, treatment.repeat])
+
+  return (
+    <group scale={bodyScale}>
+      <mesh>
+        <sphereGeometry args={[radius, 32, 20]} />
+        <meshStandardMaterial
+          color={body.visual.baseColor}
+          roughness={0.98}
+          emissive={body.visual.baseColor}
+          emissiveIntensity={0.08}
+        />
+      </mesh>
+      <sprite scale={[radius * 2.15 * treatment.aspect, radius * 2.15, 1]} renderOrder={3}>
+        <spriteMaterial
+          map={texture}
+          transparent
+          opacity={0.9}
+          blending={AdditiveBlending}
+          depthTest={false}
+          depthWrite={false}
+          toneMapped={false}
+        />
+      </sprite>
+    </group>
   )
 }
 
@@ -79,7 +176,9 @@ function CelestialBody({
 }) {
   const [hovered, setHovered] = useState(false)
   const surfaceTreatment = getSurfaceTreatment(body.id)
-  const bodyScale = body.id === 'haumea' ? [1.35, 0.74, 0.82] : [1, 1, 1]
+  const bodyScale = body.id === 'haumea' && surfaceTreatment.kind !== 'official-model'
+    ? [1.35, 0.74, 0.82]
+    : [1, 1, 1]
   const highlighted = selected || hovered
   const hitRadius = body.type === 'moon'
     ? Math.max(radius * 1.5, 0.9)
@@ -113,8 +212,12 @@ function CelestialBody({
         <meshBasicMaterial transparent opacity={0} depthWrite={false} colorWrite={false} />
       </mesh>
 
-      {body.id !== 'sun' && surfaceTreatment.map ? (
+      {body.id !== 'sun' && surfaceTreatment.kind === 'observed-map' ? (
         <ObservedSurface body={body} radius={radius} bodyScale={bodyScale} treatment={surfaceTreatment} />
+      ) : body.id !== 'sun' && surfaceTreatment.kind === 'official-model' ? (
+        <OfficialModelSurface radius={radius} treatment={surfaceTreatment} />
+      ) : body.id !== 'sun' && surfaceTreatment.kind === 'observed-photo' ? (
+        <ObservedPhotoSurface body={body} radius={radius} bodyScale={bodyScale} treatment={surfaceTreatment} />
       ) : (
         <ColorSurface body={body} radius={radius} bodyScale={bodyScale} />
       )}
