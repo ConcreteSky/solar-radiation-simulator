@@ -17,7 +17,7 @@ The Sun is the only light source. The application requires no manual scientific 
 - Coplanar simplified elliptical orbits, thin orbit rings, compressed distances, exaggerated body sizes, Saturn rings, and an efficient asteroid belt.
 - Tighter inner-system opening composition, mouse/touch rotation, cursor-centered zoom, damped selection focus, and restrained labels.
 - One slow orbital playback rate with a compact Play/Pause control; internal scientific time remains available without visible clock or speed-selector clutter.
-- NASA Blue Marble imagery for geographically correct Earth, plus reference-guided procedural textures for other bodies; natural colors stay separate from the graphite/violet interface palette.
+- Mission-derived NASA/USGS global mosaics for 22 mapped worlds, with honest observation-based color/albedo for bodies that lack complete surface maps; no procedural terrain is invented.
 - Every supported body has a tailored magnetic silhouette—distinct shell count, tilt, compression, tail length, asymmetry, and strength—while protected body clearance prevents line intersections.
 - Charged solar particles use uniform neon-green directional pulses and an explicit viewport legend, visually separating them from stars and asteroid-belt debris.
 - Selected moons remain subordinate to their undimmed parent planet, while the expanded graphite analysis interface provides more space between scientific panels.
@@ -183,7 +183,7 @@ Scientific and asset provenance is documented in:
 - [ASSET_SOURCES.md](docs/ASSET_SOURCES.md)
 - `data/sources.json`
 
-Catalog values are based primarily on NASA, JPL, and the ASTM E-490 reference distributed by the National Laboratory of the Rockies. Display colors and stylized textures are illustrative and never scientific inputs.
+Catalog values are based primarily on NASA, JPL, and the ASTM E-490 reference distributed by the National Laboratory of the Rockies. Surface mosaics are mission-derived display assets and never scientific inputs; unresolved bodies use catalog color/albedo rather than invented geography.
 
 ## Known limitations
 

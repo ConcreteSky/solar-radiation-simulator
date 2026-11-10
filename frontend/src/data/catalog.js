@@ -1,5 +1,6 @@
 import catalog from '../../../data/celestialBodies.json'
 import environmentCatalog from '../../../data/solarEnvironment.v1.json'
+import { getSurfaceTreatment } from './surfaceTextureRegistry.js'
 
 const environmentById = new Map(environmentCatalog.records.map((record) => [record.id, record]))
 
@@ -7,7 +8,7 @@ export const celestialBodies = catalog.bodies.map((body) => ({
   ...body,
   visual: {
     ...body.visual,
-    texture: `procedural-scientific/${body.id}`,
+    texture: getSurfaceTreatment(body.id).kind,
   },
   solarEnvironment: environmentById.get(body.id),
 }))
